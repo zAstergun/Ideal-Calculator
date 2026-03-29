@@ -760,27 +760,47 @@ function calcularRaridadeEstado(filtros, db) {
  * e consolida matematicamente os resultados do funil.
  */
 export function calcularRaridade(filtros, db) {
-  if (filtros.estadoUF !== 'BR') {
+  // Estado específico — vai direto para o cálculo mono-estado
+  if (filtros.estadoUF !== 'BR' && !filtros.estadoUF.startsWith('REG_')) {
     return calcularRaridadeEstado(filtros, db);
   }
 
-  // Lógica para 'Todo o Brasil'
-  let somaPopAbsoluta = 0;
+  // Determina quais UFs agregar
+  /** @type {string[]} */
+  const REGIOES_CALC = {
+    REG_N:  ['AC','AM','AP','PA','RO','RR','TO'],
+    REG_NE: ['AL','BA','CE','MA','PB','PE','PI','RN','SE'],
+    REG_CO: ['DF','GO','MS','MT'],
+    REG_SE: ['ES','MG','RJ','SP'],
+    REG_S:  ['PR','RS','SC'],
+  };
+
+  const ufs = filtros.estadoUF === 'BR'
+    ? Object.keys(UF_TO_NOME)                   // todos os 27 estados
+    : (REGIOES_CALC[filtros.estadoUF] ?? []);    // estados da região
+
+  const nomeRegiao = {
+    BR:     'Todo o Brasil',
+    REG_N:  'Região Norte',
+    REG_NE: 'Região Nordeste',
+    REG_CO: 'Região Centro-Oeste',
+    REG_SE: 'Região Sudeste',
+    REG_S:  'Região Sul',
+  }[filtros.estadoUF] ?? filtros.estadoUF;
+
+  // Acumuladores
+  let somaPopAbsoluta   = 0;
   let somaPopMassaTotal = 0;
-  
-  // Agregadores para médias ponderadas
   const aggFatores = {
     idade: 0, raca: 0, estadoCivil: 0, escolaridade: 0,
-    religiao: 0, renda: 0, obesidade: 0, altura: 0
+    religiao: 0, renda: 0, obesidade: 0, altura: 0,
   };
   let aggMedianaAltura = 0;
-
-  const ufs = Object.keys(UF_TO_NOME);
 
   for (const uf of ufs) {
     const res = calcularRaridadeEstado({ ...filtros, estadoUF: uf }, db);
     
-    somaPopAbsoluta += res.popAbsoluta;
+    somaPopAbsoluta   += res.popAbsoluta;
     somaPopMassaTotal += res.popBaseTotal;
 
     // Fatores são ponderados pela população base de cada estado (universo de adultos)
@@ -794,7 +814,6 @@ export function calcularRaridade(filtros, db) {
       aggFatores.renda        += res.fatores.renda * base;
       aggFatores.obesidade    += res.fatores.obesidade * base;
       aggFatores.altura       += res.fatores.altura * base;
-      
       aggMedianaAltura += res.medianaAltura * base;
     }
   }
@@ -826,7 +845,7 @@ export function calcularRaridade(filtros, db) {
       obesidade:    aggFatores.obesidade,
       altura:       aggFatores.altura,
     },
-    estadoNome: 'Todo o Brasil',
+    estadoNome: nomeRegiao,   // 'Todo o Brasil' | 'Região Sudeste' etc.
     medianaAltura: aggMedianaAltura,
   };
 }

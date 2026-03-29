@@ -18,6 +18,51 @@ let ultimoResultado = null;  // cache do último cálculo para o botão de compa
 let animacaoAtiva   = false; // trava para não disparar múltiplas animações simultâneas
 
 // ══════════════════════════════════════════════════════════════════
+//  MAPA DE REGIÕES → ESTADOS
+// ══════════════════════════════════════════════════════════════════
+
+const REGIOES_MAP = {
+  REG_N:  [['AC','Acre'],['AM','Amazonas'],['AP','Amapá'],['PA','Pará'],['RO','Rondônia'],['RR','Roraima'],['TO','Tocantins']],
+  REG_NE: [['AL','Alagoas'],['BA','Bahia'],['CE','Ceará'],['MA','Maranhão'],['PB','Paraíba'],['PE','Pernambuco'],['PI','Piauí'],['RN','Rio Grande do Norte'],['SE','Sergipe']],
+  REG_CO: [['DF','Distrito Federal'],['GO','Goiás'],['MS','Mato Grosso do Sul'],['MT','Mato Grosso']],
+  REG_SE: [['ES','Espírito Santo'],['MG','Minas Gerais'],['RJ','Rio de Janeiro'],['SP','São Paulo']],
+  REG_S:  [['PR','Paraná'],['RS','Rio Grande do Sul'],['SC','Santa Catarina']],
+};
+
+// Todos os estados em ordem alfabética (para quando região = BR)
+const TODOS_ESTADOS = [
+  ['AC','Acre'],['AL','Alagoas'],['AP','Amapá'],['AM','Amazonas'],
+  ['BA','Bahia'],['CE','Ceará'],['DF','Distrito Federal'],['ES','Espírito Santo'],
+  ['GO','Goiás'],['MA','Maranhão'],['MT','Mato Grosso'],['MS','Mato Grosso do Sul'],
+  ['MG','Minas Gerais'],['PA','Pará'],['PB','Paraíba'],['PR','Paraná'],
+  ['PE','Pernambuco'],['PI','Piauí'],['RJ','Rio de Janeiro'],['RN','Rio Grande do Norte'],
+  ['RS','Rio Grande do Sul'],['RO','Rondônia'],['RR','Roraima'],['SC','Santa Catarina'],
+  ['SP','São Paulo'],['SE','Sergipe'],['TO','Tocantins'],
+];
+
+/**
+ * Popula o #estado com base no valor atual de #regiao.
+ * Sempre adiciona "Qualquer Estado" no topo.
+ */
+function atualizarDropdownEstados() {
+  const regiaoEl = document.getElementById('regiao');
+  const estadoEl = document.getElementById('estado');
+  if (!regiaoEl || !estadoEl) return;
+
+  const regiao = regiaoEl.value;
+  const lista  = regiao === 'BR' ? TODOS_ESTADOS : (REGIOES_MAP[regiao] ?? []);
+
+  // Limpa e insere "Qualquer Estado" fixo no topo
+  estadoEl.innerHTML = '<option value="ALL">Qualquer Estado</option>';
+  for (const [uf, nome] of lista) {
+    const opt = document.createElement('option');
+    opt.value       = uf;
+    opt.textContent = nome;
+    estadoEl.appendChild(opt);
+  }
+}
+
+// ══════════════════════════════════════════════════════════════════
 //  LEITURA DO FORMULÁRIO
 // ══════════════════════════════════════════════════════════════════
 
@@ -27,7 +72,11 @@ let animacaoAtiva   = false; // trava para não disparar múltiplas animações 
  */
 function lerFiltros() {
   const genero = document.querySelector('input[name="genero"]:checked')?.value ?? 'Masculino';
-  const estadoUF = document.getElementById('estado')?.value ?? 'BR';
+
+  // Cascading dropdowns: se estado selecionado for ALL, usa a região como escopo
+  const regiaoVal = document.getElementById('regiao')?.value ?? 'BR';
+  const estadoVal = document.getElementById('estado')?.value ?? 'ALL';
+  const estadoUF  = estadoVal === 'ALL' ? regiaoVal : estadoVal;
 
   const idadeMin = Math.max(18, Math.min(79, parseInt(document.getElementById('idade-min')?.value) || 18));
   const idadeMax = Math.max(idadeMin + 1, Math.min(80, parseInt(document.getElementById('idade-max')?.value) || 35));
@@ -419,7 +468,11 @@ function registrarEventos() {
     radio.addEventListener('change', calcDebounced);
   });
 
-  // ── Estado ────────────────────────────────────────────────────
+  // ── Região + Estado (cascading) ───────────────────────────────
+  document.getElementById('regiao')?.addEventListener('change', () => {
+    atualizarDropdownEstados();
+    executarCalculo(false);
+  });
   document.getElementById('estado')?.addEventListener('change', () => executarCalculo(false));
 
   // ── Faixa etária ──────────────────────────────────────────────
@@ -525,6 +578,7 @@ async function init() {
     await loadAllData();
     esconderLoading();
     habilitarFormulario();
+    atualizarDropdownEstados(); // popula #estado com base na região padrão (BR)
     registrarEventos();
 
     // Cálculo inicial silencioso
