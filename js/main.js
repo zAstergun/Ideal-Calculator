@@ -146,7 +146,7 @@ function atualizarFillSlider(slider) {
   const val = parseFloat(slider.value);
   const pct = ((val - min) / (max - min)) * 100;
   slider.style.background =
-    `linear-gradient(to right, #00ff87 0%, #00ff87 ${pct}%, #252540 ${pct}%, #252540 100%)`;
+    `linear-gradient(to right, #c9a96e 0%, #c9a96e ${pct}%, #1a1a2e ${pct}%, #1a1a2e 100%)`;
 }
 
 /** Atualiza os displays de label dos sliders em tempo real */
