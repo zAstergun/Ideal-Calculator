@@ -27,7 +27,7 @@ let animacaoAtiva   = false; // trava para não disparar múltiplas animações 
  */
 function lerFiltros() {
   const genero = document.querySelector('input[name="genero"]:checked')?.value ?? 'Masculino';
-  const estadoUF = document.getElementById('estado')?.value ?? 'SP';
+  const estadoUF = document.getElementById('estado')?.value ?? 'BR';
 
   const idadeMin = Math.max(18, Math.min(79, parseInt(document.getElementById('idade-min')?.value) || 18));
   const idadeMax = Math.max(idadeMin + 1, Math.min(80, parseInt(document.getElementById('idade-max')?.value) || 35));
@@ -320,11 +320,7 @@ function mostrarErroCarregamento(mensagem) {
 }
 
 function habilitarFormulario() {
-  const btn = document.getElementById('btn-calcular');
-  if (btn) {
-    btn.disabled = false;
-    btn.textContent = 'Calcular meu choque de realidade';
-  }
+  // Apenas finaliza interface de carregamento, menu já liberado via CSS
 }
 
 // ══════════════════════════════════════════════════════════════════
@@ -461,14 +457,19 @@ function registrarEventos() {
   // ── Toggle obesidade ──────────────────────────────────────────
   document.getElementById('excluir-obesidade')?.addEventListener('change', calcDebounced);
 
-  // ── Botão Calcular (dispara animação de contagem) ─────────────
-  document.getElementById('btn-calcular')?.addEventListener('click', () => {
-    executarCalculo(true);
+  // ── Botão Restaurar Padrões ───────────────────────────────────
+  document.getElementById('btn-reset')?.addEventListener('click', () => {
+    const form = document.getElementById('filtros-form');
+    if (form) form.reset();
 
-    // Scroll suave até o resultado em mobile
-    if (window.innerWidth < 1024) {
-      document.getElementById('result-card')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    }
+    // Força update visual dos sliders e displays customizados
+    const alturaSlider = document.getElementById('altura-slider');
+    const rendaSlider  = document.getElementById('renda-slider');
+    if (alturaSlider) atualizarFillSlider(alturaSlider);
+    if (rendaSlider)  atualizarFillSlider(rendaSlider);
+    atualizarLabelsSliders();
+
+    executarCalculo(true); // chama com animação para feedback tátil de reset
   });
 
   // ── Botão Compartilhar ────────────────────────────────────────

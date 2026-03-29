@@ -1,51 +1,8 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Calculadora de Raridade de Parceiros · Dados Reais IBGE</title>
-  <meta name="description" content="Descubra qual é o tamanho real do seu mercado de relacionamentos com base em microdados reais do IBGE. Estatística aplicada, não palpite." />
-  <link rel="stylesheet" href="./css/style.css" />
-</head>
+const fs = require('fs');
+const htmlPath = 'c:/Users/User/Desktop/Ideal-Calculator/index.html';
+let html = fs.readFileSync(htmlPath, 'utf8');
 
-<body>
-
-  <!-- ═══ LOADING OVERLAY ════════════════════════════════════════════ -->
-  <div id="loading-overlay">
-    <div class="loading-inner">
-      <div class="loading-spinner"></div>
-      <p class="loading-title">Carregando bases do IBGE</p>
-      <p class="loading-sub">Aguarde enquanto os dados são preparados…</p>
-    </div>
-  </div>
-
-  <!-- ═══ PÁGINA PRINCIPAL ════════════════════════════════════════════ -->
-  <div class="page-wrapper">
-
-    <!-- HEADER -->
-    <header class="site-header anim-fade-up" style="animation-delay:0s">
-      <p class="header-eyebrow">
-        <span class="eyebrow-line"></span>
-        Baseado em microdados reais do IBGE
-        <span class="eyebrow-line"></span>
-      </p>
-      <h1 class="header-title">
-        Calculadora de<br />
-        <em>Raridade de Parceiros</em>
-      </h1>
-      <p class="header-sub">
-        Configure seus critérios e descubra qual é o tamanho real do seu mercado
-        de relacionamentos — com estatística aplicada, não palpite.
-      </p>
-    </header>
-
-    <!-- GRID: FORM | RESULT -->
-    <div class="main-grid">
-
-      <!-- ╔══════════════╗ -->
-      <!-- ║    FUNIL     ║ -->
-      <!-- ╚══════════════╝ -->
-      <form id="filtros-form" class="form-col dashboard-card anim-fade-up" autocomplete="off">
+const newFormBlock = `      <form id="filtros-form" class="form-col dashboard-card anim-fade-up" autocomplete="off">
         
         <div class="form-header">
           <h2 class="form-title">Painel de Parâmetros</h2>
@@ -269,122 +226,15 @@
           </div>
         </div>
 
-      </form><!-- /form-col -->
+      </form><!-- /form-col -->`;
 
-      <!-- ╔══════════════════╗ -->
-      <!-- ║    RESULTADO     ║ -->
-      <!-- ╚══════════════════╝ -->
-      <div class="result-col">
+const startIdx = html.indexOf('      <div class="form-col">');
+const endIdx = html.indexOf('      </div><!-- /form-col -->') + '      </div><!-- /form-col -->'.length;
 
-        <!-- Card de resultado principal -->
-        <div id="result-card" class="anim-fade-up" style="animation-delay:0.3s">
-
-          <p class="live-badge">
-            <span class="live-dot"></span>
-            Resultado em tempo real
-          </p>
-
-          <p class="result-overline">Seu mercado disponível é</p>
-
-          <span id="big-percentage">—</span>
-          
-          <p id="absolute-match" style="font-size: 0.95rem; color: var(--gold-base); margin-top: -12px; margin-bottom: 24px; font-weight: 500; letter-spacing: 0.02em;">
-            <!-- pop filled by JS -->
-          </p>
-
-          <p id="result-subtitle">
-            Configure seus critérios e clique em <strong>Calcular</strong> para ver seu resultado.
-          </p>
-
-          <div class="progress-track">
-            <div id="progress-fill" style="width:0%"></div>
-          </div>
-
-          <div class="result-divider"></div>
-
-          <p class="breakdown-label">Detalhamento por filtro</p>
-
-          <div class="breakdown-grid">
-            <div class="breakdown-cell">
-              <span class="bc-icon">⏳</span>
-              <span class="bc-name">Faixa Etária</span>
-              <span class="bc-value" id="bd-idade">—</span>
-            </div>
-            <div class="breakdown-cell">
-              <span class="bc-icon">👤</span>
-              <span class="bc-name">Raça</span>
-              <span class="bc-value" id="bd-raca">—</span>
-            </div>
-            <div class="breakdown-cell">
-              <span class="bc-icon">💍</span>
-              <span class="bc-name">Estado Civil</span>
-              <span class="bc-value" id="bd-civil">—</span>
-            </div>
-            <div class="breakdown-cell">
-              <span class="bc-icon">🎓</span>
-              <span class="bc-name">Escolaridade</span>
-              <span class="bc-value" id="bd-esc">—</span>
-            </div>
-            <div class="breakdown-cell">
-              <span class="bc-icon">🙏</span>
-              <span class="bc-name">Religião</span>
-              <span class="bc-value" id="bd-rel">—</span>
-            </div>
-            <div class="breakdown-cell">
-              <span class="bc-icon">💰</span>
-              <span class="bc-name">Renda</span>
-              <span class="bc-value" id="bd-renda">—</span>
-            </div>
-            <div class="breakdown-cell">
-              <span class="bc-icon">⚖️</span>
-              <span class="bc-name">Peso</span>
-              <span class="bc-value" id="bd-obesity">Não filtrado</span>
-            </div>
-            <div class="breakdown-cell">
-              <span class="bc-icon">📏</span>
-              <span class="bc-name">Altura</span>
-              <span class="bc-value" id="bd-altura">—</span>
-              <span class="bc-extra" id="bd-altura-media"></span>
-            </div>
-          </div>
-
-          <div class="result-divider"></div>
-
-          <button id="share-btn" class="btn-share">
-            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor">
-              <path stroke-linecap="round" stroke-linejoin="round" d="M7.217 10.907a2.25 2.25 0 1 0 0 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186 9.566-5.314m-9.566 7.5 9.566 5.314m0 0a2.25 2.25 0 1 0 3.935 2.186 2.25 2.25 0 0 0-3.935-2.186Zm0-12.814a2.25 2.25 0 1 0 3.933-2.185 2.25 2.25 0 0 0-3.933 2.185Z" />
-            </svg>
-            Compartilhar meu choque de realidade
-          </button>
-
-          <p class="result-disclaimer">
-            Estatísticas baseadas em microdados IBGE · PNAD / Censo 2023<br />
-            Apenas para fins educacionais e de reflexão.
-          </p>
-
-        </div><!-- /#result-card -->
-
-        <!-- Fun fact -->
-        <div class="fun-fact-card anim-fade-up" style="animation-delay:0.4s">
-          <span class="fun-fact-icon">💡</span>
-          <p id="fun-fact">Configure seus filtros para ver insights estatísticos aqui.</p>
-        </div>
-
-      </div><!-- /result-col -->
-
-    </div><!-- /main-grid -->
-
-    <!-- FOOTER -->
-    <footer class="site-footer">
-      <div class="footer-rule"></div>
-      <p>Calculadora de Raridade de Parceiros &nbsp;·&nbsp; Dados: IBGE PNAD / Censo</p>
-      <p>Apenas para fins educacionais e de reflexão</p>
-    </footer>
-
-  </div><!-- /page-wrapper -->
-
-  <!-- JS principal (ES Module — requer servidor HTTP) -->
-  <script type="module" src="./js/main.js"></script>
-
-</body>
-</html>
+if(startIdx !== -1 && endIdx !== -1) {
+  const finalHtml = html.slice(0, startIdx) + newFormBlock + html.slice(endIdx);
+  fs.writeFileSync(htmlPath, finalHtml, 'utf8');
+  console.log('SUCCESS');
+} else {
+  console.log('ERROR: bounds not found');
+}
