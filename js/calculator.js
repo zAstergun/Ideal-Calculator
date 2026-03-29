@@ -311,35 +311,49 @@ function calcularFiltroEstadoCivil(db, estado, genero, idMin, idMax, statuses) {
 // ══════════════════════════════════════════════════════════════════
 
 /**
- * Calcula a proporção que possui a escolaridade mínima desejada,
- * restringindo ao conjunto de raças selecionadas.
+ * Calcula a proporção que possui a escolaridade mínima desejada.
  *
- * Se `racasSel` for vazio, considera todas as raças (comportamento original).
+ * Cascata inclusiva (nivel = string única):
+ *   'fundamental' → Fundamental + Médio + Superior (exclui Sem_Instrucao)
+ *   'medio'       → Médio + Superior
+ *   'superior'    → Superior estritamente
+ *
+ * Denominador = Sem_Instrucao + Fundamental + Médio + Superior (total absoluto)
  *
  * @param {Object}   db
  * @param {string}   estado
  * @param {string}   genero
  * @param {number}   idMin
  * @param {number}   idMax
- * @param {string[]} niveis    ex: ["medio","superior"]
+ * @param {string}   nivel     'fundamental' | 'medio' | 'superior'
  * @param {string[]} racasSel  ex: ["Branca","Parda"] — vazio = todas
  * @returns {number} proporção em [0,1]
  */
-function calcularFiltroEscolaridade(db, estado, genero, idMin, idMax, niveis, racasSel = []) {
+function calcularFiltroEscolaridade(db, estado, genero, idMin, idMax, nivel, racasSel = []) {
+  // Sem filtro de escolaridade → 100% passa (Sem_Instrucao + todos os níveis)
+  if (!nivel || nivel === '') return 1;
+
   const base = safeGet(db, 'escolaridade', estado, genero);
   if (!base) {
     console.warn(`[calculator] escolaridade: dados não encontrados para ${estado}/${genero}`);
     return 1;
   }
 
-  const CHAVE_MAP = {
-    medio:    'Medio_Completo',
-    superior: 'Superior_Completo',
+  // Cascata inclusiva: cada nível exclui apenas os abaixo dele
+  //   fundamental → Fundamental + Médio + Superior  (exclui Sem_Instrucao)
+  //   medio       → Médio + Superior
+  //   superior    → só Superior
+  const NUMERADOR_MAP = {
+    fundamental: ['Fundamental_Completo', 'Medio_Completo', 'Superior_Completo'],
+    medio:       ['Medio_Completo', 'Superior_Completo'],
+    superior:    ['Superior_Completo'],
   };
-  const chavesSelecionadas = niveis.map(n => CHAVE_MAP[n]).filter(Boolean);
-  if (chavesSelecionadas.length === 0) return 1;
+  const chavesNumerador = NUMERADOR_MAP[nivel];
+  if (!chavesNumerador) return 1;
 
-  // Usa raças filtradas (ou todas se vazio)
+  // Denominador: soma das 4 chaves reais do JSON
+  const TODAS_CHAVES = ['Sem_Instrucao', 'Fundamental_Completo', 'Medio_Completo', 'Superior_Completo'];
+
   const racas = racasSel.length > 0 ? racasSel : TODAS_RACAS;
   const faixas = faixasNoIntervalo(FAIXAS_ESC, idMin, idMax);
 
@@ -351,12 +365,10 @@ function calcularFiltroEscolaridade(db, estado, genero, idMin, idMax, niveis, ra
       const faixa = safeGet(base, raca, key);
       if (!faixa) continue;
 
-      const totalCelula = Object.values(faixa).reduce((s, v) => s + v, 0);
-      const selecionadoCelula = chavesSelecionadas.reduce(
-        (s, ch) => s + (faixa[ch] ?? 0), 0
-      );
+      const totalCelula       = TODAS_CHAVES.reduce((s, ch) => s + (faixa[ch] ?? 0), 0);
+      const selecionadoCelula = chavesNumerador.reduce((s, ch) => s + (faixa[ch] ?? 0), 0);
 
-      numTotal       += totalCelula     * peso;
+      numTotal       += totalCelula       * peso;
       numSelecionado += selecionadoCelula * peso;
     }
   }

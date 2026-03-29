@@ -122,7 +122,8 @@
             </div>
             
             <div class="dual-slider-container">
-              <div class="slider-track" id="idade-track"></div>
+              <div class="dual-slider-track"></div>
+              <div class="dual-slider-fill" id="idade-fill"></div>
               <input type="range" id="idade-min" class="dual-range" min="18" max="80" value="25" step="1" />
               <input type="range" id="idade-max" class="dual-range" min="18" max="80" value="35" step="1" />
             </div>
@@ -213,18 +214,19 @@
             <p class="card-label">Escolaridade mínima</p>
             <div class="pills-group">
               <label class="pill-option">
-                <input type="checkbox" name="escolaridade" id="esc-medio" value="medio" checked />
+                <input type="radio" name="escolaridade" id="esc-fundamental" value="fundamental" />
+                <span class="pill-chip"><span class="pill-check"></span>Fundamental</span>
+              </label>
+              <label class="pill-option">
+                <input type="radio" name="escolaridade" id="esc-medio" value="medio" />
                 <span class="pill-chip"><span class="pill-check"></span>Ensino Médio</span>
               </label>
               <label class="pill-option">
-                <input type="checkbox" name="escolaridade" id="esc-superior" value="superior" checked />
-                <span class="pill-chip"><span class="pill-check"></span>Ensino Superior</span>
+                <input type="radio" name="escolaridade" id="esc-superior" value="superior" />
+                <span class="pill-chip"><span class="pill-check"></span>Superior</span>
               </label>
             </div>
-            <p class="card-hint">
-              "Ensino Médio" inclui quem tem médio completo ou superior.
-              Selecione apenas "Superior" para filtrar somente graduados.
-            </p>
+            <p class="card-hint">Quando desmarcado não aplica restrição.</p>
           </div>
 
           <!-- 9 · Religião -->

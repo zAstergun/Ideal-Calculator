@@ -39,9 +39,8 @@ function lerFiltros() {
     document.querySelectorAll('input[name="estado_civil"]:checked')
   ).map(cb => cb.value);
 
-  const escolaridade = Array.from(
-    document.querySelectorAll('input[name="escolaridade"]:checked')
-  ).map(cb => cb.value);
+  // Radio de escolaridade: pode estar vazio quando nenhum está marcado
+  const escolaridade = document.querySelector('input[name="escolaridade"]:checked')?.value ?? null;
 
   const religiao = Array.from(
     document.querySelectorAll('input[name="religiao"]:checked')
@@ -63,7 +62,7 @@ function lerFiltros() {
     // raca vazio = todas as raças
     raca,
     estadoCivil:      estadoCivil.length  > 0 ? estadoCivil  : ['Solteiro'],
-    escolaridade:     escolaridade.length > 0 ? escolaridade : ['medio','superior'],
+    escolaridade,
     religiao:         religiao.length     > 0 ? religiao     : ['Católica','Evangélica','Espírita','Matriz Africana','Sem Religião'],
     excluirObesidade,
   };
@@ -178,10 +177,11 @@ function atualizarLabelsSliders() {
     const minP = ((minVal - 18) / (80 - 18)) * 100;
     const maxP = ((maxVal - 18) / (80 - 18)) * 100;
     
-    const track = document.getElementById('idade-track');
-    if (track) {
-      track.style.left = minP + '%';
-      track.style.width = (maxP - minP) + '%';
+    // Atualiza o fill visual do dual slider de idade
+    const fill = document.getElementById('idade-fill');
+    if (fill) {
+      fill.style.left  = minP + '%';
+      fill.style.width = (maxP - minP) + '%';
     }
   }
 }
@@ -447,8 +447,26 @@ function registrarEventos() {
     calcDebounced();
   });
 
-  // ── Checkboxes ────────────────────────────────────────────────
-  ['estado_civil', 'escolaridade', 'religiao', 'raca'].forEach(name => {
+  // ── Escolaridade: toggle (radio com deselect) ─────────────────
+  document.querySelectorAll('input[name="escolaridade"]').forEach(radio => {
+    radio.addEventListener('click', () => {
+      if (radio.dataset.wasChecked === 'true') {
+        // Segundo clique na opção já ativa — desseleciona
+        radio.checked = false;
+        radio.dataset.wasChecked = 'false';
+      } else {
+        // Marca este e reseta estado dos demais
+        document.querySelectorAll('input[name="escolaridade"]').forEach(r => {
+          r.dataset.wasChecked = 'false';
+        });
+        radio.dataset.wasChecked = 'true';
+      }
+      calcDebounced();
+    });
+  });
+
+  // ── Checkboxes (estado_civil, religião, raça) ──────────────────
+  ['estado_civil', 'religiao', 'raca'].forEach(name => {
     document.querySelectorAll(`input[name="${name}"]`).forEach(cb => {
       cb.addEventListener('change', calcDebounced);
     });
