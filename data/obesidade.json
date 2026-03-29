@@ -1,0 +1,37 @@
+{
+  "Por_Estado": {
+    "Rondônia": { "Masculino": 15.6, "Feminino": 23.8 },
+    "Acre": { "Masculino": 15.2, "Feminino": 21.7 },
+    "Amazonas": { "Masculino": 20.3, "Feminino": 23.1 },
+    "Roraima": { "Masculino": 18.6, "Feminino": 21.3 },
+    "Pará": { "Masculino": 11.9, "Feminino": 18.0 },
+    "Amapá": { "Masculino": 16.7, "Feminino": 22.7 },
+    "Tocantins": { "Masculino": 14.7, "Feminino": 19.3 },
+    "Maranhão": { "Masculino": 8.7, "Feminino": 18.4 },
+    "Piauí": { "Masculino": 12.1, "Feminino": 17.7 },
+    "Ceará": { "Masculino": 15.5, "Feminino": 21.0 },
+    "Rio Grande do Norte": { "Masculino": 16.6, "Feminino": 25.3 },
+    "Paraíba": { "Masculino": 12.7, "Feminino": 21.5 },
+    "Pernambuco": { "Masculino": 16.2, "Feminino": 23.6 },
+    "Alagoas": { "Masculino": 14.8, "Feminino": 26.2 },
+    "Sergipe": { "Masculino": 15.9, "Feminino": 24.3 },
+    "Bahia": { "Masculino": 13.3, "Feminino": 20.5 },
+    "Minas Gerais": { "Masculino": 12.9, "Feminino": 21.2 },
+    "Espírito Santo": { "Masculino": 12.8, "Feminino": 22.1 },
+    "Rio de Janeiro": { "Masculino": 19.1, "Feminino": 26.3 },
+    "São Paulo": { "Masculino": 19.3, "Feminino": 28.7 },
+    "Paraná": { "Masculino": 18.5, "Feminino": 24.2 },
+    "Santa Catarina": { "Masculino": 21.6, "Feminino": 29.7 },
+    "Rio Grande do Sul": { "Masculino": 20.2, "Feminino": 26.3 },
+    "Mato Grosso do Sul": { "Masculino": 20.9, "Feminino": 27.2 },
+    "Mato Grosso": { "Masculino": 23.7, "Feminino": 25.6 },
+    "Goiás": { "Masculino": 16.7, "Feminino": 25.2 },
+    "Distrito Federal": { "Masculino": 17.8, "Feminino": 21.3 }
+  },
+  "Por_Idade": {
+    "18 a 24 anos": { "Masculino": 7.9, "Feminino": 13.5 },
+    "25 a 39 anos": { "Masculino": 19.3, "Feminino": 27.9 },
+    "40 a 59 anos": { "Masculino": 30.2, "Feminino": 38.0 },
+    "60 anos ou mais": { "Masculino": 21.2, "Feminino": 27.5 }
+  }
+}

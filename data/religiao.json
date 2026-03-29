@@ -1,0 +1,3566 @@
+{
+    "Rondônia": {
+        "Masculino": {
+            "15 a 19 anos": {
+                "Catolica": 22390,
+                "Evangelica": 24899,
+                "Espirita": 191,
+                "Matriz_Africana": 228,
+                "Sem_Religiao": 10585
+            },
+            "20 a 24 anos": {
+                "Catolica": 22414,
+                "Evangelica": 22540,
+                "Espirita": 241,
+                "Matriz_Africana": 227,
+                "Sem_Religiao": 13417
+            },
+            "25 a 29 anos": {
+                "Catolica": 23276,
+                "Evangelica": 22944,
+                "Espirita": 213,
+                "Matriz_Africana": 199,
+                "Sem_Religiao": 13064
+            },
+            "30 a 39 anos": {
+                "Catolica": 48436,
+                "Evangelica": 47518,
+                "Espirita": 609,
+                "Matriz_Africana": 344,
+                "Sem_Religiao": 21513
+            },
+            "40 a 49 anos": {
+                "Catolica": 46650,
+                "Evangelica": 44018,
+                "Espirita": 610,
+                "Matriz_Africana": 312,
+                "Sem_Religiao": 16189
+            },
+            "50 a 59 anos": {
+                "Catolica": 42457,
+                "Evangelica": 33365,
+                "Espirita": 580,
+                "Matriz_Africana": 233,
+                "Sem_Religiao": 9872
+            },
+            "60 a 69 anos": {
+                "Catolica": 30464,
+                "Evangelica": 21133,
+                "Espirita": 460,
+                "Matriz_Africana": 75,
+                "Sem_Religiao": 5274
+            },
+            "70 a 79 anos": {
+                "Catolica": 14341,
+                "Evangelica": 10210,
+                "Espirita": 107,
+                "Matriz_Africana": 102,
+                "Sem_Religiao": 1964
+            },
+            "80 anos ou mais": {
+                "Catolica": 5851,
+                "Evangelica": 4189,
+                "Espirita": 22,
+                "Matriz_Africana": 3,
+                "Sem_Religiao": 730
+            }
+        },
+        "Feminino": {
+            "15 a 19 anos": {
+                "Catolica": 22194,
+                "Evangelica": 24823,
+                "Espirita": 220,
+                "Matriz_Africana": 223,
+                "Sem_Religiao": 9455
+            },
+            "20 a 24 anos": {
+                "Catolica": 23023,
+                "Evangelica": 24445,
+                "Espirita": 375,
+                "Matriz_Africana": 235,
+                "Sem_Religiao": 11149
+            },
+            "25 a 29 anos": {
+                "Catolica": 23678,
+                "Evangelica": 27079,
+                "Espirita": 332,
+                "Matriz_Africana": 195,
+                "Sem_Religiao": 9684
+            },
+            "30 a 39 anos": {
+                "Catolica": 49690,
+                "Evangelica": 57002,
+                "Espirita": 1010,
+                "Matriz_Africana": 403,
+                "Sem_Religiao": 15501
+            },
+            "40 a 49 anos": {
+                "Catolica": 47521,
+                "Evangelica": 52680,
+                "Espirita": 893,
+                "Matriz_Africana": 446,
+                "Sem_Religiao": 11210
+            },
+            "50 a 59 anos": {
+                "Catolica": 40145,
+                "Evangelica": 40609,
+                "Espirita": 642,
+                "Matriz_Africana": 154,
+                "Sem_Religiao": 5358
+            },
+            "60 a 69 anos": {
+                "Catolica": 27296,
+                "Evangelica": 26145,
+                "Espirita": 416,
+                "Matriz_Africana": 162,
+                "Sem_Religiao": 2594
+            },
+            "70 a 79 anos": {
+                "Catolica": 13738,
+                "Evangelica": 12576,
+                "Espirita": 146,
+                "Matriz_Africana": 21,
+                "Sem_Religiao": 775
+            },
+            "80 anos ou mais": {
+                "Catolica": 6269,
+                "Evangelica": 4485,
+                "Espirita": 26,
+                "Matriz_Africana": 0,
+                "Sem_Religiao": 337
+            }
+        }
+    },
+    "Acre": {
+        "Masculino": {
+            "15 a 19 anos": {
+                "Catolica": 14894,
+                "Evangelica": 17179,
+                "Espirita": 171,
+                "Matriz_Africana": 100,
+                "Sem_Religiao": 6131
+            },
+            "20 a 24 anos": {
+                "Catolica": 14047,
+                "Evangelica": 15926,
+                "Espirita": 177,
+                "Matriz_Africana": 129,
+                "Sem_Religiao": 6835
+            },
+            "25 a 29 anos": {
+                "Catolica": 11850,
+                "Evangelica": 14477,
+                "Espirita": 191,
+                "Matriz_Africana": 89,
+                "Sem_Religiao": 5668
+            },
+            "30 a 39 anos": {
+                "Catolica": 23008,
+                "Evangelica": 26509,
+                "Espirita": 299,
+                "Matriz_Africana": 130,
+                "Sem_Religiao": 8384
+            },
+            "40 a 49 anos": {
+                "Catolica": 22193,
+                "Evangelica": 22169,
+                "Espirita": 324,
+                "Matriz_Africana": 136,
+                "Sem_Religiao": 6135
+            },
+            "50 a 59 anos": {
+                "Catolica": 16719,
+                "Evangelica": 13965,
+                "Espirita": 194,
+                "Matriz_Africana": 26,
+                "Sem_Religiao": 3185
+            },
+            "60 a 69 anos": {
+                "Catolica": 11976,
+                "Evangelica": 7608,
+                "Espirita": 155,
+                "Matriz_Africana": 97,
+                "Sem_Religiao": 1729
+            },
+            "70 a 79 anos": {
+                "Catolica": 6188,
+                "Evangelica": 3794,
+                "Espirita": 58,
+                "Matriz_Africana": 10,
+                "Sem_Religiao": 735
+            },
+            "80 anos ou mais": {
+                "Catolica": 2689,
+                "Evangelica": 1552,
+                "Espirita": 12,
+                "Matriz_Africana": 0,
+                "Sem_Religiao": 309
+            }
+        },
+        "Feminino": {
+            "15 a 19 anos": {
+                "Catolica": 13785,
+                "Evangelica": 17442,
+                "Espirita": 122,
+                "Matriz_Africana": 185,
+                "Sem_Religiao": 5109
+            },
+            "20 a 24 anos": {
+                "Catolica": 12259,
+                "Evangelica": 17862,
+                "Espirita": 172,
+                "Matriz_Africana": 96,
+                "Sem_Religiao": 5514
+            },
+            "25 a 29 anos": {
+                "Catolica": 12173,
+                "Evangelica": 15810,
+                "Espirita": 125,
+                "Matriz_Africana": 106,
+                "Sem_Religiao": 4878
+            },
+            "30 a 39 anos": {
+                "Catolica": 22168,
+                "Evangelica": 31218,
+                "Espirita": 418,
+                "Matriz_Africana": 198,
+                "Sem_Religiao": 6482
+            },
+            "40 a 49 anos": {
+                "Catolica": 20083,
+                "Evangelica": 27234,
+                "Espirita": 593,
+                "Matriz_Africana": 117,
+                "Sem_Religiao": 3876
+            },
+            "50 a 59 anos": {
+                "Catolica": 15095,
+                "Evangelica": 17434,
+                "Espirita": 277,
+                "Matriz_Africana": 95,
+                "Sem_Religiao": 1852
+            },
+            "60 a 69 anos": {
+                "Catolica": 10782,
+                "Evangelica": 10290,
+                "Espirita": 206,
+                "Matriz_Africana": 30,
+                "Sem_Religiao": 863
+            },
+            "70 a 79 anos": {
+                "Catolica": 6006,
+                "Evangelica": 4848,
+                "Espirita": 54,
+                "Matriz_Africana": 4,
+                "Sem_Religiao": 328
+            },
+            "80 anos ou mais": {
+                "Catolica": 3003,
+                "Evangelica": 2001,
+                "Espirita": 37,
+                "Matriz_Africana": 0,
+                "Sem_Religiao": 206
+            }
+        }
+    },
+    "Amazonas": {
+        "Masculino": {
+            "15 a 19 anos": {
+                "Catolica": 83529,
+                "Evangelica": 75620,
+                "Espirita": 468,
+                "Matriz_Africana": 484,
+                "Sem_Religiao": 17409
+            },
+            "20 a 24 anos": {
+                "Catolica": 81178,
+                "Evangelica": 69053,
+                "Espirita": 336,
+                "Matriz_Africana": 676,
+                "Sem_Religiao": 21224
+            },
+            "25 a 29 anos": {
+                "Catolica": 74435,
+                "Evangelica": 62697,
+                "Espirita": 414,
+                "Matriz_Africana": 649,
+                "Sem_Religiao": 17964
+            },
+            "30 a 39 anos": {
+                "Catolica": 136679,
+                "Evangelica": 109376,
+                "Espirita": 973,
+                "Matriz_Africana": 1365,
+                "Sem_Religiao": 28395
+            },
+            "40 a 49 anos": {
+                "Catolica": 127375,
+                "Evangelica": 91377,
+                "Espirita": 1278,
+                "Matriz_Africana": 729,
+                "Sem_Religiao": 19127
+            },
+            "50 a 59 anos": {
+                "Catolica": 91867,
+                "Evangelica": 58396,
+                "Espirita": 770,
+                "Matriz_Africana": 633,
+                "Sem_Religiao": 9931
+            },
+            "60 a 69 anos": {
+                "Catolica": 61695,
+                "Evangelica": 33767,
+                "Espirita": 347,
+                "Matriz_Africana": 229,
+                "Sem_Religiao": 5541
+            },
+            "70 a 79 anos": {
+                "Catolica": 28448,
+                "Evangelica": 13264,
+                "Espirita": 352,
+                "Matriz_Africana": 110,
+                "Sem_Religiao": 2008
+            },
+            "80 anos ou mais": {
+                "Catolica": 10807,
+                "Evangelica": 5291,
+                "Espirita": 104,
+                "Matriz_Africana": 53,
+                "Sem_Religiao": 774
+            }
+        },
+        "Feminino": {
+            "15 a 19 anos": {
+                "Catolica": 76261,
+                "Evangelica": 78883,
+                "Espirita": 367,
+                "Matriz_Africana": 513,
+                "Sem_Religiao": 15088
+            },
+            "20 a 24 anos": {
+                "Catolica": 78231,
+                "Evangelica": 74152,
+                "Espirita": 463,
+                "Matriz_Africana": 636,
+                "Sem_Religiao": 17083
+            },
+            "25 a 29 anos": {
+                "Catolica": 71774,
+                "Evangelica": 69383,
+                "Espirita": 605,
+                "Matriz_Africana": 864,
+                "Sem_Religiao": 14943
+            },
+            "30 a 39 anos": {
+                "Catolica": 137426,
+                "Evangelica": 126743,
+                "Espirita": 986,
+                "Matriz_Africana": 1250,
+                "Sem_Religiao": 20600
+            },
+            "40 a 49 anos": {
+                "Catolica": 121562,
+                "Evangelica": 106367,
+                "Espirita": 1393,
+                "Matriz_Africana": 702,
+                "Sem_Religiao": 13137
+            },
+            "50 a 59 anos": {
+                "Catolica": 85265,
+                "Evangelica": 69580,
+                "Espirita": 1428,
+                "Matriz_Africana": 528,
+                "Sem_Religiao": 5631
+            },
+            "60 a 69 anos": {
+                "Catolica": 60709,
+                "Evangelica": 41406,
+                "Espirita": 916,
+                "Matriz_Africana": 160,
+                "Sem_Religiao": 2282
+            },
+            "70 a 79 anos": {
+                "Catolica": 30451,
+                "Evangelica": 18399,
+                "Espirita": 376,
+                "Matriz_Africana": 7,
+                "Sem_Religiao": 873
+            },
+            "80 anos ou mais": {
+                "Catolica": 15067,
+                "Evangelica": 7782,
+                "Espirita": 21,
+                "Matriz_Africana": 59,
+                "Sem_Religiao": 574
+            }
+        }
+    },
+    "Roraima": {
+        "Masculino": {
+            "15 a 19 anos": {
+                "Catolica": 10328,
+                "Evangelica": 10174,
+                "Espirita": 87,
+                "Matriz_Africana": 55,
+                "Sem_Religiao": 5379
+            },
+            "20 a 24 anos": {
+                "Catolica": 9589,
+                "Evangelica": 9017,
+                "Espirita": 174,
+                "Matriz_Africana": 142,
+                "Sem_Religiao": 6899
+            },
+            "25 a 29 anos": {
+                "Catolica": 9412,
+                "Evangelica": 8288,
+                "Espirita": 118,
+                "Matriz_Africana": 163,
+                "Sem_Religiao": 6668
+            },
+            "30 a 39 anos": {
+                "Catolica": 18462,
+                "Evangelica": 15122,
+                "Espirita": 197,
+                "Matriz_Africana": 231,
+                "Sem_Religiao": 9389
+            },
+            "40 a 49 anos": {
+                "Catolica": 15905,
+                "Evangelica": 11919,
+                "Espirita": 354,
+                "Matriz_Africana": 111,
+                "Sem_Religiao": 6518
+            },
+            "50 a 59 anos": {
+                "Catolica": 12227,
+                "Evangelica": 8076,
+                "Espirita": 231,
+                "Matriz_Africana": 105,
+                "Sem_Religiao": 3543
+            },
+            "60 a 69 anos": {
+                "Catolica": 8170,
+                "Evangelica": 4610,
+                "Espirita": 80,
+                "Matriz_Africana": 41,
+                "Sem_Religiao": 1761
+            },
+            "70 a 79 anos": {
+                "Catolica": 3944,
+                "Evangelica": 2114,
+                "Espirita": 82,
+                "Matriz_Africana": 5,
+                "Sem_Religiao": 693
+            },
+            "80 anos ou mais": {
+                "Catolica": 1210,
+                "Evangelica": 842,
+                "Espirita": 35,
+                "Matriz_Africana": 0,
+                "Sem_Religiao": 285
+            }
+        },
+        "Feminino": {
+            "15 a 19 anos": {
+                "Catolica": 9481,
+                "Evangelica": 10393,
+                "Espirita": 57,
+                "Matriz_Africana": 82,
+                "Sem_Religiao": 5280
+            },
+            "20 a 24 anos": {
+                "Catolica": 9297,
+                "Evangelica": 9790,
+                "Espirita": 179,
+                "Matriz_Africana": 70,
+                "Sem_Religiao": 6456
+            },
+            "25 a 29 anos": {
+                "Catolica": 9420,
+                "Evangelica": 9401,
+                "Espirita": 109,
+                "Matriz_Africana": 95,
+                "Sem_Religiao": 6111
+            },
+            "30 a 39 anos": {
+                "Catolica": 18199,
+                "Evangelica": 17809,
+                "Espirita": 311,
+                "Matriz_Africana": 123,
+                "Sem_Religiao": 8237
+            },
+            "40 a 49 anos": {
+                "Catolica": 15611,
+                "Evangelica": 15100,
+                "Espirita": 436,
+                "Matriz_Africana": 155,
+                "Sem_Religiao": 5102
+            },
+            "50 a 59 anos": {
+                "Catolica": 10691,
+                "Evangelica": 10118,
+                "Espirita": 341,
+                "Matriz_Africana": 57,
+                "Sem_Religiao": 2223
+            },
+            "60 a 69 anos": {
+                "Catolica": 7152,
+                "Evangelica": 6100,
+                "Espirita": 146,
+                "Matriz_Africana": 21,
+                "Sem_Religiao": 1092
+            },
+            "70 a 79 anos": {
+                "Catolica": 3046,
+                "Evangelica": 2587,
+                "Espirita": 80,
+                "Matriz_Africana": 22,
+                "Sem_Religiao": 289
+            },
+            "80 anos ou mais": {
+                "Catolica": 1445,
+                "Evangelica": 1025,
+                "Espirita": 23,
+                "Matriz_Africana": 13,
+                "Sem_Religiao": 187
+            }
+        }
+    },
+    "Pará": {
+        "Masculino": {
+            "15 a 19 anos": {
+                "Catolica": 191214,
+                "Evangelica": 132326,
+                "Espirita": 674,
+                "Matriz_Africana": 789,
+                "Sem_Religiao": 34791
+            },
+            "20 a 24 anos": {
+                "Catolica": 187022,
+                "Evangelica": 116338,
+                "Espirita": 770,
+                "Matriz_Africana": 1169,
+                "Sem_Religiao": 40663
+            },
+            "25 a 29 anos": {
+                "Catolica": 170802,
+                "Evangelica": 107811,
+                "Espirita": 835,
+                "Matriz_Africana": 1538,
+                "Sem_Religiao": 37470
+            },
+            "30 a 39 anos": {
+                "Catolica": 344353,
+                "Evangelica": 208703,
+                "Espirita": 1833,
+                "Matriz_Africana": 2661,
+                "Sem_Religiao": 58738
+            },
+            "40 a 49 anos": {
+                "Catolica": 313265,
+                "Evangelica": 173244,
+                "Espirita": 1966,
+                "Matriz_Africana": 1914,
+                "Sem_Religiao": 41590
+            },
+            "50 a 59 anos": {
+                "Catolica": 231995,
+                "Evangelica": 113514,
+                "Espirita": 2005,
+                "Matriz_Africana": 1009,
+                "Sem_Religiao": 23153
+            },
+            "60 a 69 anos": {
+                "Catolica": 162014,
+                "Evangelica": 67885,
+                "Espirita": 1629,
+                "Matriz_Africana": 671,
+                "Sem_Religiao": 13165
+            },
+            "70 a 79 anos": {
+                "Catolica": 81311,
+                "Evangelica": 33032,
+                "Espirita": 571,
+                "Matriz_Africana": 129,
+                "Sem_Religiao": 5257
+            },
+            "80 anos ou mais": {
+                "Catolica": 31872,
+                "Evangelica": 13645,
+                "Espirita": 164,
+                "Matriz_Africana": 34,
+                "Sem_Religiao": 1881
+            }
+        },
+        "Feminino": {
+            "15 a 19 anos": {
+                "Catolica": 179337,
+                "Evangelica": 136133,
+                "Espirita": 786,
+                "Matriz_Africana": 1267,
+                "Sem_Religiao": 29982
+            },
+            "20 a 24 anos": {
+                "Catolica": 175896,
+                "Evangelica": 129304,
+                "Espirita": 1036,
+                "Matriz_Africana": 1293,
+                "Sem_Religiao": 33490
+            },
+            "25 a 29 anos": {
+                "Catolica": 167204,
+                "Evangelica": 129910,
+                "Espirita": 611,
+                "Matriz_Africana": 1457,
+                "Sem_Religiao": 27465
+            },
+            "30 a 39 anos": {
+                "Catolica": 336341,
+                "Evangelica": 254647,
+                "Espirita": 2578,
+                "Matriz_Africana": 2301,
+                "Sem_Religiao": 42407
+            },
+            "40 a 49 anos": {
+                "Catolica": 293675,
+                "Evangelica": 210750,
+                "Espirita": 3004,
+                "Matriz_Africana": 2048,
+                "Sem_Religiao": 24358
+            },
+            "50 a 59 anos": {
+                "Catolica": 215778,
+                "Evangelica": 143252,
+                "Espirita": 2476,
+                "Matriz_Africana": 1224,
+                "Sem_Religiao": 10835
+            },
+            "60 a 69 anos": {
+                "Catolica": 153321,
+                "Evangelica": 90139,
+                "Espirita": 2062,
+                "Matriz_Africana": 717,
+                "Sem_Religiao": 5322
+            },
+            "70 a 79 anos": {
+                "Catolica": 82630,
+                "Evangelica": 44057,
+                "Espirita": 941,
+                "Matriz_Africana": 341,
+                "Sem_Religiao": 2295
+            },
+            "80 anos ou mais": {
+                "Catolica": 43677,
+                "Evangelica": 19163,
+                "Espirita": 256,
+                "Matriz_Africana": 52,
+                "Sem_Religiao": 1066
+            }
+        }
+    },
+    "Amapá": {
+        "Masculino": {
+            "15 a 19 anos": {
+                "Catolica": 16659,
+                "Evangelica": 12695,
+                "Espirita": 49,
+                "Matriz_Africana": 163,
+                "Sem_Religiao": 3357
+            },
+            "20 a 24 anos": {
+                "Catolica": 16639,
+                "Evangelica": 11960,
+                "Espirita": 112,
+                "Matriz_Africana": 239,
+                "Sem_Religiao": 4360
+            },
+            "25 a 29 anos": {
+                "Catolica": 14581,
+                "Evangelica": 10210,
+                "Espirita": 183,
+                "Matriz_Africana": 295,
+                "Sem_Religiao": 3692
+            },
+            "30 a 39 anos": {
+                "Catolica": 29792,
+                "Evangelica": 18213,
+                "Espirita": 233,
+                "Matriz_Africana": 170,
+                "Sem_Religiao": 5536
+            },
+            "40 a 49 anos": {
+                "Catolica": 24717,
+                "Evangelica": 15264,
+                "Espirita": 195,
+                "Matriz_Africana": 313,
+                "Sem_Religiao": 3255
+            },
+            "50 a 59 anos": {
+                "Catolica": 18191,
+                "Evangelica": 9426,
+                "Espirita": 244,
+                "Matriz_Africana": 73,
+                "Sem_Religiao": 2059
+            },
+            "60 a 69 anos": {
+                "Catolica": 11535,
+                "Evangelica": 5129,
+                "Espirita": 68,
+                "Matriz_Africana": 75,
+                "Sem_Religiao": 930
+            },
+            "70 a 79 anos": {
+                "Catolica": 5279,
+                "Evangelica": 2332,
+                "Espirita": 62,
+                "Matriz_Africana": 0,
+                "Sem_Religiao": 421
+            },
+            "80 anos ou mais": {
+                "Catolica": 2062,
+                "Evangelica": 996,
+                "Espirita": 15,
+                "Matriz_Africana": 0,
+                "Sem_Religiao": 135
+            }
+        },
+        "Feminino": {
+            "15 a 19 anos": {
+                "Catolica": 15034,
+                "Evangelica": 13490,
+                "Espirita": 105,
+                "Matriz_Africana": 304,
+                "Sem_Religiao": 3081
+            },
+            "20 a 24 anos": {
+                "Catolica": 15889,
+                "Evangelica": 13250,
+                "Espirita": 83,
+                "Matriz_Africana": 128,
+                "Sem_Religiao": 4140
+            },
+            "25 a 29 anos": {
+                "Catolica": 14708,
+                "Evangelica": 12619,
+                "Espirita": 209,
+                "Matriz_Africana": 232,
+                "Sem_Religiao": 3102
+            },
+            "30 a 39 anos": {
+                "Catolica": 30475,
+                "Evangelica": 22437,
+                "Espirita": 393,
+                "Matriz_Africana": 161,
+                "Sem_Religiao": 3551
+            },
+            "40 a 49 anos": {
+                "Catolica": 24656,
+                "Evangelica": 19125,
+                "Espirita": 347,
+                "Matriz_Africana": 388,
+                "Sem_Religiao": 2034
+            },
+            "50 a 59 anos": {
+                "Catolica": 17420,
+                "Evangelica": 11855,
+                "Espirita": 350,
+                "Matriz_Africana": 122,
+                "Sem_Religiao": 1007
+            },
+            "60 a 69 anos": {
+                "Catolica": 11084,
+                "Evangelica": 6715,
+                "Espirita": 196,
+                "Matriz_Africana": 24,
+                "Sem_Religiao": 415
+            },
+            "70 a 79 anos": {
+                "Catolica": 5311,
+                "Evangelica": 3015,
+                "Espirita": 18,
+                "Matriz_Africana": 0,
+                "Sem_Religiao": 124
+            },
+            "80 anos ou mais": {
+                "Catolica": 2802,
+                "Evangelica": 1350,
+                "Espirita": 10,
+                "Matriz_Africana": 0,
+                "Sem_Religiao": 94
+            }
+        }
+    },
+    "Tocantins": {
+        "Masculino": {
+            "15 a 19 anos": {
+                "Catolica": 35597,
+                "Evangelica": 19290,
+                "Espirita": 220,
+                "Matriz_Africana": 61,
+                "Sem_Religiao": 5905
+            },
+            "20 a 24 anos": {
+                "Catolica": 34427,
+                "Evangelica": 17900,
+                "Espirita": 226,
+                "Matriz_Africana": 133,
+                "Sem_Religiao": 6801
+            },
+            "25 a 29 anos": {
+                "Catolica": 33411,
+                "Evangelica": 15875,
+                "Espirita": 262,
+                "Matriz_Africana": 105,
+                "Sem_Religiao": 6346
+            },
+            "30 a 39 anos": {
+                "Catolica": 67641,
+                "Evangelica": 32389,
+                "Espirita": 465,
+                "Matriz_Africana": 246,
+                "Sem_Religiao": 9474
+            },
+            "40 a 49 anos": {
+                "Catolica": 66203,
+                "Evangelica": 29499,
+                "Espirita": 518,
+                "Matriz_Africana": 133,
+                "Sem_Religiao": 7164
+            },
+            "50 a 59 anos": {
+                "Catolica": 50991,
+                "Evangelica": 20822,
+                "Espirita": 488,
+                "Matriz_Africana": 112,
+                "Sem_Religiao": 4260
+            },
+            "60 a 69 anos": {
+                "Catolica": 36581,
+                "Evangelica": 11795,
+                "Espirita": 464,
+                "Matriz_Africana": 64,
+                "Sem_Religiao": 2513
+            },
+            "70 a 79 anos": {
+                "Catolica": 20227,
+                "Evangelica": 6943,
+                "Espirita": 226,
+                "Matriz_Africana": 19,
+                "Sem_Religiao": 1228
+            },
+            "80 anos ou mais": {
+                "Catolica": 9937,
+                "Evangelica": 3133,
+                "Espirita": 93,
+                "Matriz_Africana": 14,
+                "Sem_Religiao": 391
+            }
+        },
+        "Feminino": {
+            "15 a 19 anos": {
+                "Catolica": 33198,
+                "Evangelica": 21149,
+                "Espirita": 250,
+                "Matriz_Africana": 124,
+                "Sem_Religiao": 4934
+            },
+            "20 a 24 anos": {
+                "Catolica": 33868,
+                "Evangelica": 19308,
+                "Espirita": 174,
+                "Matriz_Africana": 92,
+                "Sem_Religiao": 5721
+            },
+            "25 a 29 anos": {
+                "Catolica": 32447,
+                "Evangelica": 19759,
+                "Espirita": 289,
+                "Matriz_Africana": 75,
+                "Sem_Religiao": 4683
+            },
+            "30 a 39 anos": {
+                "Catolica": 65513,
+                "Evangelica": 42138,
+                "Espirita": 762,
+                "Matriz_Africana": 183,
+                "Sem_Religiao": 6778
+            },
+            "40 a 49 anos": {
+                "Catolica": 60436,
+                "Evangelica": 38043,
+                "Espirita": 771,
+                "Matriz_Africana": 123,
+                "Sem_Religiao": 4518
+            },
+            "50 a 59 anos": {
+                "Catolica": 46307,
+                "Evangelica": 27280,
+                "Espirita": 708,
+                "Matriz_Africana": 63,
+                "Sem_Religiao": 2071
+            },
+            "60 a 69 anos": {
+                "Catolica": 31464,
+                "Evangelica": 17883,
+                "Espirita": 501,
+                "Matriz_Africana": 59,
+                "Sem_Religiao": 1082
+            },
+            "70 a 79 anos": {
+                "Catolica": 17821,
+                "Evangelica": 9017,
+                "Espirita": 208,
+                "Matriz_Africana": 12,
+                "Sem_Religiao": 379
+            },
+            "80 anos ou mais": {
+                "Catolica": 9471,
+                "Evangelica": 3815,
+                "Espirita": 65,
+                "Matriz_Africana": 9,
+                "Sem_Religiao": 191
+            }
+        }
+    },
+    "Maranhão": {
+        "Masculino": {
+            "15 a 19 anos": {
+                "Catolica": 197726,
+                "Evangelica": 76379,
+                "Espirita": 272,
+                "Matriz_Africana": 797,
+                "Sem_Religiao": 28711
+            },
+            "20 a 24 anos": {
+                "Catolica": 178684,
+                "Evangelica": 64672,
+                "Espirita": 319,
+                "Matriz_Africana": 1346,
+                "Sem_Religiao": 31762
+            },
+            "25 a 29 anos": {
+                "Catolica": 156848,
+                "Evangelica": 57538,
+                "Espirita": 246,
+                "Matriz_Africana": 979,
+                "Sem_Religiao": 28924
+            },
+            "30 a 39 anos": {
+                "Catolica": 333030,
+                "Evangelica": 114493,
+                "Espirita": 808,
+                "Matriz_Africana": 2056,
+                "Sem_Religiao": 48244
+            },
+            "40 a 49 anos": {
+                "Catolica": 294211,
+                "Evangelica": 93564,
+                "Espirita": 928,
+                "Matriz_Africana": 1321,
+                "Sem_Religiao": 34311
+            },
+            "50 a 59 anos": {
+                "Catolica": 218073,
+                "Evangelica": 60083,
+                "Espirita": 572,
+                "Matriz_Africana": 916,
+                "Sem_Religiao": 19538
+            },
+            "60 a 69 anos": {
+                "Catolica": 157989,
+                "Evangelica": 38008,
+                "Espirita": 582,
+                "Matriz_Africana": 494,
+                "Sem_Religiao": 11940
+            },
+            "70 a 79 anos": {
+                "Catolica": 87928,
+                "Evangelica": 22289,
+                "Espirita": 180,
+                "Matriz_Africana": 206,
+                "Sem_Religiao": 5975
+            },
+            "80 anos ou mais": {
+                "Catolica": 40578,
+                "Evangelica": 10880,
+                "Espirita": 84,
+                "Matriz_Africana": 185,
+                "Sem_Religiao": 2229
+            }
+        },
+        "Feminino": {
+            "15 a 19 anos": {
+                "Catolica": 182913,
+                "Evangelica": 83690,
+                "Espirita": 427,
+                "Matriz_Africana": 1061,
+                "Sem_Religiao": 25761
+            },
+            "20 a 24 anos": {
+                "Catolica": 172545,
+                "Evangelica": 77839,
+                "Espirita": 498,
+                "Matriz_Africana": 1160,
+                "Sem_Religiao": 27472
+            },
+            "25 a 29 anos": {
+                "Catolica": 158866,
+                "Evangelica": 73632,
+                "Espirita": 492,
+                "Matriz_Africana": 1106,
+                "Sem_Religiao": 22778
+            },
+            "30 a 39 anos": {
+                "Catolica": 337899,
+                "Evangelica": 157858,
+                "Espirita": 1534,
+                "Matriz_Africana": 2164,
+                "Sem_Religiao": 35386
+            },
+            "40 a 49 anos": {
+                "Catolica": 287335,
+                "Evangelica": 131078,
+                "Espirita": 1491,
+                "Matriz_Africana": 1891,
+                "Sem_Religiao": 22580
+            },
+            "50 a 59 anos": {
+                "Catolica": 218471,
+                "Evangelica": 98208,
+                "Espirita": 1107,
+                "Matriz_Africana": 1009,
+                "Sem_Religiao": 10822
+            },
+            "60 a 69 anos": {
+                "Catolica": 157862,
+                "Evangelica": 65795,
+                "Espirita": 611,
+                "Matriz_Africana": 614,
+                "Sem_Religiao": 5943
+            },
+            "70 a 79 anos": {
+                "Catolica": 90269,
+                "Evangelica": 34961,
+                "Espirita": 319,
+                "Matriz_Africana": 497,
+                "Sem_Religiao": 2674
+            },
+            "80 anos ou mais": {
+                "Catolica": 50247,
+                "Evangelica": 17289,
+                "Espirita": 138,
+                "Matriz_Africana": 223,
+                "Sem_Religiao": 1692
+            }
+        }
+    },
+    "Piauí": {
+        "Masculino": {
+            "15 a 19 anos": {
+                "Catolica": 100221,
+                "Evangelica": 20163,
+                "Espirita": 243,
+                "Matriz_Africana": 481,
+                "Sem_Religiao": 8140
+            },
+            "20 a 24 anos": {
+                "Catolica": 97338,
+                "Evangelica": 19168,
+                "Espirita": 245,
+                "Matriz_Africana": 995,
+                "Sem_Religiao": 9460
+            },
+            "25 a 29 anos": {
+                "Catolica": 90138,
+                "Evangelica": 17476,
+                "Espirita": 240,
+                "Matriz_Africana": 948,
+                "Sem_Religiao": 8732
+            },
+            "30 a 39 anos": {
+                "Catolica": 191854,
+                "Evangelica": 34255,
+                "Espirita": 770,
+                "Matriz_Africana": 1078,
+                "Sem_Religiao": 14790
+            },
+            "40 a 49 anos": {
+                "Catolica": 179257,
+                "Evangelica": 30082,
+                "Espirita": 816,
+                "Matriz_Africana": 867,
+                "Sem_Religiao": 10521
+            },
+            "50 a 59 anos": {
+                "Catolica": 140946,
+                "Evangelica": 20961,
+                "Espirita": 656,
+                "Matriz_Africana": 338,
+                "Sem_Religiao": 7069
+            },
+            "60 a 69 anos": {
+                "Catolica": 100968,
+                "Evangelica": 12863,
+                "Espirita": 420,
+                "Matriz_Africana": 287,
+                "Sem_Religiao": 3942
+            },
+            "70 a 79 anos": {
+                "Catolica": 61171,
+                "Evangelica": 7289,
+                "Espirita": 164,
+                "Matriz_Africana": 80,
+                "Sem_Religiao": 1770
+            },
+            "80 anos ou mais": {
+                "Catolica": 28347,
+                "Evangelica": 3632,
+                "Espirita": 70,
+                "Matriz_Africana": 13,
+                "Sem_Religiao": 731
+            }
+        },
+        "Feminino": {
+            "15 a 19 anos": {
+                "Catolica": 94295,
+                "Evangelica": 21362,
+                "Espirita": 250,
+                "Matriz_Africana": 857,
+                "Sem_Religiao": 6913
+            },
+            "20 a 24 anos": {
+                "Catolica": 94869,
+                "Evangelica": 21182,
+                "Espirita": 440,
+                "Matriz_Africana": 1221,
+                "Sem_Religiao": 8649
+            },
+            "25 a 29 anos": {
+                "Catolica": 90225,
+                "Evangelica": 21021,
+                "Espirita": 520,
+                "Matriz_Africana": 790,
+                "Sem_Religiao": 6479
+            },
+            "30 a 39 anos": {
+                "Catolica": 195177,
+                "Evangelica": 47481,
+                "Espirita": 1485,
+                "Matriz_Africana": 1429,
+                "Sem_Religiao": 10024
+            },
+            "40 a 49 anos": {
+                "Catolica": 180045,
+                "Evangelica": 43876,
+                "Espirita": 1433,
+                "Matriz_Africana": 1089,
+                "Sem_Religiao": 6717
+            },
+            "50 a 59 anos": {
+                "Catolica": 147058,
+                "Evangelica": 34289,
+                "Espirita": 1255,
+                "Matriz_Africana": 667,
+                "Sem_Religiao": 3686
+            },
+            "60 a 69 anos": {
+                "Catolica": 110159,
+                "Evangelica": 23464,
+                "Espirita": 562,
+                "Matriz_Africana": 151,
+                "Sem_Religiao": 1971
+            },
+            "70 a 79 anos": {
+                "Catolica": 68909,
+                "Evangelica": 13420,
+                "Espirita": 243,
+                "Matriz_Africana": 107,
+                "Sem_Religiao": 1024
+            },
+            "80 anos ou mais": {
+                "Catolica": 37870,
+                "Evangelica": 6121,
+                "Espirita": 62,
+                "Matriz_Africana": 13,
+                "Sem_Religiao": 462
+            }
+        }
+    },
+    "Ceará": {
+        "Masculino": {
+            "15 a 19 anos": {
+                "Catolica": 222357,
+                "Evangelica": 69090,
+                "Espirita": 1604,
+                "Matriz_Africana": 1556,
+                "Sem_Religiao": 25850
+            },
+            "20 a 24 anos": {
+                "Catolica": 234777,
+                "Evangelica": 70998,
+                "Espirita": 1348,
+                "Matriz_Africana": 1905,
+                "Sem_Religiao": 32886
+            },
+            "25 a 29 anos": {
+                "Catolica": 231044,
+                "Evangelica": 74680,
+                "Espirita": 1274,
+                "Matriz_Africana": 1894,
+                "Sem_Religiao": 31380
+            },
+            "30 a 39 anos": {
+                "Catolica": 461068,
+                "Evangelica": 141976,
+                "Espirita": 3376,
+                "Matriz_Africana": 3330,
+                "Sem_Religiao": 48163
+            },
+            "40 a 49 anos": {
+                "Catolica": 423782,
+                "Evangelica": 111961,
+                "Espirita": 3607,
+                "Matriz_Africana": 2222,
+                "Sem_Religiao": 32988
+            },
+            "50 a 59 anos": {
+                "Catolica": 352007,
+                "Evangelica": 77665,
+                "Espirita": 3151,
+                "Matriz_Africana": 1201,
+                "Sem_Religiao": 21439
+            },
+            "60 a 69 anos": {
+                "Catolica": 243514,
+                "Evangelica": 41146,
+                "Espirita": 2421,
+                "Matriz_Africana": 651,
+                "Sem_Religiao": 12622
+            },
+            "70 a 79 anos": {
+                "Catolica": 146488,
+                "Evangelica": 21514,
+                "Espirita": 823,
+                "Matriz_Africana": 378,
+                "Sem_Religiao": 5582
+            },
+            "80 anos ou mais": {
+                "Catolica": 72260,
+                "Evangelica": 9696,
+                "Espirita": 331,
+                "Matriz_Africana": 152,
+                "Sem_Religiao": 2274
+            }
+        },
+        "Feminino": {
+            "15 a 19 anos": {
+                "Catolica": 211014,
+                "Evangelica": 73079,
+                "Espirita": 1283,
+                "Matriz_Africana": 1511,
+                "Sem_Religiao": 22897
+            },
+            "20 a 24 anos": {
+                "Catolica": 227295,
+                "Evangelica": 80291,
+                "Espirita": 1542,
+                "Matriz_Africana": 1759,
+                "Sem_Religiao": 27161
+            },
+            "25 a 29 anos": {
+                "Catolica": 241179,
+                "Evangelica": 88942,
+                "Espirita": 1929,
+                "Matriz_Africana": 1684,
+                "Sem_Religiao": 24112
+            },
+            "30 a 39 anos": {
+                "Catolica": 483771,
+                "Evangelica": 177036,
+                "Espirita": 4563,
+                "Matriz_Africana": 3023,
+                "Sem_Religiao": 35385
+            },
+            "40 a 49 anos": {
+                "Catolica": 446978,
+                "Evangelica": 148017,
+                "Espirita": 5486,
+                "Matriz_Africana": 2146,
+                "Sem_Religiao": 21797
+            },
+            "50 a 59 anos": {
+                "Catolica": 384238,
+                "Evangelica": 115785,
+                "Espirita": 4330,
+                "Matriz_Africana": 1502,
+                "Sem_Religiao": 11448
+            },
+            "60 a 69 anos": {
+                "Catolica": 275919,
+                "Evangelica": 71744,
+                "Espirita": 2424,
+                "Matriz_Africana": 715,
+                "Sem_Religiao": 5651
+            },
+            "70 a 79 anos": {
+                "Catolica": 177236,
+                "Evangelica": 39414,
+                "Espirita": 937,
+                "Matriz_Africana": 281,
+                "Sem_Religiao": 2713
+            },
+            "80 anos ou mais": {
+                "Catolica": 107282,
+                "Evangelica": 17832,
+                "Espirita": 594,
+                "Matriz_Africana": 180,
+                "Sem_Religiao": 1325
+            }
+        }
+    },
+    "Rio Grande do Norte": {
+        "Masculino": {
+            "15 a 19 anos": {
+                "Catolica": 79881,
+                "Evangelica": 25961,
+                "Espirita": 436,
+                "Matriz_Africana": 378,
+                "Sem_Religiao": 13415
+            },
+            "20 a 24 anos": {
+                "Catolica": 80738,
+                "Evangelica": 25732,
+                "Espirita": 683,
+                "Matriz_Africana": 404,
+                "Sem_Religiao": 16629
+            },
+            "25 a 29 anos": {
+                "Catolica": 78220,
+                "Evangelica": 25935,
+                "Espirita": 724,
+                "Matriz_Africana": 437,
+                "Sem_Religiao": 15454
+            },
+            "30 a 39 anos": {
+                "Catolica": 165689,
+                "Evangelica": 50942,
+                "Espirita": 1910,
+                "Matriz_Africana": 911,
+                "Sem_Religiao": 25507
+            },
+            "40 a 49 anos": {
+                "Catolica": 155719,
+                "Evangelica": 44444,
+                "Espirita": 2199,
+                "Matriz_Africana": 860,
+                "Sem_Religiao": 18514
+            },
+            "50 a 59 anos": {
+                "Catolica": 133366,
+                "Evangelica": 32290,
+                "Espirita": 1805,
+                "Matriz_Africana": 239,
+                "Sem_Religiao": 12150
+            },
+            "60 a 69 anos": {
+                "Catolica": 93698,
+                "Evangelica": 15863,
+                "Espirita": 1546,
+                "Matriz_Africana": 142,
+                "Sem_Religiao": 7146
+            },
+            "70 a 79 anos": {
+                "Catolica": 52647,
+                "Evangelica": 8137,
+                "Espirita": 786,
+                "Matriz_Africana": 75,
+                "Sem_Religiao": 3561
+            },
+            "80 anos ou mais": {
+                "Catolica": 25685,
+                "Evangelica": 4160,
+                "Espirita": 161,
+                "Matriz_Africana": 18,
+                "Sem_Religiao": 1373
+            }
+        },
+        "Feminino": {
+            "15 a 19 anos": {
+                "Catolica": 74495,
+                "Evangelica": 27953,
+                "Espirita": 718,
+                "Matriz_Africana": 614,
+                "Sem_Religiao": 11528
+            },
+            "20 a 24 anos": {
+                "Catolica": 75764,
+                "Evangelica": 31271,
+                "Espirita": 712,
+                "Matriz_Africana": 629,
+                "Sem_Religiao": 13382
+            },
+            "25 a 29 anos": {
+                "Catolica": 79410,
+                "Evangelica": 32390,
+                "Espirita": 1014,
+                "Matriz_Africana": 523,
+                "Sem_Religiao": 12366
+            },
+            "30 a 39 anos": {
+                "Catolica": 172145,
+                "Evangelica": 67922,
+                "Espirita": 2930,
+                "Matriz_Africana": 1036,
+                "Sem_Religiao": 18428
+            },
+            "40 a 49 anos": {
+                "Catolica": 161643,
+                "Evangelica": 61734,
+                "Espirita": 3574,
+                "Matriz_Africana": 698,
+                "Sem_Religiao": 12115
+            },
+            "50 a 59 anos": {
+                "Catolica": 142987,
+                "Evangelica": 49124,
+                "Espirita": 2902,
+                "Matriz_Africana": 569,
+                "Sem_Religiao": 7136
+            },
+            "60 a 69 anos": {
+                "Catolica": 105452,
+                "Evangelica": 29213,
+                "Espirita": 1943,
+                "Matriz_Africana": 144,
+                "Sem_Religiao": 3469
+            },
+            "70 a 79 anos": {
+                "Catolica": 64962,
+                "Evangelica": 16901,
+                "Espirita": 833,
+                "Matriz_Africana": 76,
+                "Sem_Religiao": 1318
+            },
+            "80 anos ou mais": {
+                "Catolica": 41205,
+                "Evangelica": 7169,
+                "Espirita": 292,
+                "Matriz_Africana": 11,
+                "Sem_Religiao": 635
+            }
+        }
+    },
+    "Paraíba": {
+        "Masculino": {
+            "15 a 19 anos": {
+                "Catolica": 100368,
+                "Evangelica": 30994,
+                "Espirita": 483,
+                "Matriz_Africana": 422,
+                "Sem_Religiao": 13596
+            },
+            "20 a 24 anos": {
+                "Catolica": 98776,
+                "Evangelica": 29070,
+                "Espirita": 570,
+                "Matriz_Africana": 526,
+                "Sem_Religiao": 16398
+            },
+            "25 a 29 anos": {
+                "Catolica": 93189,
+                "Evangelica": 28917,
+                "Espirita": 672,
+                "Matriz_Africana": 684,
+                "Sem_Religiao": 15278
+            },
+            "30 a 39 anos": {
+                "Catolica": 197662,
+                "Evangelica": 56954,
+                "Espirita": 1713,
+                "Matriz_Africana": 1014,
+                "Sem_Religiao": 25148
+            },
+            "40 a 49 anos": {
+                "Catolica": 190097,
+                "Evangelica": 53483,
+                "Espirita": 1892,
+                "Matriz_Africana": 766,
+                "Sem_Religiao": 18307
+            },
+            "50 a 59 anos": {
+                "Catolica": 158327,
+                "Evangelica": 36527,
+                "Espirita": 1470,
+                "Matriz_Africana": 438,
+                "Sem_Religiao": 11719
+            },
+            "60 a 69 anos": {
+                "Catolica": 112940,
+                "Evangelica": 19349,
+                "Espirita": 1182,
+                "Matriz_Africana": 223,
+                "Sem_Religiao": 7310
+            },
+            "70 a 79 anos": {
+                "Catolica": 67999,
+                "Evangelica": 10273,
+                "Espirita": 419,
+                "Matriz_Africana": 113,
+                "Sem_Religiao": 3042
+            },
+            "80 anos ou mais": {
+                "Catolica": 34312,
+                "Evangelica": 3912,
+                "Espirita": 238,
+                "Matriz_Africana": 21,
+                "Sem_Religiao": 1250
+            }
+        },
+        "Feminino": {
+            "15 a 19 anos": {
+                "Catolica": 93875,
+                "Evangelica": 33106,
+                "Espirita": 571,
+                "Matriz_Africana": 721,
+                "Sem_Religiao": 11876
+            },
+            "20 a 24 anos": {
+                "Catolica": 93711,
+                "Evangelica": 34865,
+                "Espirita": 896,
+                "Matriz_Africana": 634,
+                "Sem_Religiao": 14039
+            },
+            "25 a 29 anos": {
+                "Catolica": 96326,
+                "Evangelica": 35474,
+                "Espirita": 1066,
+                "Matriz_Africana": 674,
+                "Sem_Religiao": 11628
+            },
+            "30 a 39 anos": {
+                "Catolica": 206721,
+                "Evangelica": 77312,
+                "Espirita": 2383,
+                "Matriz_Africana": 1092,
+                "Sem_Religiao": 17397
+            },
+            "40 a 49 anos": {
+                "Catolica": 196248,
+                "Evangelica": 74798,
+                "Espirita": 2746,
+                "Matriz_Africana": 1024,
+                "Sem_Religiao": 12474
+            },
+            "50 a 59 anos": {
+                "Catolica": 169504,
+                "Evangelica": 57597,
+                "Espirita": 2297,
+                "Matriz_Africana": 591,
+                "Sem_Religiao": 6963
+            },
+            "60 a 69 anos": {
+                "Catolica": 128922,
+                "Evangelica": 35130,
+                "Espirita": 1385,
+                "Matriz_Africana": 277,
+                "Sem_Religiao": 3621
+            },
+            "70 a 79 anos": {
+                "Catolica": 86430,
+                "Evangelica": 19162,
+                "Espirita": 604,
+                "Matriz_Africana": 178,
+                "Sem_Religiao": 1695
+            },
+            "80 anos ou mais": {
+                "Catolica": 53139,
+                "Evangelica": 8946,
+                "Espirita": 381,
+                "Matriz_Africana": 37,
+                "Sem_Religiao": 849
+            }
+        }
+    },
+    "Pernambuco": {
+        "Masculino": {
+            "15 a 19 anos": {
+                "Catolica": 196695,
+                "Evangelica": 80509,
+                "Espirita": 2276,
+                "Matriz_Africana": 1729,
+                "Sem_Religiao": 53590
+            },
+            "20 a 24 anos": {
+                "Catolica": 197871,
+                "Evangelica": 77113,
+                "Espirita": 1992,
+                "Matriz_Africana": 1880,
+                "Sem_Religiao": 60583
+            },
+            "25 a 29 anos": {
+                "Catolica": 180873,
+                "Evangelica": 72257,
+                "Espirita": 2559,
+                "Matriz_Africana": 2412,
+                "Sem_Religiao": 54170
+            },
+            "30 a 39 anos": {
+                "Catolica": 378484,
+                "Evangelica": 149192,
+                "Espirita": 6491,
+                "Matriz_Africana": 3777,
+                "Sem_Religiao": 91688
+            },
+            "40 a 49 anos": {
+                "Catolica": 370749,
+                "Evangelica": 145192,
+                "Espirita": 7319,
+                "Matriz_Africana": 2788,
+                "Sem_Religiao": 69577
+            },
+            "50 a 59 anos": {
+                "Catolica": 299806,
+                "Evangelica": 104769,
+                "Espirita": 6876,
+                "Matriz_Africana": 1911,
+                "Sem_Religiao": 45502
+            },
+            "60 a 69 anos": {
+                "Catolica": 221790,
+                "Evangelica": 57834,
+                "Espirita": 5418,
+                "Matriz_Africana": 891,
+                "Sem_Religiao": 26577
+            },
+            "70 a 79 anos": {
+                "Catolica": 124620,
+                "Evangelica": 28730,
+                "Espirita": 2113,
+                "Matriz_Africana": 416,
+                "Sem_Religiao": 11265
+            },
+            "80 anos ou mais": {
+                "Catolica": 55355,
+                "Evangelica": 12057,
+                "Espirita": 919,
+                "Matriz_Africana": 139,
+                "Sem_Religiao": 3414
+            }
+        },
+        "Feminino": {
+            "15 a 19 anos": {
+                "Catolica": 188156,
+                "Evangelica": 85541,
+                "Espirita": 2417,
+                "Matriz_Africana": 1548,
+                "Sem_Religiao": 47096
+            },
+            "20 a 24 anos": {
+                "Catolica": 193878,
+                "Evangelica": 92141,
+                "Espirita": 2539,
+                "Matriz_Africana": 2052,
+                "Sem_Religiao": 51837
+            },
+            "25 a 29 anos": {
+                "Catolica": 189039,
+                "Evangelica": 94099,
+                "Espirita": 3299,
+                "Matriz_Africana": 2242,
+                "Sem_Religiao": 44634
+            },
+            "30 a 39 anos": {
+                "Catolica": 404173,
+                "Evangelica": 210643,
+                "Espirita": 9688,
+                "Matriz_Africana": 4149,
+                "Sem_Religiao": 72152
+            },
+            "40 a 49 anos": {
+                "Catolica": 390059,
+                "Evangelica": 210681,
+                "Espirita": 11967,
+                "Matriz_Africana": 3545,
+                "Sem_Religiao": 50479
+            },
+            "50 a 59 anos": {
+                "Catolica": 331998,
+                "Evangelica": 171628,
+                "Espirita": 11437,
+                "Matriz_Africana": 2554,
+                "Sem_Religiao": 29123
+            },
+            "60 a 69 anos": {
+                "Catolica": 258168,
+                "Evangelica": 110339,
+                "Espirita": 9182,
+                "Matriz_Africana": 1120,
+                "Sem_Religiao": 14910
+            },
+            "70 a 79 anos": {
+                "Catolica": 160063,
+                "Evangelica": 58816,
+                "Espirita": 4455,
+                "Matriz_Africana": 622,
+                "Sem_Religiao": 6679
+            },
+            "80 anos ou mais": {
+                "Catolica": 90477,
+                "Evangelica": 26801,
+                "Espirita": 1779,
+                "Matriz_Africana": 165,
+                "Sem_Religiao": 2962
+            }
+        }
+    },
+    "Alagoas": {
+        "Masculino": {
+            "15 a 19 anos": {
+                "Catolica": 81634,
+                "Evangelica": 28492,
+                "Espirita": 243,
+                "Matriz_Africana": 429,
+                "Sem_Religiao": 17417
+            },
+            "20 a 24 anos": {
+                "Catolica": 75302,
+                "Evangelica": 26695,
+                "Espirita": 341,
+                "Matriz_Africana": 746,
+                "Sem_Religiao": 20471
+            },
+            "25 a 29 anos": {
+                "Catolica": 69031,
+                "Evangelica": 25441,
+                "Espirita": 395,
+                "Matriz_Africana": 634,
+                "Sem_Religiao": 16342
+            },
+            "30 a 39 anos": {
+                "Catolica": 138268,
+                "Evangelica": 46022,
+                "Espirita": 1303,
+                "Matriz_Africana": 964,
+                "Sem_Religiao": 25997
+            },
+            "40 a 49 anos": {
+                "Catolica": 135184,
+                "Evangelica": 42634,
+                "Espirita": 1407,
+                "Matriz_Africana": 939,
+                "Sem_Religiao": 20976
+            },
+            "50 a 59 anos": {
+                "Catolica": 109514,
+                "Evangelica": 28974,
+                "Espirita": 1062,
+                "Matriz_Africana": 502,
+                "Sem_Religiao": 13067
+            },
+            "60 a 69 anos": {
+                "Catolica": 76436,
+                "Evangelica": 16457,
+                "Espirita": 767,
+                "Matriz_Africana": 210,
+                "Sem_Religiao": 7893
+            },
+            "70 a 79 anos": {
+                "Catolica": 42226,
+                "Evangelica": 7469,
+                "Espirita": 315,
+                "Matriz_Africana": 101,
+                "Sem_Religiao": 3477
+            },
+            "80 anos ou mais": {
+                "Catolica": 16656,
+                "Evangelica": 3155,
+                "Espirita": 122,
+                "Matriz_Africana": 23,
+                "Sem_Religiao": 1113
+            }
+        },
+        "Feminino": {
+            "15 a 19 anos": {
+                "Catolica": 75504,
+                "Evangelica": 30791,
+                "Espirita": 510,
+                "Matriz_Africana": 416,
+                "Sem_Religiao": 15856
+            },
+            "20 a 24 anos": {
+                "Catolica": 77827,
+                "Evangelica": 32124,
+                "Espirita": 596,
+                "Matriz_Africana": 898,
+                "Sem_Religiao": 15982
+            },
+            "25 a 29 anos": {
+                "Catolica": 75303,
+                "Evangelica": 32716,
+                "Espirita": 740,
+                "Matriz_Africana": 775,
+                "Sem_Religiao": 13769
+            },
+            "30 a 39 anos": {
+                "Catolica": 152515,
+                "Evangelica": 65688,
+                "Espirita": 2111,
+                "Matriz_Africana": 1174,
+                "Sem_Religiao": 20603
+            },
+            "40 a 49 anos": {
+                "Catolica": 145161,
+                "Evangelica": 63154,
+                "Espirita": 2589,
+                "Matriz_Africana": 1019,
+                "Sem_Religiao": 13982
+            },
+            "50 a 59 anos": {
+                "Catolica": 119843,
+                "Evangelica": 48684,
+                "Espirita": 1642,
+                "Matriz_Africana": 564,
+                "Sem_Religiao": 8144
+            },
+            "60 a 69 anos": {
+                "Catolica": 88338,
+                "Evangelica": 29256,
+                "Espirita": 1460,
+                "Matriz_Africana": 383,
+                "Sem_Religiao": 4084
+            },
+            "70 a 79 anos": {
+                "Catolica": 52244,
+                "Evangelica": 14117,
+                "Espirita": 741,
+                "Matriz_Africana": 152,
+                "Sem_Religiao": 1858
+            },
+            "80 anos ou mais": {
+                "Catolica": 26412,
+                "Evangelica": 5531,
+                "Espirita": 110,
+                "Matriz_Africana": 86,
+                "Sem_Religiao": 838
+            }
+        }
+    },
+    "Sergipe": {
+        "Masculino": {
+            "15 a 19 anos": {
+                "Catolica": 56779,
+                "Evangelica": 15785,
+                "Espirita": 416,
+                "Matriz_Africana": 563,
+                "Sem_Religiao": 11453
+            },
+            "20 a 24 anos": {
+                "Catolica": 55651,
+                "Evangelica": 14745,
+                "Espirita": 420,
+                "Matriz_Africana": 1031,
+                "Sem_Religiao": 13443
+            },
+            "25 a 29 anos": {
+                "Catolica": 53506,
+                "Evangelica": 13772,
+                "Espirita": 591,
+                "Matriz_Africana": 1209,
+                "Sem_Religiao": 12087
+            },
+            "30 a 39 anos": {
+                "Catolica": 109059,
+                "Evangelica": 26673,
+                "Espirita": 1398,
+                "Matriz_Africana": 1395,
+                "Sem_Religiao": 19697
+            },
+            "40 a 49 anos": {
+                "Catolica": 103432,
+                "Evangelica": 25111,
+                "Espirita": 1898,
+                "Matriz_Africana": 936,
+                "Sem_Religiao": 14989
+            },
+            "50 a 59 anos": {
+                "Catolica": 84703,
+                "Evangelica": 17023,
+                "Espirita": 1147,
+                "Matriz_Africana": 601,
+                "Sem_Religiao": 9297
+            },
+            "60 a 69 anos": {
+                "Catolica": 56560,
+                "Evangelica": 8800,
+                "Espirita": 885,
+                "Matriz_Africana": 225,
+                "Sem_Religiao": 5809
+            },
+            "70 a 79 anos": {
+                "Catolica": 30029,
+                "Evangelica": 4847,
+                "Espirita": 358,
+                "Matriz_Africana": 83,
+                "Sem_Religiao": 2498
+            },
+            "80 anos ou mais": {
+                "Catolica": 13224,
+                "Evangelica": 1602,
+                "Espirita": 278,
+                "Matriz_Africana": 7,
+                "Sem_Religiao": 845
+            }
+        },
+        "Feminino": {
+            "15 a 19 anos": {
+                "Catolica": 54168,
+                "Evangelica": 17278,
+                "Espirita": 690,
+                "Matriz_Africana": 743,
+                "Sem_Religiao": 9538
+            },
+            "20 a 24 anos": {
+                "Catolica": 57509,
+                "Evangelica": 17587,
+                "Espirita": 604,
+                "Matriz_Africana": 1138,
+                "Sem_Religiao": 11110
+            },
+            "25 a 29 anos": {
+                "Catolica": 58006,
+                "Evangelica": 18680,
+                "Espirita": 916,
+                "Matriz_Africana": 1119,
+                "Sem_Religiao": 9538
+            },
+            "30 a 39 anos": {
+                "Catolica": 120069,
+                "Evangelica": 38909,
+                "Espirita": 2884,
+                "Matriz_Africana": 1624,
+                "Sem_Religiao": 14643
+            },
+            "40 a 49 anos": {
+                "Catolica": 114322,
+                "Evangelica": 36401,
+                "Espirita": 2700,
+                "Matriz_Africana": 1714,
+                "Sem_Religiao": 9964
+            },
+            "50 a 59 anos": {
+                "Catolica": 92413,
+                "Evangelica": 28047,
+                "Espirita": 2570,
+                "Matriz_Africana": 981,
+                "Sem_Religiao": 5773
+            },
+            "60 a 69 anos": {
+                "Catolica": 65025,
+                "Evangelica": 15923,
+                "Espirita": 1656,
+                "Matriz_Africana": 375,
+                "Sem_Religiao": 3197
+            },
+            "70 a 79 anos": {
+                "Catolica": 37586,
+                "Evangelica": 8958,
+                "Espirita": 533,
+                "Matriz_Africana": 129,
+                "Sem_Religiao": 1569
+            },
+            "80 anos ou mais": {
+                "Catolica": 21112,
+                "Evangelica": 3928,
+                "Espirita": 370,
+                "Matriz_Africana": 63,
+                "Sem_Religiao": 617
+            }
+        }
+    },
+    "Bahia": {
+        "Masculino": {
+            "15 a 19 anos": {
+                "Catolica": 295173,
+                "Evangelica": 115146,
+                "Espirita": 2427,
+                "Matriz_Africana": 4007,
+                "Sem_Religiao": 101993
+            },
+            "20 a 24 anos": {
+                "Catolica": 285125,
+                "Evangelica": 107224,
+                "Espirita": 2706,
+                "Matriz_Africana": 6008,
+                "Sem_Religiao": 111812
+            },
+            "25 a 29 anos": {
+                "Catolica": 258180,
+                "Evangelica": 102597,
+                "Espirita": 2756,
+                "Matriz_Africana": 6465,
+                "Sem_Religiao": 96553
+            },
+            "30 a 39 anos": {
+                "Catolica": 570216,
+                "Evangelica": 219871,
+                "Espirita": 7819,
+                "Matriz_Africana": 11732,
+                "Sem_Religiao": 171770
+            },
+            "40 a 49 anos": {
+                "Catolica": 602587,
+                "Evangelica": 214347,
+                "Espirita": 8979,
+                "Matriz_Africana": 10418,
+                "Sem_Religiao": 143269
+            },
+            "50 a 59 anos": {
+                "Catolica": 498472,
+                "Evangelica": 146221,
+                "Espirita": 8526,
+                "Matriz_Africana": 6291,
+                "Sem_Religiao": 87214
+            },
+            "60 a 69 anos": {
+                "Catolica": 371762,
+                "Evangelica": 85503,
+                "Espirita": 6415,
+                "Matriz_Africana": 3454,
+                "Sem_Religiao": 52628
+            },
+            "70 a 79 anos": {
+                "Catolica": 215818,
+                "Evangelica": 45098,
+                "Espirita": 2966,
+                "Matriz_Africana": 1460,
+                "Sem_Religiao": 24251
+            },
+            "80 anos ou mais": {
+                "Catolica": 101808,
+                "Evangelica": 20375,
+                "Espirita": 936,
+                "Matriz_Africana": 447,
+                "Sem_Religiao": 9423
+            }
+        },
+        "Feminino": {
+            "15 a 19 anos": {
+                "Catolica": 274062,
+                "Evangelica": 127454,
+                "Espirita": 2851,
+                "Matriz_Africana": 5867,
+                "Sem_Religiao": 92444
+            },
+            "20 a 24 anos": {
+                "Catolica": 276316,
+                "Evangelica": 133405,
+                "Espirita": 3794,
+                "Matriz_Africana": 6844,
+                "Sem_Religiao": 99389
+            },
+            "25 a 29 anos": {
+                "Catolica": 267537,
+                "Evangelica": 139185,
+                "Espirita": 4280,
+                "Matriz_Africana": 7583,
+                "Sem_Religiao": 84738
+            },
+            "30 a 39 anos": {
+                "Catolica": 598031,
+                "Evangelica": 318657,
+                "Espirita": 13181,
+                "Matriz_Africana": 14739,
+                "Sem_Religiao": 142995
+            },
+            "40 a 49 anos": {
+                "Catolica": 594306,
+                "Evangelica": 308431,
+                "Espirita": 17155,
+                "Matriz_Africana": 12916,
+                "Sem_Religiao": 107774
+            },
+            "50 a 59 anos": {
+                "Catolica": 491000,
+                "Evangelica": 239557,
+                "Espirita": 14959,
+                "Matriz_Africana": 8969,
+                "Sem_Religiao": 57011
+            },
+            "60 a 69 anos": {
+                "Catolica": 381126,
+                "Evangelica": 155384,
+                "Espirita": 11949,
+                "Matriz_Africana": 5550,
+                "Sem_Religiao": 29705
+            },
+            "70 a 79 anos": {
+                "Catolica": 241706,
+                "Evangelica": 84534,
+                "Espirita": 4658,
+                "Matriz_Africana": 2366,
+                "Sem_Religiao": 13672
+            },
+            "80 anos ou mais": {
+                "Catolica": 147707,
+                "Evangelica": 41826,
+                "Espirita": 2170,
+                "Matriz_Africana": 1327,
+                "Sem_Religiao": 6854
+            }
+        }
+    },
+    "Minas Gerais": {
+        "Masculino": {
+            "15 a 19 anos": {
+                "Catolica": 410606,
+                "Evangelica": 186529,
+                "Espirita": 9427,
+                "Matriz_Africana": 3215,
+                "Sem_Religiao": 58243
+            },
+            "20 a 24 anos": {
+                "Catolica": 448002,
+                "Evangelica": 194893,
+                "Espirita": 9814,
+                "Matriz_Africana": 5186,
+                "Sem_Religiao": 81099
+            },
+            "25 a 29 anos": {
+                "Catolica": 445723,
+                "Evangelica": 195541,
+                "Espirita": 10733,
+                "Matriz_Africana": 5865,
+                "Sem_Religiao": 77579
+            },
+            "30 a 39 anos": {
+                "Catolica": 929293,
+                "Evangelica": 383149,
+                "Espirita": 27053,
+                "Matriz_Africana": 9054,
+                "Sem_Religiao": 125846
+            },
+            "40 a 49 anos": {
+                "Catolica": 944692,
+                "Evangelica": 342459,
+                "Espirita": 30041,
+                "Matriz_Africana": 6036,
+                "Sem_Religiao": 94382
+            },
+            "50 a 59 anos": {
+                "Catolica": 864638,
+                "Evangelica": 246989,
+                "Espirita": 26267,
+                "Matriz_Africana": 4364,
+                "Sem_Religiao": 63117
+            },
+            "60 a 69 anos": {
+                "Catolica": 701030,
+                "Evangelica": 157978,
+                "Espirita": 20719,
+                "Matriz_Africana": 2057,
+                "Sem_Religiao": 40439
+            },
+            "70 a 79 anos": {
+                "Catolica": 383174,
+                "Evangelica": 74350,
+                "Espirita": 10077,
+                "Matriz_Africana": 939,
+                "Sem_Religiao": 17837
+            },
+            "80 anos ou mais": {
+                "Catolica": 169822,
+                "Evangelica": 30855,
+                "Espirita": 4056,
+                "Matriz_Africana": 412,
+                "Sem_Religiao": 5946
+            }
+        },
+        "Feminino": {
+            "15 a 19 anos": {
+                "Catolica": 387115,
+                "Evangelica": 195945,
+                "Espirita": 10349,
+                "Matriz_Africana": 5016,
+                "Sem_Religiao": 50052
+            },
+            "20 a 24 anos": {
+                "Catolica": 429143,
+                "Evangelica": 219231,
+                "Espirita": 14254,
+                "Matriz_Africana": 6675,
+                "Sem_Religiao": 61084
+            },
+            "25 a 29 anos": {
+                "Catolica": 435160,
+                "Evangelica": 226114,
+                "Espirita": 15697,
+                "Matriz_Africana": 6366,
+                "Sem_Religiao": 56223
+            },
+            "30 a 39 anos": {
+                "Catolica": 928682,
+                "Evangelica": 458539,
+                "Espirita": 38517,
+                "Matriz_Africana": 11007,
+                "Sem_Religiao": 88879
+            },
+            "40 a 49 anos": {
+                "Catolica": 948330,
+                "Evangelica": 428444,
+                "Espirita": 45872,
+                "Matriz_Africana": 8775,
+                "Sem_Religiao": 64249
+            },
+            "50 a 59 anos": {
+                "Catolica": 884236,
+                "Evangelica": 340521,
+                "Espirita": 43019,
+                "Matriz_Africana": 5167,
+                "Sem_Religiao": 39326
+            },
+            "60 a 69 anos": {
+                "Catolica": 741907,
+                "Evangelica": 238725,
+                "Espirita": 32535,
+                "Matriz_Africana": 2915,
+                "Sem_Religiao": 22107
+            },
+            "70 a 79 anos": {
+                "Catolica": 447886,
+                "Evangelica": 119877,
+                "Espirita": 15324,
+                "Matriz_Africana": 960,
+                "Sem_Religiao": 9699
+            },
+            "80 anos ou mais": {
+                "Catolica": 256657,
+                "Evangelica": 56678,
+                "Espirita": 6789,
+                "Matriz_Africana": 291,
+                "Sem_Religiao": 3942
+            }
+        }
+    },
+    "Espírito Santo": {
+        "Masculino": {
+            "15 a 19 anos": {
+                "Catolica": 53731,
+                "Evangelica": 47660,
+                "Espirita": 776,
+                "Matriz_Africana": 427,
+                "Sem_Religiao": 21504
+            },
+            "20 a 24 anos": {
+                "Catolica": 56199,
+                "Evangelica": 47101,
+                "Espirita": 924,
+                "Matriz_Africana": 754,
+                "Sem_Religiao": 28084
+            },
+            "25 a 29 anos": {
+                "Catolica": 57302,
+                "Evangelica": 46196,
+                "Espirita": 766,
+                "Matriz_Africana": 888,
+                "Sem_Religiao": 27165
+            },
+            "30 a 39 anos": {
+                "Catolica": 131482,
+                "Evangelica": 101443,
+                "Espirita": 1949,
+                "Matriz_Africana": 1601,
+                "Sem_Religiao": 45408
+            },
+            "40 a 49 anos": {
+                "Catolica": 133948,
+                "Evangelica": 95995,
+                "Espirita": 2138,
+                "Matriz_Africana": 920,
+                "Sem_Religiao": 35996
+            },
+            "50 a 59 anos": {
+                "Catolica": 120477,
+                "Evangelica": 71421,
+                "Espirita": 1832,
+                "Matriz_Africana": 801,
+                "Sem_Religiao": 22736
+            },
+            "60 a 69 anos": {
+                "Catolica": 102968,
+                "Evangelica": 46375,
+                "Espirita": 1767,
+                "Matriz_Africana": 438,
+                "Sem_Religiao": 13976
+            },
+            "70 a 79 anos": {
+                "Catolica": 52322,
+                "Evangelica": 20275,
+                "Espirita": 1114,
+                "Matriz_Africana": 74,
+                "Sem_Religiao": 5401
+            },
+            "80 anos ou mais": {
+                "Catolica": 22236,
+                "Evangelica": 8446,
+                "Espirita": 494,
+                "Matriz_Africana": 54,
+                "Sem_Religiao": 1872
+            }
+        },
+        "Feminino": {
+            "15 a 19 anos": {
+                "Catolica": 50094,
+                "Evangelica": 49138,
+                "Espirita": 657,
+                "Matriz_Africana": 721,
+                "Sem_Religiao": 19756
+            },
+            "20 a 24 anos": {
+                "Catolica": 55908,
+                "Evangelica": 50456,
+                "Espirita": 870,
+                "Matriz_Africana": 928,
+                "Sem_Religiao": 23114
+            },
+            "25 a 29 anos": {
+                "Catolica": 58751,
+                "Evangelica": 53112,
+                "Espirita": 1321,
+                "Matriz_Africana": 889,
+                "Sem_Religiao": 20506
+            },
+            "30 a 39 anos": {
+                "Catolica": 133723,
+                "Evangelica": 121935,
+                "Espirita": 2921,
+                "Matriz_Africana": 1876,
+                "Sem_Religiao": 34793
+            },
+            "40 a 49 anos": {
+                "Catolica": 136379,
+                "Evangelica": 116176,
+                "Espirita": 3409,
+                "Matriz_Africana": 1195,
+                "Sem_Religiao": 25613
+            },
+            "50 a 59 anos": {
+                "Catolica": 125682,
+                "Evangelica": 91108,
+                "Espirita": 3127,
+                "Matriz_Africana": 1016,
+                "Sem_Religiao": 14611
+            },
+            "60 a 69 anos": {
+                "Catolica": 109576,
+                "Evangelica": 66587,
+                "Espirita": 2759,
+                "Matriz_Africana": 496,
+                "Sem_Religiao": 7823
+            },
+            "70 a 79 anos": {
+                "Catolica": 61363,
+                "Evangelica": 31708,
+                "Espirita": 1123,
+                "Matriz_Africana": 212,
+                "Sem_Religiao": 2800
+            },
+            "80 anos ou mais": {
+                "Catolica": 34518,
+                "Evangelica": 15640,
+                "Espirita": 710,
+                "Matriz_Africana": 76,
+                "Sem_Religiao": 1384
+            }
+        }
+    },
+    "Rio de Janeiro": {
+        "Masculino": {
+            "15 a 19 anos": {
+                "Catolica": 164875,
+                "Evangelica": 173518,
+                "Espirita": 9560,
+                "Matriz_Africana": 11247,
+                "Sem_Religiao": 120912
+            },
+            "20 a 24 anos": {
+                "Catolica": 184088,
+                "Evangelica": 173413,
+                "Espirita": 12404,
+                "Matriz_Africana": 14497,
+                "Sem_Religiao": 152590
+            },
+            "25 a 29 anos": {
+                "Catolica": 172142,
+                "Evangelica": 170820,
+                "Espirita": 13187,
+                "Matriz_Africana": 17101,
+                "Sem_Religiao": 151679
+            },
+            "30 a 39 anos": {
+                "Catolica": 384997,
+                "Evangelica": 350034,
+                "Espirita": 30541,
+                "Matriz_Africana": 33299,
+                "Sem_Religiao": 255793
+            },
+            "40 a 49 anos": {
+                "Catolica": 428280,
+                "Evangelica": 358409,
+                "Espirita": 34251,
+                "Matriz_Africana": 29169,
+                "Sem_Religiao": 209729
+            },
+            "50 a 59 anos": {
+                "Catolica": 414591,
+                "Evangelica": 278208,
+                "Espirita": 32901,
+                "Matriz_Africana": 20126,
+                "Sem_Religiao": 152064
+            },
+            "60 a 69 anos": {
+                "Catolica": 377665,
+                "Evangelica": 177846,
+                "Espirita": 29798,
+                "Matriz_Africana": 13538,
+                "Sem_Religiao": 104381
+            },
+            "70 a 79 anos": {
+                "Catolica": 212273,
+                "Evangelica": 82942,
+                "Espirita": 14179,
+                "Matriz_Africana": 5075,
+                "Sem_Religiao": 46262
+            },
+            "80 anos ou mais": {
+                "Catolica": 85877,
+                "Evangelica": 31994,
+                "Espirita": 5191,
+                "Matriz_Africana": 1288,
+                "Sem_Religiao": 14693
+            }
+        },
+        "Feminino": {
+            "15 a 19 anos": {
+                "Catolica": 156387,
+                "Evangelica": 175443,
+                "Espirita": 12269,
+                "Matriz_Africana": 14624,
+                "Sem_Religiao": 107842
+            },
+            "20 a 24 anos": {
+                "Catolica": 176366,
+                "Evangelica": 193028,
+                "Espirita": 15619,
+                "Matriz_Africana": 21291,
+                "Sem_Religiao": 134942
+            },
+            "25 a 29 anos": {
+                "Catolica": 184672,
+                "Evangelica": 207805,
+                "Espirita": 17267,
+                "Matriz_Africana": 20713,
+                "Sem_Religiao": 129930
+            },
+            "30 a 39 anos": {
+                "Catolica": 421476,
+                "Evangelica": 440679,
+                "Espirita": 44448,
+                "Matriz_Africana": 43362,
+                "Sem_Religiao": 215147
+            },
+            "40 a 49 anos": {
+                "Catolica": 466030,
+                "Evangelica": 455090,
+                "Espirita": 58420,
+                "Matriz_Africana": 39138,
+                "Sem_Religiao": 165332
+            },
+            "50 a 59 anos": {
+                "Catolica": 466341,
+                "Evangelica": 381380,
+                "Espirita": 55239,
+                "Matriz_Africana": 29557,
+                "Sem_Religiao": 110222
+            },
+            "60 a 69 anos": {
+                "Catolica": 445585,
+                "Evangelica": 289361,
+                "Espirita": 52948,
+                "Matriz_Africana": 20541,
+                "Sem_Religiao": 75606
+            },
+            "70 a 79 anos": {
+                "Catolica": 284743,
+                "Evangelica": 154102,
+                "Espirita": 28176,
+                "Matriz_Africana": 8443,
+                "Sem_Religiao": 33242
+            },
+            "80 anos ou mais": {
+                "Catolica": 171984,
+                "Evangelica": 68629,
+                "Espirita": 13661,
+                "Matriz_Africana": 4090,
+                "Sem_Religiao": 15551
+            }
+        }
+    },
+    "São Paulo": {
+        "Masculino": {
+            "15 a 19 anos": {
+                "Catolica": 681832,
+                "Evangelica": 426301,
+                "Espirita": 26093,
+                "Matriz_Africana": 19069,
+                "Sem_Religiao": 219851
+            },
+            "20 a 24 anos": {
+                "Catolica": 746721,
+                "Evangelica": 445463,
+                "Espirita": 25484,
+                "Matriz_Africana": 27592,
+                "Sem_Religiao": 287169
+            },
+            "25 a 29 anos": {
+                "Catolica": 754424,
+                "Evangelica": 445667,
+                "Espirita": 27552,
+                "Matriz_Africana": 29834,
+                "Sem_Religiao": 293160
+            },
+            "30 a 39 anos": {
+                "Catolica": 1669062,
+                "Evangelica": 926508,
+                "Espirita": 74359,
+                "Matriz_Africana": 54061,
+                "Sem_Religiao": 504885
+            },
+            "40 a 49 anos": {
+                "Catolica": 1708768,
+                "Evangelica": 856216,
+                "Espirita": 88097,
+                "Matriz_Africana": 46510,
+                "Sem_Religiao": 357115
+            },
+            "50 a 59 anos": {
+                "Catolica": 1514433,
+                "Evangelica": 626435,
+                "Espirita": 78059,
+                "Matriz_Africana": 28749,
+                "Sem_Religiao": 229510
+            },
+            "60 a 69 anos": {
+                "Catolica": 1239280,
+                "Evangelica": 381476,
+                "Espirita": 62786,
+                "Matriz_Africana": 15724,
+                "Sem_Religiao": 140494
+            },
+            "70 a 79 anos": {
+                "Catolica": 681263,
+                "Evangelica": 178756,
+                "Espirita": 28503,
+                "Matriz_Africana": 5782,
+                "Sem_Religiao": 61067
+            },
+            "80 anos ou mais": {
+                "Catolica": 278171,
+                "Evangelica": 64919,
+                "Espirita": 10675,
+                "Matriz_Africana": 1589,
+                "Sem_Religiao": 20361
+            }
+        },
+        "Feminino": {
+            "15 a 19 anos": {
+                "Catolica": 629068,
+                "Evangelica": 438549,
+                "Espirita": 27352,
+                "Matriz_Africana": 27117,
+                "Sem_Religiao": 191532
+            },
+            "20 a 24 anos": {
+                "Catolica": 701435,
+                "Evangelica": 478803,
+                "Espirita": 33255,
+                "Matriz_Africana": 36022,
+                "Sem_Religiao": 234435
+            },
+            "25 a 29 anos": {
+                "Catolica": 741517,
+                "Evangelica": 500076,
+                "Espirita": 39326,
+                "Matriz_Africana": 36898,
+                "Sem_Religiao": 232739
+            },
+            "30 a 39 anos": {
+                "Catolica": 1707597,
+                "Evangelica": 1092773,
+                "Espirita": 109203,
+                "Matriz_Africana": 73086,
+                "Sem_Religiao": 388648
+            },
+            "40 a 49 anos": {
+                "Catolica": 1771655,
+                "Evangelica": 1064103,
+                "Espirita": 139232,
+                "Matriz_Africana": 65709,
+                "Sem_Religiao": 276053
+            },
+            "50 a 59 anos": {
+                "Catolica": 1618550,
+                "Evangelica": 844743,
+                "Espirita": 133663,
+                "Matriz_Africana": 40338,
+                "Sem_Religiao": 166784
+            },
+            "60 a 69 anos": {
+                "Catolica": 1409858,
+                "Evangelica": 599754,
+                "Espirita": 107324,
+                "Matriz_Africana": 20823,
+                "Sem_Religiao": 99354
+            },
+            "70 a 79 anos": {
+                "Catolica": 867400,
+                "Evangelica": 302442,
+                "Espirita": 51793,
+                "Matriz_Africana": 7954,
+                "Sem_Religiao": 44018
+            },
+            "80 anos ou mais": {
+                "Catolica": 481177,
+                "Evangelica": 126267,
+                "Espirita": 22306,
+                "Matriz_Africana": 3210,
+                "Sem_Religiao": 18911
+            }
+        }
+    },
+    "Paraná": {
+        "Masculino": {
+            "15 a 19 anos": {
+                "Catolica": 228181,
+                "Evangelica": 106707,
+                "Espirita": 2495,
+                "Matriz_Africana": 2218,
+                "Sem_Religiao": 32384
+            },
+            "20 a 24 anos": {
+                "Catolica": 245160,
+                "Evangelica": 109847,
+                "Espirita": 2123,
+                "Matriz_Africana": 2905,
+                "Sem_Religiao": 47835
+            },
+            "25 a 29 anos": {
+                "Catolica": 254885,
+                "Evangelica": 110993,
+                "Espirita": 2686,
+                "Matriz_Africana": 3402,
+                "Sem_Religiao": 51433
+            },
+            "30 a 39 anos": {
+                "Catolica": 510792,
+                "Evangelica": 221793,
+                "Espirita": 7611,
+                "Matriz_Africana": 5946,
+                "Sem_Religiao": 74488
+            },
+            "40 a 49 anos": {
+                "Catolica": 510061,
+                "Evangelica": 201291,
+                "Espirita": 8313,
+                "Matriz_Africana": 4351,
+                "Sem_Religiao": 50747
+            },
+            "50 a 59 anos": {
+                "Catolica": 475550,
+                "Evangelica": 156208,
+                "Espirita": 7031,
+                "Matriz_Africana": 2384,
+                "Sem_Religiao": 32752
+            },
+            "60 a 69 anos": {
+                "Catolica": 354618,
+                "Evangelica": 100760,
+                "Espirita": 5629,
+                "Matriz_Africana": 1213,
+                "Sem_Religiao": 18413
+            },
+            "70 a 79 anos": {
+                "Catolica": 190098,
+                "Evangelica": 50288,
+                "Espirita": 2488,
+                "Matriz_Africana": 585,
+                "Sem_Religiao": 7664
+            },
+            "80 anos ou mais": {
+                "Catolica": 74906,
+                "Evangelica": 19239,
+                "Espirita": 965,
+                "Matriz_Africana": 184,
+                "Sem_Religiao": 2666
+            }
+        },
+        "Feminino": {
+            "15 a 19 anos": {
+                "Catolica": 217775,
+                "Evangelica": 108189,
+                "Espirita": 2737,
+                "Matriz_Africana": 3467,
+                "Sem_Religiao": 29400
+            },
+            "20 a 24 anos": {
+                "Catolica": 239345,
+                "Evangelica": 118328,
+                "Espirita": 3352,
+                "Matriz_Africana": 4321,
+                "Sem_Religiao": 39623
+            },
+            "25 a 29 anos": {
+                "Catolica": 256868,
+                "Evangelica": 125749,
+                "Espirita": 4120,
+                "Matriz_Africana": 4107,
+                "Sem_Religiao": 37087
+            },
+            "30 a 39 anos": {
+                "Catolica": 525104,
+                "Evangelica": 254705,
+                "Espirita": 11327,
+                "Matriz_Africana": 7408,
+                "Sem_Religiao": 55412
+            },
+            "40 a 49 anos": {
+                "Catolica": 524597,
+                "Evangelica": 240363,
+                "Espirita": 13150,
+                "Matriz_Africana": 5809,
+                "Sem_Religiao": 36386
+            },
+            "50 a 59 anos": {
+                "Catolica": 503015,
+                "Evangelica": 202560,
+                "Espirita": 11108,
+                "Matriz_Africana": 3463,
+                "Sem_Religiao": 21966
+            },
+            "60 a 69 anos": {
+                "Catolica": 396099,
+                "Evangelica": 143701,
+                "Espirita": 8647,
+                "Matriz_Africana": 1875,
+                "Sem_Religiao": 10999
+            },
+            "70 a 79 anos": {
+                "Catolica": 228400,
+                "Evangelica": 73290,
+                "Espirita": 4056,
+                "Matriz_Africana": 532,
+                "Sem_Religiao": 4508
+            },
+            "80 anos ou mais": {
+                "Catolica": 110841,
+                "Evangelica": 30781,
+                "Espirita": 1626,
+                "Matriz_Africana": 225,
+                "Sem_Religiao": 2052
+            }
+        }
+    },
+    "Santa Catarina": {
+        "Masculino": {
+            "15 a 19 anos": {
+                "Catolica": 148167,
+                "Evangelica": 63763,
+                "Espirita": 2339,
+                "Matriz_Africana": 2326,
+                "Sem_Religiao": 20075
+            },
+            "20 a 24 anos": {
+                "Catolica": 171239,
+                "Evangelica": 71235,
+                "Espirita": 2319,
+                "Matriz_Africana": 2795,
+                "Sem_Religiao": 34124
+            },
+            "25 a 29 anos": {
+                "Catolica": 182767,
+                "Evangelica": 74785,
+                "Espirita": 2880,
+                "Matriz_Africana": 3157,
+                "Sem_Religiao": 36188
+            },
+            "30 a 39 anos": {
+                "Catolica": 386827,
+                "Evangelica": 149295,
+                "Espirita": 8828,
+                "Matriz_Africana": 5039,
+                "Sem_Religiao": 57295
+            },
+            "40 a 49 anos": {
+                "Catolica": 355467,
+                "Evangelica": 124942,
+                "Espirita": 8937,
+                "Matriz_Africana": 4146,
+                "Sem_Religiao": 34451
+            },
+            "50 a 59 anos": {
+                "Catolica": 319852,
+                "Evangelica": 92295,
+                "Espirita": 6548,
+                "Matriz_Africana": 2288,
+                "Sem_Religiao": 18306
+            },
+            "60 a 69 anos": {
+                "Catolica": 243873,
+                "Evangelica": 56665,
+                "Espirita": 5081,
+                "Matriz_Africana": 1279,
+                "Sem_Religiao": 10660
+            },
+            "70 a 79 anos": {
+                "Catolica": 122681,
+                "Evangelica": 26165,
+                "Espirita": 2280,
+                "Matriz_Africana": 317,
+                "Sem_Religiao": 4009
+            },
+            "80 anos ou mais": {
+                "Catolica": 42552,
+                "Evangelica": 8863,
+                "Espirita": 627,
+                "Matriz_Africana": 50,
+                "Sem_Religiao": 1214
+            }
+        },
+        "Feminino": {
+            "15 a 19 anos": {
+                "Catolica": 140107,
+                "Evangelica": 62455,
+                "Espirita": 3064,
+                "Matriz_Africana": 2649,
+                "Sem_Religiao": 18129
+            },
+            "20 a 24 anos": {
+                "Catolica": 164567,
+                "Evangelica": 74383,
+                "Espirita": 3240,
+                "Matriz_Africana": 3343,
+                "Sem_Religiao": 27188
+            },
+            "25 a 29 anos": {
+                "Catolica": 177432,
+                "Evangelica": 81219,
+                "Espirita": 4777,
+                "Matriz_Africana": 3389,
+                "Sem_Religiao": 29765
+            },
+            "30 a 39 anos": {
+                "Catolica": 381638,
+                "Evangelica": 160166,
+                "Espirita": 12749,
+                "Matriz_Africana": 6774,
+                "Sem_Religiao": 45728
+            },
+            "40 a 49 anos": {
+                "Catolica": 354567,
+                "Evangelica": 140791,
+                "Espirita": 13639,
+                "Matriz_Africana": 5444,
+                "Sem_Religiao": 27072
+            },
+            "50 a 59 anos": {
+                "Catolica": 331572,
+                "Evangelica": 110198,
+                "Espirita": 11926,
+                "Matriz_Africana": 3210,
+                "Sem_Religiao": 15265
+            },
+            "60 a 69 anos": {
+                "Catolica": 262437,
+                "Evangelica": 75837,
+                "Espirita": 8260,
+                "Matriz_Africana": 1461,
+                "Sem_Religiao": 7855
+            },
+            "70 a 79 anos": {
+                "Catolica": 147567,
+                "Evangelica": 37252,
+                "Espirita": 3780,
+                "Matriz_Africana": 538,
+                "Sem_Religiao": 2698
+            },
+            "80 anos ou mais": {
+                "Catolica": 68613,
+                "Evangelica": 16350,
+                "Espirita": 1300,
+                "Matriz_Africana": 98,
+                "Sem_Religiao": 1159
+            }
+        }
+    },
+    "Rio Grande do Sul": {
+        "Masculino": {
+            "15 a 19 anos": {
+                "Catolica": 187676,
+                "Evangelica": 78871,
+                "Espirita": 5904,
+                "Matriz_Africana": 12099,
+                "Sem_Religiao": 44889
+            },
+            "20 a 24 anos": {
+                "Catolica": 207461,
+                "Evangelica": 80244,
+                "Espirita": 6101,
+                "Matriz_Africana": 14411,
+                "Sem_Religiao": 59735
+            },
+            "25 a 29 anos": {
+                "Catolica": 208774,
+                "Evangelica": 82740,
+                "Espirita": 6181,
+                "Matriz_Africana": 14710,
+                "Sem_Religiao": 61162
+            },
+            "30 a 39 anos": {
+                "Catolica": 450581,
+                "Evangelica": 167381,
+                "Espirita": 16564,
+                "Matriz_Africana": 26331,
+                "Sem_Religiao": 99053
+            },
+            "40 a 49 anos": {
+                "Catolica": 452144,
+                "Evangelica": 156935,
+                "Espirita": 19660,
+                "Matriz_Africana": 22968,
+                "Sem_Religiao": 68644
+            },
+            "50 a 59 anos": {
+                "Catolica": 449637,
+                "Evangelica": 132146,
+                "Espirita": 17443,
+                "Matriz_Africana": 16356,
+                "Sem_Religiao": 44690
+            },
+            "60 a 69 anos": {
+                "Catolica": 395434,
+                "Evangelica": 97888,
+                "Espirita": 14633,
+                "Matriz_Africana": 9245,
+                "Sem_Religiao": 27817
+            },
+            "70 a 79 anos": {
+                "Catolica": 220131,
+                "Evangelica": 50680,
+                "Espirita": 6258,
+                "Matriz_Africana": 3312,
+                "Sem_Religiao": 11844
+            },
+            "80 anos ou mais": {
+                "Catolica": 79927,
+                "Evangelica": 18314,
+                "Espirita": 2203,
+                "Matriz_Africana": 776,
+                "Sem_Religiao": 3922
+            }
+        },
+        "Feminino": {
+            "15 a 19 anos": {
+                "Catolica": 176085,
+                "Evangelica": 79221,
+                "Espirita": 6764,
+                "Matriz_Africana": 14996,
+                "Sem_Religiao": 41808
+            },
+            "20 a 24 anos": {
+                "Catolica": 196013,
+                "Evangelica": 85656,
+                "Espirita": 8596,
+                "Matriz_Africana": 18302,
+                "Sem_Religiao": 55260
+            },
+            "25 a 29 anos": {
+                "Catolica": 207955,
+                "Evangelica": 93137,
+                "Espirita": 9895,
+                "Matriz_Africana": 18646,
+                "Sem_Religiao": 51687
+            },
+            "30 a 39 anos": {
+                "Catolica": 458435,
+                "Evangelica": 191026,
+                "Espirita": 27784,
+                "Matriz_Africana": 35614,
+                "Sem_Religiao": 80526
+            },
+            "40 a 49 anos": {
+                "Catolica": 462607,
+                "Evangelica": 176831,
+                "Espirita": 34873,
+                "Matriz_Africana": 32869,
+                "Sem_Religiao": 55598
+            },
+            "50 a 59 anos": {
+                "Catolica": 473888,
+                "Evangelica": 161267,
+                "Espirita": 33508,
+                "Matriz_Africana": 22122,
+                "Sem_Religiao": 33594
+            },
+            "60 a 69 anos": {
+                "Catolica": 433711,
+                "Evangelica": 131978,
+                "Espirita": 27716,
+                "Matriz_Africana": 13879,
+                "Sem_Religiao": 21744
+            },
+            "70 a 79 anos": {
+                "Catolica": 273942,
+                "Evangelica": 74484,
+                "Espirita": 13227,
+                "Matriz_Africana": 5468,
+                "Sem_Religiao": 9706
+            },
+            "80 anos ou mais": {
+                "Catolica": 146544,
+                "Evangelica": 33929,
+                "Espirita": 5189,
+                "Matriz_Africana": 2231,
+                "Sem_Religiao": 3970
+            }
+        }
+    },
+    "Mato Grosso do Sul": {
+        "Masculino": {
+            "15 a 19 anos": {
+                "Catolica": 47822,
+                "Evangelica": 33186,
+                "Espirita": 1064,
+                "Matriz_Africana": 567,
+                "Sem_Religiao": 13943
+            },
+            "20 a 24 anos": {
+                "Catolica": 47083,
+                "Evangelica": 32795,
+                "Espirita": 972,
+                "Matriz_Africana": 1007,
+                "Sem_Religiao": 16705
+            },
+            "25 a 29 anos": {
+                "Catolica": 50159,
+                "Evangelica": 35144,
+                "Espirita": 1082,
+                "Matriz_Africana": 864,
+                "Sem_Religiao": 14954
+            },
+            "30 a 39 anos": {
+                "Catolica": 106165,
+                "Evangelica": 65941,
+                "Espirita": 3010,
+                "Matriz_Africana": 1376,
+                "Sem_Religiao": 23624
+            },
+            "40 a 49 anos": {
+                "Catolica": 103530,
+                "Evangelica": 58463,
+                "Espirita": 3073,
+                "Matriz_Africana": 1065,
+                "Sem_Religiao": 16542
+            },
+            "50 a 59 anos": {
+                "Catolica": 90675,
+                "Evangelica": 42659,
+                "Espirita": 2294,
+                "Matriz_Africana": 654,
+                "Sem_Religiao": 10148
+            },
+            "60 a 69 anos": {
+                "Catolica": 67821,
+                "Evangelica": 25780,
+                "Espirita": 2064,
+                "Matriz_Africana": 240,
+                "Sem_Religiao": 5985
+            },
+            "70 a 79 anos": {
+                "Catolica": 35122,
+                "Evangelica": 12722,
+                "Espirita": 1204,
+                "Matriz_Africana": 117,
+                "Sem_Religiao": 3021
+            },
+            "80 anos ou mais": {
+                "Catolica": 14421,
+                "Evangelica": 5487,
+                "Espirita": 348,
+                "Matriz_Africana": 71,
+                "Sem_Religiao": 1096
+            }
+        },
+        "Feminino": {
+            "15 a 19 anos": {
+                "Catolica": 43227,
+                "Evangelica": 34704,
+                "Espirita": 981,
+                "Matriz_Africana": 785,
+                "Sem_Religiao": 12270
+            },
+            "20 a 24 anos": {
+                "Catolica": 45654,
+                "Evangelica": 36864,
+                "Espirita": 1033,
+                "Matriz_Africana": 958,
+                "Sem_Religiao": 14180
+            },
+            "25 a 29 anos": {
+                "Catolica": 52295,
+                "Evangelica": 38336,
+                "Espirita": 1375,
+                "Matriz_Africana": 1013,
+                "Sem_Religiao": 11291
+            },
+            "30 a 39 anos": {
+                "Catolica": 105736,
+                "Evangelica": 76140,
+                "Espirita": 4266,
+                "Matriz_Africana": 1785,
+                "Sem_Religiao": 18541
+            },
+            "40 a 49 anos": {
+                "Catolica": 100949,
+                "Evangelica": 71874,
+                "Espirita": 4683,
+                "Matriz_Africana": 1233,
+                "Sem_Religiao": 12722
+            },
+            "50 a 59 anos": {
+                "Catolica": 91283,
+                "Evangelica": 54526,
+                "Espirita": 4339,
+                "Matriz_Africana": 848,
+                "Sem_Religiao": 6832
+            },
+            "60 a 69 anos": {
+                "Catolica": 70783,
+                "Evangelica": 37382,
+                "Espirita": 3400,
+                "Matriz_Africana": 513,
+                "Sem_Religiao": 3631
+            },
+            "70 a 79 anos": {
+                "Catolica": 36971,
+                "Evangelica": 18793,
+                "Espirita": 1519,
+                "Matriz_Africana": 157,
+                "Sem_Religiao": 1385
+            },
+            "80 anos ou mais": {
+                "Catolica": 19610,
+                "Evangelica": 7723,
+                "Espirita": 656,
+                "Matriz_Africana": 95,
+                "Sem_Religiao": 762
+            }
+        }
+    },
+    "Mato Grosso": {
+        "Masculino": {
+            "15 a 19 anos": {
+                "Catolica": 72832,
+                "Evangelica": 41088,
+                "Espirita": 945,
+                "Matriz_Africana": 898,
+                "Sem_Religiao": 16420
+            },
+            "20 a 24 anos": {
+                "Catolica": 77895,
+                "Evangelica": 39813,
+                "Espirita": 1122,
+                "Matriz_Africana": 701,
+                "Sem_Religiao": 20284
+            },
+            "25 a 29 anos": {
+                "Catolica": 84462,
+                "Evangelica": 41583,
+                "Espirita": 1202,
+                "Matriz_Africana": 808,
+                "Sem_Religiao": 18493
+            },
+            "30 a 39 anos": {
+                "Catolica": 171255,
+                "Evangelica": 85924,
+                "Espirita": 2670,
+                "Matriz_Africana": 1132,
+                "Sem_Religiao": 30628
+            },
+            "40 a 49 anos": {
+                "Catolica": 154488,
+                "Evangelica": 76148,
+                "Espirita": 2706,
+                "Matriz_Africana": 956,
+                "Sem_Religiao": 22043
+            },
+            "50 a 59 anos": {
+                "Catolica": 125822,
+                "Evangelica": 52768,
+                "Espirita": 2048,
+                "Matriz_Africana": 525,
+                "Sem_Religiao": 13390
+            },
+            "60 a 69 anos": {
+                "Catolica": 85850,
+                "Evangelica": 30742,
+                "Espirita": 1476,
+                "Matriz_Africana": 339,
+                "Sem_Religiao": 7470
+            },
+            "70 a 79 anos": {
+                "Catolica": 40457,
+                "Evangelica": 14141,
+                "Espirita": 730,
+                "Matriz_Africana": 114,
+                "Sem_Religiao": 3200
+            },
+            "80 anos ou mais": {
+                "Catolica": 15280,
+                "Evangelica": 5707,
+                "Espirita": 272,
+                "Matriz_Africana": 0,
+                "Sem_Religiao": 1110
+            }
+        },
+        "Feminino": {
+            "15 a 19 anos": {
+                "Catolica": 68197,
+                "Evangelica": 42459,
+                "Espirita": 955,
+                "Matriz_Africana": 837,
+                "Sem_Religiao": 14899
+            },
+            "20 a 24 anos": {
+                "Catolica": 75092,
+                "Evangelica": 43748,
+                "Espirita": 1219,
+                "Matriz_Africana": 992,
+                "Sem_Religiao": 16646
+            },
+            "25 a 29 anos": {
+                "Catolica": 81441,
+                "Evangelica": 47405,
+                "Espirita": 1278,
+                "Matriz_Africana": 824,
+                "Sem_Religiao": 14193
+            },
+            "30 a 39 anos": {
+                "Catolica": 165300,
+                "Evangelica": 96534,
+                "Espirita": 3394,
+                "Matriz_Africana": 1776,
+                "Sem_Religiao": 21914
+            },
+            "40 a 49 anos": {
+                "Catolica": 147026,
+                "Evangelica": 88696,
+                "Espirita": 3964,
+                "Matriz_Africana": 1074,
+                "Sem_Religiao": 15010
+            },
+            "50 a 59 anos": {
+                "Catolica": 116425,
+                "Evangelica": 65089,
+                "Espirita": 3863,
+                "Matriz_Africana": 623,
+                "Sem_Religiao": 7512
+            },
+            "60 a 69 anos": {
+                "Catolica": 78629,
+                "Evangelica": 40716,
+                "Espirita": 2219,
+                "Matriz_Africana": 312,
+                "Sem_Religiao": 3315
+            },
+            "70 a 79 anos": {
+                "Catolica": 39302,
+                "Evangelica": 18651,
+                "Espirita": 1244,
+                "Matriz_Africana": 77,
+                "Sem_Religiao": 1135
+            },
+            "80 anos ou mais": {
+                "Catolica": 17426,
+                "Evangelica": 7353,
+                "Espirita": 415,
+                "Matriz_Africana": 35,
+                "Sem_Religiao": 588
+            }
+        }
+    },
+    "Goiás": {
+        "Masculino": {
+            "15 a 19 anos": {
+                "Catolica": 123848,
+                "Evangelica": 87619,
+                "Espirita": 3082,
+                "Matriz_Africana": 1170,
+                "Sem_Religiao": 30926
+            },
+            "20 a 24 anos": {
+                "Catolica": 129930,
+                "Evangelica": 87944,
+                "Espirita": 3572,
+                "Matriz_Africana": 2141,
+                "Sem_Religiao": 40221
+            },
+            "25 a 29 anos": {
+                "Catolica": 131976,
+                "Evangelica": 89396,
+                "Espirita": 3716,
+                "Matriz_Africana": 1909,
+                "Sem_Religiao": 38065
+            },
+            "30 a 39 anos": {
+                "Catolica": 281717,
+                "Evangelica": 174936,
+                "Espirita": 9207,
+                "Matriz_Africana": 3924,
+                "Sem_Religiao": 61903
+            },
+            "40 a 49 anos": {
+                "Catolica": 279768,
+                "Evangelica": 157018,
+                "Espirita": 10285,
+                "Matriz_Africana": 2341,
+                "Sem_Religiao": 45128
+            },
+            "50 a 59 anos": {
+                "Catolica": 230889,
+                "Evangelica": 109760,
+                "Espirita": 8547,
+                "Matriz_Africana": 1417,
+                "Sem_Religiao": 29767
+            },
+            "60 a 69 anos": {
+                "Catolica": 164676,
+                "Evangelica": 63718,
+                "Espirita": 6799,
+                "Matriz_Africana": 543,
+                "Sem_Religiao": 16813
+            },
+            "70 a 79 anos": {
+                "Catolica": 87259,
+                "Evangelica": 31066,
+                "Espirita": 3802,
+                "Matriz_Africana": 318,
+                "Sem_Religiao": 7476
+            },
+            "80 anos ou mais": {
+                "Catolica": 35773,
+                "Evangelica": 12101,
+                "Espirita": 1349,
+                "Matriz_Africana": 89,
+                "Sem_Religiao": 3164
+            }
+        },
+        "Feminino": {
+            "15 a 19 anos": {
+                "Catolica": 115108,
+                "Evangelica": 92396,
+                "Espirita": 3776,
+                "Matriz_Africana": 1731,
+                "Sem_Religiao": 25629
+            },
+            "20 a 24 anos": {
+                "Catolica": 128007,
+                "Evangelica": 94995,
+                "Espirita": 4859,
+                "Matriz_Africana": 2421,
+                "Sem_Religiao": 31767
+            },
+            "25 a 29 anos": {
+                "Catolica": 133999,
+                "Evangelica": 99413,
+                "Espirita": 5398,
+                "Matriz_Africana": 1891,
+                "Sem_Religiao": 28291
+            },
+            "30 a 39 anos": {
+                "Catolica": 281522,
+                "Evangelica": 207816,
+                "Espirita": 12333,
+                "Matriz_Africana": 3674,
+                "Sem_Religiao": 44528
+            },
+            "40 a 49 anos": {
+                "Catolica": 278228,
+                "Evangelica": 194253,
+                "Espirita": 14089,
+                "Matriz_Africana": 2848,
+                "Sem_Religiao": 32723
+            },
+            "50 a 59 anos": {
+                "Catolica": 231051,
+                "Evangelica": 147220,
+                "Espirita": 12851,
+                "Matriz_Africana": 1813,
+                "Sem_Religiao": 19175
+            },
+            "60 a 69 anos": {
+                "Catolica": 169811,
+                "Evangelica": 94471,
+                "Espirita": 10402,
+                "Matriz_Africana": 867,
+                "Sem_Religiao": 9610
+            },
+            "70 a 79 anos": {
+                "Catolica": 94255,
+                "Evangelica": 45575,
+                "Espirita": 4936,
+                "Matriz_Africana": 301,
+                "Sem_Religiao": 3929
+            },
+            "80 anos ou mais": {
+                "Catolica": 46179,
+                "Evangelica": 18849,
+                "Espirita": 2177,
+                "Matriz_Africana": 101,
+                "Sem_Religiao": 1465
+            }
+        }
+    },
+    "Distrito Federal": {
+        "Masculino": {
+            "15 a 19 anos": {
+                "Catolica": 49719,
+                "Evangelica": 33029,
+                "Espirita": 1955,
+                "Matriz_Africana": 421,
+                "Sem_Religiao": 15639
+            },
+            "20 a 24 anos": {
+                "Catolica": 50257,
+                "Evangelica": 32039,
+                "Espirita": 2160,
+                "Matriz_Africana": 830,
+                "Sem_Religiao": 20894
+            },
+            "25 a 29 anos": {
+                "Catolica": 46263,
+                "Evangelica": 30977,
+                "Espirita": 2289,
+                "Matriz_Africana": 1297,
+                "Sem_Religiao": 20064
+            },
+            "30 a 39 anos": {
+                "Catolica": 101681,
+                "Evangelica": 58693,
+                "Espirita": 5503,
+                "Matriz_Africana": 2231,
+                "Sem_Religiao": 33168
+            },
+            "40 a 49 anos": {
+                "Catolica": 109432,
+                "Evangelica": 58851,
+                "Espirita": 6342,
+                "Matriz_Africana": 1605,
+                "Sem_Religiao": 25860
+            },
+            "50 a 59 anos": {
+                "Catolica": 82938,
+                "Evangelica": 39701,
+                "Espirita": 5731,
+                "Matriz_Africana": 879,
+                "Sem_Religiao": 15544
+            },
+            "60 a 69 anos": {
+                "Catolica": 55160,
+                "Evangelica": 18301,
+                "Espirita": 3977,
+                "Matriz_Africana": 676,
+                "Sem_Religiao": 8214
+            },
+            "70 a 79 anos": {
+                "Catolica": 29282,
+                "Evangelica": 7967,
+                "Espirita": 1867,
+                "Matriz_Africana": 318,
+                "Sem_Religiao": 3990
+            },
+            "80 anos ou mais": {
+                "Catolica": 12516,
+                "Evangelica": 3208,
+                "Espirita": 1215,
+                "Matriz_Africana": 0,
+                "Sem_Religiao": 1418
+            }
+        },
+        "Feminino": {
+            "15 a 19 anos": {
+                "Catolica": 46485,
+                "Evangelica": 35197,
+                "Espirita": 2074,
+                "Matriz_Africana": 943,
+                "Sem_Religiao": 13859
+            },
+            "20 a 24 anos": {
+                "Catolica": 48794,
+                "Evangelica": 36514,
+                "Espirita": 2720,
+                "Matriz_Africana": 1312,
+                "Sem_Religiao": 16966
+            },
+            "25 a 29 anos": {
+                "Catolica": 51349,
+                "Evangelica": 35001,
+                "Espirita": 2909,
+                "Matriz_Africana": 1543,
+                "Sem_Religiao": 15071
+            },
+            "30 a 39 anos": {
+                "Catolica": 114657,
+                "Evangelica": 74793,
+                "Espirita": 8543,
+                "Matriz_Africana": 3010,
+                "Sem_Religiao": 26795
+            },
+            "40 a 49 anos": {
+                "Catolica": 121420,
+                "Evangelica": 80709,
+                "Espirita": 10552,
+                "Matriz_Africana": 2325,
+                "Sem_Religiao": 19960
+            },
+            "50 a 59 anos": {
+                "Catolica": 92963,
+                "Evangelica": 56016,
+                "Espirita": 8739,
+                "Matriz_Africana": 1175,
+                "Sem_Religiao": 11486
+            },
+            "60 a 69 anos": {
+                "Catolica": 67889,
+                "Evangelica": 32540,
+                "Espirita": 5333,
+                "Matriz_Africana": 770,
+                "Sem_Religiao": 6124
+            },
+            "70 a 79 anos": {
+                "Catolica": 40840,
+                "Evangelica": 16108,
+                "Espirita": 3292,
+                "Matriz_Africana": 303,
+                "Sem_Religiao": 2182
+            },
+            "80 anos ou mais": {
+                "Catolica": 20918,
+                "Evangelica": 7352,
+                "Espirita": 1321,
+                "Matriz_Africana": 78,
+                "Sem_Religiao": 924
+            }
+        }
+    }
+}

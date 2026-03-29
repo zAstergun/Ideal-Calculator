@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Calculadora de Choque de Realidade | Mercado de Relacionamentos</title>
+  <meta name="description" content="Descubra qual é o tamanho real do seu mercado de relacionamentos com base em dados reais do IBGE. Cálculo estatístico preciso." />
+
+  <!-- TailwindCSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Estilos customizados (sliders, toggle, animações) -->
+  <link rel="stylesheet" href="./css/style.css" />
+
+  <!-- Configuração Tailwind -->
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: { inter: ['Inter', 'sans-serif'] },
+          colors: {
+            neon: { green: '#00ff87', purple: '#a855f7', blue: '#38bdf8', pink: '#f472b6' },
+            dark: { 950: '#060610', 900: '#0a0a1a', 800: '#111127', 700: '#1a1a30', 600: '#252540' }
+          }
+        }
+      }
+    }
+  </script>
+</head>
+
+<body class="relative bg-dark-950 text-slate-200">
+
+  <!-- Orbs de luz ambiente -->
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+
+  <!-- ═══ LOADING OVERLAY ═══ -->
+  <div id="loading-overlay">
+    <div class="text-center px-6">
+      <div class="loading-spinner mx-auto mb-6"></div>
+      <p class="text-slate-300 font-semibold text-base mb-1">Carregando dados do IBGE…</p>
+      <p class="text-slate-500 text-sm">Aguarde enquanto os 6 bancos de dados são carregados.</p>
+    </div>
+  </div>
+
+  <!-- ═══ CONTAINER PRINCIPAL ═══ -->
+  <div class="relative z-10 max-w-screen-xl mx-auto px-4 py-8 lg:py-12">
+
+    <!-- ── HEADER ── -->
+    <header class="text-center mb-10 lg:mb-14 fade-in-up" style="animation-delay: 0s">
+      <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full text-xs font-semibold
+                  bg-purple-500/10 border border-purple-500/20 text-purple-400 mb-5 tracking-widest uppercase">
+        <span class="relative flex h-2.5 w-2.5">
+          <span class="ping-ring"></span>
+          <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-neon-green"></span>
+        </span>
+        Baseado em microdados reais do IBGE
+      </div>
+
+      <h1 class="text-3xl sm:text-4xl lg:text-5xl font-black text-white leading-tight mb-3">
+        Calculadora de<br />
+        <span class="bg-gradient-to-r from-neon-green via-neon-blue to-neon-purple bg-clip-text text-transparent">
+          Choque de Realidade
+        </span>
+      </h1>
+      <p class="text-slate-400 text-sm sm:text-base max-w-lg mx-auto leading-relaxed">
+        Configure seus critérios e descubra qual é o tamanho <em>real</em> do seu
+        mercado de relacionamentos — com estatística aplicada, não palpite.
+      </p>
+    </header>
+
+    <!-- ── LAYOUT: FORM | RESULT ── -->
+    <div class="lg:grid lg:grid-cols-[1fr_390px] lg:gap-8 items-start">
+
+      <!-- ╔═════════════╗ -->
+      <!-- ║    FORM     ║ -->
+      <!-- ╚═════════════╝ -->
+      <div class="space-y-4">
+
+        <!-- 1. Gênero -->
+        <div class="section-card fade-in-up" style="animation-delay: 0.05s">
+          <p class="section-label">Passo 1</p>
+          <p class="section-title">Gênero do parceiro buscado</p>
+          <div class="flex gap-3">
+            <label class="gender-btn flex-1">
+              <input type="radio" name="genero" id="genero-homem" value="Masculino" checked />
+              <div class="gender-card">
+                <span class="icon">👨</span>
+                <span class="label">Homem</span>
+              </div>
+            </label>
+            <label class="gender-btn flex-1">
+              <input type="radio" name="genero" id="genero-mulher" value="Feminino" />
+              <div class="gender-card">
+                <span class="icon">👩</span>
+                <span class="label">Mulher</span>
+              </div>
+            </label>
+          </div>
+        </div>
+
+        <!-- 2. Estado (UF) -->
+        <div class="section-card fade-in-up" style="animation-delay: 0.1s">
+          <p class="section-label">Passo 2</p>
+          <p class="section-title">Estado (UF)</p>
+          <select id="estado">
+            <option value="">— Selecione um estado —</option>
+            <option value="AC">Acre</option>
+            <option value="AL">Alagoas</option>
+            <option value="AP">Amapá</option>
+            <option value="AM">Amazonas</option>
+            <option value="BA">Bahia</option>
+            <option value="CE">Ceará</option>
+            <option value="DF">Distrito Federal</option>
+            <option value="ES">Espírito Santo</option>
+            <option value="GO">Goiás</option>
+            <option value="MA">Maranhão</option>
+            <option value="MT">Mato Grosso</option>
+            <option value="MS">Mato Grosso do Sul</option>
+            <option value="MG">Minas Gerais</option>
+            <option value="PA">Pará</option>
+            <option value="PB">Paraíba</option>
+            <option value="PR">Paraná</option>
+            <option value="PE">Pernambuco</option>
+            <option value="PI">Piauí</option>
+            <option value="RJ">Rio de Janeiro</option>
+            <option value="RN">Rio Grande do Norte</option>
+            <option value="RS">Rio Grande do Sul</option>
+            <option value="RO">Rondônia</option>
+            <option value="RR">Roraima</option>
+            <option value="SC">Santa Catarina</option>
+            <option value="SP" selected>São Paulo</option>
+            <option value="SE">Sergipe</option>
+            <option value="TO">Tocantins</option>
+          </select>
+        </div>
+
+        <!-- 3. Faixa Etária -->
+        <div class="section-card fade-in-up" style="animation-delay: 0.15s">
+          <p class="section-label">Passo 3</p>
+          <p class="section-title">Faixa etária</p>
+          <div class="grid grid-cols-2 gap-3">
+            <div>
+              <label for="idade-min" class="block text-xs text-slate-500 mb-2 font-medium">Idade mínima</label>
+              <input type="number" id="idade-min" min="18" max="79" value="25" />
+            </div>
+            <div>
+              <label for="idade-max" class="block text-xs text-slate-500 mb-2 font-medium">Idade máxima</label>
+              <input type="number" id="idade-max" min="19" max="80" value="35" />
+            </div>
+          </div>
+          <p class="text-xs text-slate-600 mt-3 text-center">
+            Entre <span class="text-neon-green font-semibold" id="idade-range-text">25 e 35 anos</span>
+          </p>
+        </div>
+
+        <!-- 4. Altura Mínima -->
+        <div class="section-card fade-in-up" style="animation-delay: 0.2s">
+          <p class="section-label">Passo 4</p>
+          <div class="flex items-center justify-between mb-4">
+            <p class="section-title" style="margin-bottom:0">Altura mínima</p>
+            <span id="altura-display" class="text-2xl font-black text-neon-green tabular-nums">1,75m</span>
+          </div>
+          <input type="range" id="altura-slider" min="150" max="210" value="175" step="1" />
+          <div class="flex justify-between text-xs text-slate-600 mt-2 font-medium">
+            <span>1,50m</span><span>1,80m</span><span>2,10m</span>
+          </div>
+        </div>
+
+        <!-- 5. Renda Mínima -->
+        <div class="section-card fade-in-up" style="animation-delay: 0.25s">
+          <p class="section-label">Passo 5</p>
+          <div class="flex items-center justify-between mb-4">
+            <p class="section-title" style="margin-bottom:0">Renda mensal mínima</p>
+            <span id="renda-display" class="text-xl font-black text-neon-green tabular-nums">R$&nbsp;5.000</span>
+          </div>
+          <input type="range" id="renda-slider" min="0" max="50000" value="5000" step="500" />
+          <div class="flex justify-between text-xs text-slate-600 mt-2 font-medium">
+            <span>R$ 0</span><span>R$ 25k</span><span>R$ 50k</span>
+          </div>
+        </div>
+
+        <!-- 6. Estado Civil -->
+        <div class="section-card fade-in-up" style="animation-delay: 0.3s">
+          <p class="section-label">Passo 6</p>
+          <p class="section-title">Estado civil</p>
+          <div class="flex flex-wrap gap-2">
+            <label class="pill-label">
+              <input type="checkbox" name="estado_civil" value="Solteiro" id="ec-solteiro" checked />
+              <span class="pill"><span class="dot"></span>Solteiro(a)</span>
+            </label>
+            <label class="pill-label">
+              <input type="checkbox" name="estado_civil" value="Divorciado" id="ec-divorciado" />
+              <span class="pill"><span class="dot"></span>Divorciado(a)</span>
+            </label>
+            <label class="pill-label">
+              <input type="checkbox" name="estado_civil" value="Casado" id="ec-casado" />
+              <span class="pill"><span class="dot"></span>Casado(a)</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- 7. Escolaridade -->
+        <div class="section-card fade-in-up" style="animation-delay: 0.35s">
+          <p class="section-label">Passo 7</p>
+          <p class="section-title">Escolaridade mínima</p>
+          <div class="flex flex-wrap gap-2">
+            <label class="pill-label">
+              <input type="checkbox" name="escolaridade" value="medio" id="esc-medio" checked />
+              <span class="pill"><span class="dot"></span>Ensino Médio</span>
+            </label>
+            <label class="pill-label">
+              <input type="checkbox" name="escolaridade" value="superior" id="esc-superior" checked />
+              <span class="pill"><span class="dot"></span>Ensino Superior</span>
+            </label>
+          </div>
+          <p class="text-xs text-slate-600 mt-3 leading-relaxed">
+            💡 "Ensino Médio" inclui quem tem médio completo ou superior. Selecione apenas "Superior" para filtrar apenas graduados.
+          </p>
+        </div>
+
+        <!-- 8. Religião -->
+        <div class="section-card fade-in-up" style="animation-delay: 0.4s">
+          <p class="section-label">Passo 8</p>
+          <p class="section-title">Religião</p>
+          <div class="flex flex-wrap gap-2">
+            <label class="pill-label">
+              <input type="checkbox" name="religiao" value="Católica" id="rel-cat" checked />
+              <span class="pill"><span class="dot"></span>Católica</span>
+            </label>
+            <label class="pill-label">
+              <input type="checkbox" name="religiao" value="Evangélica" id="rel-eva" checked />
+              <span class="pill"><span class="dot"></span>Evangélica</span>
+            </label>
+            <label class="pill-label">
+              <input type="checkbox" name="religiao" value="Espírita" id="rel-esp" />
+              <span class="pill"><span class="dot"></span>Espírita</span>
+            </label>
+            <label class="pill-label">
+              <input type="checkbox" name="religiao" value="Matriz Africana" id="rel-ma" />
+              <span class="pill"><span class="dot"></span>Matriz Africana</span>
+            </label>
+            <label class="pill-label">
+              <input type="checkbox" name="religiao" value="Sem Religião" id="rel-sr" />
+              <span class="pill"><span class="dot"></span>Sem Religião</span>
+            </label>
+          </div>
+        </div>
+
+        <!-- 9. Filtro físico — obesidade -->
+        <div class="section-card fade-in-up" style="animation-delay: 0.45s">
+          <p class="section-label">Passo 9 · Filtro Físico Extra</p>
+          <div class="flex items-center justify-between gap-4">
+            <div>
+              <p class="text-sm font-semibold text-slate-200">Excluir pessoas com obesidade</p>
+              <p class="text-xs text-slate-500 mt-1 leading-relaxed">
+                Aplica a taxa de obesidade por estado e faixa etária (dados IBGE PNS).
+              </p>
+            </div>
+            <label class="toggle-wrapper flex items-center flex-shrink-0">
+              <input type="checkbox" id="excluir-obesidade" />
+              <div class="toggle-track"></div>
+            </label>
+          </div>
+        </div>
+
+        <!-- Botão Calcular -->
+        <div class="fade-in-up" style="animation-delay: 0.5s">
+          <button id="btn-calcular" class="cta-btn" disabled>
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                 stroke-width="2.5" stroke="currentColor" class="w-5 h-5 flex-shrink-0">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M15.59 14.37a6 6 0 0 1-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 0 0 6.16-12.12A14.98 14.98 0 0 0 9.631 8.41m5.96 5.96a14.926 14.926 0 0 1-5.841 2.58m-.119-8.54a6 6 0 0 0-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 0 0-2.58 5.84m2.699 2.7a18.894 18.894 0 0 0 8.215 2.455" />
+            </svg>
+            Carregando dados…
+          </button>
+        </div>
+
+      </div><!-- /form -->
+
+      <!-- ╔══════════════════╗ -->
+      <!-- ║   RESULT PANEL   ║ -->
+      <!-- ╚══════════════════╝ -->
+      <div class="mt-6 lg:mt-0 sticky-result">
+
+        <!-- Result Card -->
+        <div class="result-panel p-6 sm:p-8 fade-in-up" style="animation-delay: 0.55s" id="result-card">
+
+          <!-- Live indicator -->
+          <div class="flex items-center gap-2 mb-6">
+            <span class="relative flex h-2.5 w-2.5">
+              <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-neon-green opacity-75"></span>
+              <span class="relative inline-flex rounded-full h-2.5 w-2.5 bg-neon-green"></span>
+            </span>
+            <span class="text-xs font-semibold text-slate-500 tracking-widest uppercase">
+              Resultado em tempo real
+            </span>
+          </div>
+
+          <!-- Título -->
+          <p class="text-sm font-medium text-slate-400 mb-1">O seu mercado disponível é de:</p>
+
+          <!-- Número gigante -->
+          <div class="my-4">
+            <div class="big-number" id="big-percentage">—%</div>
+          </div>
+
+          <!-- Subtítulo dinâmico -->
+          <p id="result-subtitle" class="text-sm text-slate-400 leading-relaxed mb-5">
+            Configure seus critérios e clique em <strong class="text-white">Calcular</strong>.
+          </p>
+
+          <!-- Barra de progresso -->
+          <div class="progress-bar mb-6">
+            <div class="progress-fill" id="progress-fill" style="width:0%"></div>
+          </div>
+
+          <!-- Divisor -->
+          <div class="divider mb-5"></div>
+
+          <!-- Breakdown por fator -->
+          <p class="text-xs font-semibold text-slate-500 uppercase tracking-wider mb-3">
+            Detalhamento por filtro
+          </p>
+          <div class="grid grid-cols-2 gap-2 mb-5 text-xs">
+            <div class="breakdown-cell">
+              <p class="text-slate-500 mb-1">💍 Estado Civil</p>
+              <p class="font-bold text-slate-200" id="bd-civil">—</p>
+            </div>
+            <div class="breakdown-cell">
+              <p class="text-slate-500 mb-1">🎓 Escolaridade</p>
+              <p class="font-bold text-slate-200" id="bd-esc">—</p>
+            </div>
+            <div class="breakdown-cell">
+              <p class="text-slate-500 mb-1">🙏 Religião</p>
+              <p class="font-bold text-slate-200" id="bd-rel">—</p>
+            </div>
+            <div class="breakdown-cell">
+              <p class="text-slate-500 mb-1">💰 Renda</p>
+              <p class="font-bold text-slate-200" id="bd-renda">—</p>
+            </div>
+            <div class="breakdown-cell">
+              <p class="text-slate-500 mb-1">⚖️ Peso</p>
+              <p class="font-bold text-slate-200" id="bd-obesity">Não filtrado</p>
+            </div>
+            <div class="breakdown-cell">
+              <p class="text-slate-500 mb-1">📏 Altura</p>
+              <p class="font-bold text-slate-200" id="bd-altura">—</p>
+              <p class="text-slate-600 text-xs mt-0.5" id="bd-altura-media"></p>
+            </div>
+          </div>
+
+          <!-- Divisor -->
+          <div class="divider mb-5"></div>
+
+          <!-- Botão compartilhar -->
+          <button id="share-btn" class="share-btn mb-3">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                 stroke-width="2" stroke="currentColor" class="w-4 h-4 flex-shrink-0">
+              <path stroke-linecap="round" stroke-linejoin="round"
+                    d="M7.217 10.907a2.25 2.25 0 1 0 0 2.186m0-2.186c.18.324.283.696.283 1.093s-.103.77-.283 1.093m0-2.186 9.566-5.314m-9.566 7.5 9.566 5.314m0 0a2.25 2.25 0 1 0 3.935 2.186 2.25 2.25 0 0 0-3.935-2.186Zm0-12.814a2.25 2.25 0 1 0 3.933-2.185 2.25 2.25 0 0 0-3.933 2.185Z" />
+            </svg>
+            Compartilhar meu choque de realidade
+          </button>
+
+          <!-- Disclaimer -->
+          <p class="text-xs text-slate-600 text-center leading-relaxed">
+            Estatísticas baseadas em microdados IBGE (PNAD/Censo 2023). Fins ilustrativos.
+          </p>
+        </div>
+
+        <!-- Fun fact card -->
+        <div class="mt-4 bg-white/[0.02] border border-white/5 rounded-2xl p-4
+                    flex gap-3 items-start fade-in-up" style="animation-delay: 0.65s">
+          <span class="text-xl flex-shrink-0">💡</span>
+          <p class="text-xs text-slate-500 leading-relaxed" id="fun-fact">
+            Configure seus filtros para ver insights estatísticos aqui.
+          </p>
+        </div>
+
+      </div><!-- /result col -->
+
+    </div><!-- /grid -->
+
+    <!-- Footer -->
+    <footer class="mt-16 text-center text-xs text-slate-700 pb-8 fade-in-up" style="animation-delay: 0.7s">
+      <p>
+        Calculadora de Choque de Realidade &middot;
+        Dados: IBGE PNAD / Censo &middot;
+        Apenas para fins educacionais e de reflexão
+      </p>
+    </footer>
+
+  </div><!-- /container -->
+
+  <!-- ═══ MÓDULO JS PRINCIPAL ═══ -->
+  <!-- type="module" é necessário para import/export; requer servidor HTTP (ex: Live Server) -->
+  <script type="module" src="./js/main.js"></script>
+
+</body>
+</html>
