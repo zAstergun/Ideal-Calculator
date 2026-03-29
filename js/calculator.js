@@ -51,6 +51,9 @@
 /** Desvio padrão da altura (cm) por gênero, baseado em literatura epidemiológica */
 const SIGMA_ALTURA = { Masculino: 7, Feminino: 6 };
 
+/** Todas as raças disponíveis no escolaridade.json */
+const TODAS_RACAS = ['Branca', 'Preta', 'Amarela', 'Parda', 'Indígena'];
+
 /** Conversão de código UF para nome completo (chave dos JSONs) */
 export const UF_TO_NOME = {
   AC: 'Acre',              AL: 'Alagoas',          AP: 'Amapá',
@@ -213,7 +216,49 @@ function faixasNoIntervalo(tabela, idMin, idMax) {
 }
 
 // ══════════════════════════════════════════════════════════════════
-//  FILTRO 1 — ESTADO CIVIL
+//  FILTRO 1a — FAIXA ETÁRIA (BASE POPULACIONAL)
+// ══════════════════════════════════════════════════════════════════
+
+/**
+ * Calcula a proporção da população de [18, 120] anos que está dentro do 
+ * intervalo selecionado [idMin, idMax]. Também retorna os valores absolutos.
+ */
+function calcularFiltroIdade(db, estado, genero, idMin, idMax) {
+  const base = safeGet(db, 'estadoCivil', 'Geral', estado, genero);
+  if (!base) return { proporcao: 1, popTotalAdultos: 1, popSelecionada: 1 };
+
+  // Calculamos a população total de adultos (18+)
+  const faixasTodas = faixasNoIntervalo(FAIXAS_CIVIL, 18, 120);
+  let popTotalAdultos = 0;
+  
+  for (const { key, peso } of faixasTodas) {
+    const faixaObj = base[key];
+    if (!faixaObj) continue;
+    const popFaixa = Object.values(faixaObj).reduce((s, v) => s + v, 0);
+    const f = FAIXAS_CIVIL.find(x => x.key === key);
+    const espacoOriginal = f.max - f.min + 1;
+    popTotalAdultos += popFaixa * (peso / espacoOriginal);
+  }
+
+  // Calculamos a população apenas dentro de [idMin, idMax]
+  const faixasSelect = faixasNoIntervalo(FAIXAS_CIVIL, idMin, idMax);
+  let popSelecionada = 0;
+
+  for (const { key, peso } of faixasSelect) {
+    const faixaObj = base[key];
+    if (!faixaObj) continue;
+    const popFaixa = Object.values(faixaObj).reduce((s, v) => s + v, 0);
+    const f = FAIXAS_CIVIL.find(x => x.key === key);
+    const espacoOriginal = f.max - f.min + 1;
+    popSelecionada += popFaixa * (peso / espacoOriginal);
+  }
+
+  const proporcao = popTotalAdultos === 0 ? 0.01 : clamp(popSelecionada / popTotalAdultos);
+  return { proporcao, popTotalAdultos, popSelecionada };
+}
+
+// ══════════════════════════════════════════════════════════════════
+//  FILTRO 1b — ESTADO CIVIL
 // ══════════════════════════════════════════════════════════════════
 
 /**
@@ -266,43 +311,36 @@ function calcularFiltroEstadoCivil(db, estado, genero, idMin, idMax, statuses) {
 // ══════════════════════════════════════════════════════════════════
 
 /**
- * Calcula a proporção que possui a escolaridade mínima desejada.
- * O JSON tem os dados por raça; somamos todas as raças para obter o total.
+ * Calcula a proporção que possui a escolaridade mínima desejada,
+ * restringindo ao conjunto de raças selecionadas.
  *
- * Mapeamento dos valores do formulário → chaves do JSON:
- *   "medio"    → "Medio_Completo"
- *   "superior" → "Superior_Completo"
- *
- * Lógica: "Ensino Médio" inclui quem tem médio OU superior (piso, não teto).
- * Se o usuário marcar apenas "Superior", só conta Superior_Completo.
- * Se marcar "Médio" e "Superior", conta ambos.
+ * Se `racasSel` for vazio, considera todas as raças (comportamento original).
  *
  * @param {Object}   db
  * @param {string}   estado
  * @param {string}   genero
  * @param {number}   idMin
  * @param {number}   idMax
- * @param {string[]} niveis   ex: ["medio","superior"] ou ["superior"]
+ * @param {string[]} niveis    ex: ["medio","superior"]
+ * @param {string[]} racasSel  ex: ["Branca","Parda"] — vazio = todas
  * @returns {number} proporção em [0,1]
  */
-function calcularFiltroEscolaridade(db, estado, genero, idMin, idMax, niveis) {
+function calcularFiltroEscolaridade(db, estado, genero, idMin, idMax, niveis, racasSel = []) {
   const base = safeGet(db, 'escolaridade', estado, genero);
   if (!base) {
     console.warn(`[calculator] escolaridade: dados não encontrados para ${estado}/${genero}`);
     return 1;
   }
 
-  // Chaves do JSON que interessam (incluir sempre Superior quando Médio está junto,
-  // pois a base mede pessoas que concluíram aquele nível, não o máximo atingido)
   const CHAVE_MAP = {
     medio:    'Medio_Completo',
     superior: 'Superior_Completo',
   };
   const chavesSelecionadas = niveis.map(n => CHAVE_MAP[n]).filter(Boolean);
-
   if (chavesSelecionadas.length === 0) return 1;
 
-  const racas = Object.keys(base); // ["Branca","Preta","Amarela","Parda","Indígena"]
+  // Usa raças filtradas (ou todas se vazio)
+  const racas = racasSel.length > 0 ? racasSel : TODAS_RACAS;
   const faixas = faixasNoIntervalo(FAIXAS_ESC, idMin, idMax);
 
   let numTotal = 0;
@@ -313,7 +351,6 @@ function calcularFiltroEscolaridade(db, estado, genero, idMin, idMax, niveis) {
       const faixa = safeGet(base, raca, key);
       if (!faixa) continue;
 
-      // Total desta célula = soma de todos os níveis existentes no JSON
       const totalCelula = Object.values(faixa).reduce((s, v) => s + v, 0);
       const selecionadoCelula = chavesSelecionadas.reduce(
         (s, ch) => s + (faixa[ch] ?? 0), 0
@@ -326,6 +363,57 @@ function calcularFiltroEscolaridade(db, estado, genero, idMin, idMax, niveis) {
 
   if (numTotal === 0) return 1;
   return clamp(numSelecionado / numTotal);
+}
+
+// ══════════════════════════════════════════════════════════════════
+//  FILTRO 2b — RAÇA / COR
+// ══════════════════════════════════════════════════════════════════
+
+/**
+ * Calcula a proporção da população que pertence às raças selecionadas.
+ *
+ * Fonte de dados: escolaridade.json (contém contagens por raça, gênero e faixa).
+ * Soma os totais das raças selecionadas e divide pelo total de todas as raças
+ * para o mesmo estado/gênero/faixa etária.
+ *
+ * Se nenhuma raça for selecionada, retorna 1 (neutro — considera todas).
+ *
+ * @param {Object}   db
+ * @param {string}   estado
+ * @param {string}   genero
+ * @param {number}   idMin
+ * @param {number}   idMax
+ * @param {string[]} racasSel   ex: ["Branca","Parda"] — vazio = neutro
+ * @returns {number} proporção em [0,1]
+ */
+function calcularFiltroRaca(db, estado, genero, idMin, idMax, racasSel) {
+  // Sem filtro de raça = neutro
+  if (!racasSel || racasSel.length === 0) return 1;
+
+  const base = safeGet(db, 'escolaridade', estado, genero);
+  if (!base) {
+    console.warn(`[calculator] raca: dados não encontrados para ${estado}/${genero}`);
+    return 1;
+  }
+
+  const faixas = faixasNoIntervalo(FAIXAS_ESC, idMin, idMax);
+  let totalGeral = 0;
+  let totalSelecionado = 0;
+
+  for (const { key, peso } of faixas) {
+    for (const raca of TODAS_RACAS) {
+      const faixa = safeGet(base, raca, key);
+      if (!faixa) continue;
+      const popFaixa = Object.values(faixa).reduce((s, v) => s + v, 0);
+      totalGeral += popFaixa * peso;
+      if (racasSel.includes(raca)) {
+        totalSelecionado += popFaixa * peso;
+      }
+    }
+  }
+
+  if (totalGeral === 0) return 1;
+  return clamp(totalSelecionado / totalGeral);
 }
 
 // ══════════════════════════════════════════════════════════════════
@@ -582,6 +670,7 @@ export function calcularRaridade(filtros, db) {
     idadeMax,
     alturaMin,
     rendaMin,
+    raca          = [],
     estadoCivil,
     escolaridade,
     religiao,
@@ -590,55 +679,63 @@ export function calcularRaridade(filtros, db) {
 
   const estadoNome = UF_TO_NOME[estadoUF] ?? estadoUF;
 
-  // ── Passo 1: Base ────────────────────────────────────────────────
-  let probabilidade = 1.0;
+  // Extrai as populações numéricas brutas do estado/genero
+  const resultIdade = calcularFiltroIdade(db, estadoNome, genero, idadeMin, idadeMax);
+  const popMassaTotal = resultIdade.popTotalAdultos;
+  
+  // ── FUNIL EXATO: Iteração ano a ano ──────────────────────────────
+  // Avaliamos as probabilidades a cada ano específico. Isso garante que:
+  // 1. Não haja paradoxo de Simpson (média colapsada perdendo correlação).
+  // 2. A quantidade absoluta de compatíveis apenas aumente ao ampliar a faixa etária.
+  let popMatchAbsoluta = 0;
 
-  // ── Passo 2: Estado Civil ────────────────────────────────────────
-  const pEstadoCivil = calcularFiltroEstadoCivil(
-    db, estadoNome, genero, idadeMin, idadeMax, estadoCivil
-  );
-  probabilidade *= pEstadoCivil;
+  for (let age = idadeMin; age <= idadeMax; age++) {
+    const popAgeInfo = calcularFiltroIdade(db, estadoNome, genero, age, age);
+    const popAno = popAgeInfo.popSelecionada;
+    if (popAno <= 0) continue;
 
-  // ── Passo 3: Escolaridade ────────────────────────────────────────
-  const pEscolaridade = calcularFiltroEscolaridade(
-    db, estadoNome, genero, idadeMin, idadeMax, escolaridade
-  );
-  probabilidade *= pEscolaridade;
+    const pR = calcularFiltroRaca(db, estadoNome, genero, age, age, raca);
+    const pC = calcularFiltroEstadoCivil(db, estadoNome, genero, age, age, estadoCivil);
+    const pE = calcularFiltroEscolaridade(db, estadoNome, genero, age, age, escolaridade, raca);
+    const pRel = calcularFiltroReligiao(db, estadoNome, genero, age, age, religiao);
+    const pRen = calcularFiltroRenda(db, estadoNome, rendaMin); // Renda independe de age no json
+    const pO = calcularFiltroObesidade(db, estadoNome, genero, age, age, excluirObesidade);
+    const pA = calcularFiltroAltura(db, estadoNome, genero, age, age, alturaMin);
 
-  // ── Passo 4: Religião ────────────────────────────────────────────
-  const pReligiao = calcularFiltroReligiao(
-    db, estadoNome, genero, idadeMin, idadeMax, religiao
-  );
-  probabilidade *= pReligiao;
+    const matchAno = popAno * pR * pC * pE * pRel * pRen * pO * pA;
+    popMatchAbsoluta += matchAno;
+  }
 
-  // ── Passo 5: Renda ───────────────────────────────────────────────
-  const pRenda = calcularFiltroRenda(db, estadoNome, rendaMin);
-  probabilidade *= pRenda;
+  // A probabilidade final é exatamente os sobreviventes / População Total de Adultos
+  const probabilidadeReal = popMassaTotal > 0 ? clamp(popMatchAbsoluta / popMassaTotal) : 0;
 
-  // ── Passo 6: Obesidade ───────────────────────────────────────────
-  const pObesidade = calcularFiltroObesidade(
-    db, estadoNome, genero, idadeMin, idadeMax, excluirObesidade
-  );
-  probabilidade *= pObesidade;
-
-  // ── Passo 7: Altura (Gauss) ──────────────────────────────────────
-  const pAltura = calcularFiltroAltura(
-    db, estadoNome, genero, idadeMin, idadeMax, alturaMin
-  );
-  probabilidade *= pAltura;
+  // ── FATORES AGREGADOS ──────────────────────────────────────────── 
+  // Para manter os blocos lógicos visuais do front-end ("detalhamento por filtro"),
+  // calculamos também as médias globais do funil (usado penas para exibição).
+  const pRacaMedia = calcularFiltroRaca(db, estadoNome, genero, idadeMin, idadeMax, raca);
+  const pCivilMedia = calcularFiltroEstadoCivil(db, estadoNome, genero, idadeMin, idadeMax, estadoCivil);
+  const pEscMedia = calcularFiltroEscolaridade(db, estadoNome, genero, idadeMin, idadeMax, escolaridade, raca);
+  const pRelMedia = calcularFiltroReligiao(db, estadoNome, genero, idadeMin, idadeMax, religiao);
+  const pRenMedia = calcularFiltroRenda(db, estadoNome, rendaMin);
+  const pObsMedia = calcularFiltroObesidade(db, estadoNome, genero, idadeMin, idadeMax, excluirObesidade);
+  const pAltMedia = calcularFiltroAltura(db, estadoNome, genero, idadeMin, idadeMax, alturaMin);
 
   // ── Resultado final ──────────────────────────────────────────────
   const medianaAltura = getMedianaAltura(db, estadoNome, genero, idadeMin, idadeMax);
 
   return {
-    probabilidade: Math.max(0, Math.min(1, probabilidade)),
+    probabilidade: Math.max(0, Math.min(1, probabilidadeReal)),
+    popAbsoluta: Math.round(popMatchAbsoluta), // Pessoas finais que dão match
+    popBaseTotal: Math.round(popMassaTotal),   // Universo total de adultos
     fatores: {
-      estadoCivil:  pEstadoCivil,
-      escolaridade: pEscolaridade,
-      religiao:     pReligiao,
-      renda:        pRenda,
-      obesidade:    pObesidade,
-      altura:       pAltura,
+      idade:        resultIdade.proporcao,
+      raca:         pRacaMedia,
+      estadoCivil:  pCivilMedia,
+      escolaridade: pEscMedia,
+      religiao:     pRelMedia,
+      renda:        pRenMedia,
+      obesidade:    pObsMedia,
+      altura:       pAltMedia,
     },
     estadoNome,
     medianaAltura,

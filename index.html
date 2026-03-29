@@ -108,20 +108,21 @@
         <!-- 3 · Faixa Etária -->
         <div class="input-card anim-fade-up">
           <p class="card-step">Passo 03</p>
-          <p class="card-label">Faixa etária</p>
-          <div class="age-row">
-            <div class="age-field">
-              <label for="idade-min">Mínima</label>
-              <input type="number" id="idade-min" class="styled-number" min="18" max="79" value="25" />
-            </div>
-            <div class="age-field">
-              <label for="idade-max">Máxima</label>
-              <input type="number" id="idade-max" class="styled-number" min="19" max="80" value="35" />
-            </div>
+          <div class="slider-header" style="margin-bottom: 2px;">
+            <p class="card-label" style="margin-bottom:0">Faixa etária</p>
+            <span class="slider-value" id="idade-range-text" style="font-size: 1.15rem;">Entre 25 e 35 anos</span>
           </div>
-          <p class="age-range-display">
-            Entre <strong id="idade-range-text">25 e 35 anos</strong>
-          </p>
+          
+          <div class="dual-slider-container">
+            <div class="slider-track" id="idade-track"></div>
+            <input type="range" id="idade-min" class="dual-range" min="18" max="80" value="25" step="1" />
+            <input type="range" id="idade-max" class="dual-range" min="18" max="80" value="35" step="1" />
+          </div>
+          
+          <div class="slider-labels" style="margin-top: 10px;">
+            <span>18 anos</span>
+            <span>80 anos</span>
+          </div>
         </div>
 
         <!-- 4 · Altura -->
@@ -154,9 +155,38 @@
           </div>
         </div>
 
-        <!-- 6 · Estado Civil -->
+        <!-- 6 · Cor ou Raça -->
         <div class="input-card anim-fade-up">
           <p class="card-step">Passo 06</p>
+          <p class="card-label">Cor ou Raça</p>
+          <div class="pills-group">
+            <label class="pill-option">
+              <input type="checkbox" name="raca" id="raca-branca" value="Branca" />
+              <span class="pill-chip"><span class="pill-check"></span>Branca</span>
+            </label>
+            <label class="pill-option">
+              <input type="checkbox" name="raca" id="raca-parda" value="Parda" />
+              <span class="pill-chip"><span class="pill-check"></span>Parda</span>
+            </label>
+            <label class="pill-option">
+              <input type="checkbox" name="raca" id="raca-preta" value="Preta" />
+              <span class="pill-chip"><span class="pill-check"></span>Preta</span>
+            </label>
+            <label class="pill-option">
+              <input type="checkbox" name="raca" id="raca-asiatica" value="Amarela" />
+              <span class="pill-chip"><span class="pill-check"></span>Asiática</span>
+            </label>
+            <label class="pill-option">
+              <input type="checkbox" name="raca" id="raca-indigena" value="Indígena" />
+              <span class="pill-chip"><span class="pill-check"></span>Indígena</span>
+            </label>
+          </div>
+          <p class="card-hint">Nenhuma selecionada = considera todas as raças.</p>
+        </div>
+
+        <!-- 7 · Estado Civil -->
+        <div class="input-card anim-fade-up">
+          <p class="card-step">Passo 07</p>
           <p class="card-label">Estado civil</p>
           <div class="pills-group">
             <label class="pill-option">
@@ -176,7 +206,7 @@
 
         <!-- 7 · Escolaridade -->
         <div class="input-card anim-fade-up">
-          <p class="card-step">Passo 07</p>
+          <p class="card-step">Passo 08</p>
           <p class="card-label">Escolaridade mínima</p>
           <div class="pills-group">
             <label class="pill-option">
@@ -196,7 +226,7 @@
 
         <!-- 8 · Religião -->
         <div class="input-card anim-fade-up">
-          <p class="card-step">Passo 08</p>
+          <p class="card-step">Passo 09</p>
           <p class="card-label">Religião</p>
           <div class="pills-group">
             <label class="pill-option">
@@ -224,7 +254,7 @@
 
         <!-- 9 · Filtro físico -->
         <div class="input-card anim-fade-up">
-          <p class="card-step">Passo 09 · Opcional</p>
+          <p class="card-step">Passo 10 · Opcional</p>
           <div class="toggle-row">
             <div class="toggle-info">
               <h3>Excluir pessoas com obesidade</h3>
@@ -265,6 +295,10 @@
           <p class="result-overline">Seu mercado disponível é</p>
 
           <span id="big-percentage">—</span>
+          
+          <p id="absolute-match" style="font-size: 0.95rem; color: var(--gold-base); margin-top: -12px; margin-bottom: 24px; font-weight: 500; letter-spacing: 0.02em;">
+            <!-- pop filled by JS -->
+          </p>
 
           <p id="result-subtitle">
             Configure seus critérios e clique em <strong>Calcular</strong> para ver seu resultado.
@@ -279,6 +313,16 @@
           <p class="breakdown-label">Detalhamento por filtro</p>
 
           <div class="breakdown-grid">
+            <div class="breakdown-cell">
+              <span class="bc-icon">⏳</span>
+              <span class="bc-name">Faixa Etária</span>
+              <span class="bc-value" id="bd-idade">—</span>
+            </div>
+            <div class="breakdown-cell">
+              <span class="bc-icon">👤</span>
+              <span class="bc-name">Raça</span>
+              <span class="bc-value" id="bd-raca">—</span>
+            </div>
             <div class="breakdown-cell">
               <span class="bc-icon">💍</span>
               <span class="bc-name">Estado Civil</span>

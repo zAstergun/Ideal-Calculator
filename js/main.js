@@ -49,6 +49,10 @@ function lerFiltros() {
 
   const excluirObesidade = document.getElementById('excluir-obesidade')?.checked ?? false;
 
+  const raca = Array.from(
+    document.querySelectorAll('input[name="raca"]:checked')
+  ).map(cb => cb.value);
+
   return {
     genero,
     estadoUF,
@@ -56,6 +60,8 @@ function lerFiltros() {
     idadeMax,
     alturaMin,
     rendaMin,
+    // raca vazio = todas as raças
+    raca,
     estadoCivil:      estadoCivil.length  > 0 ? estadoCivil  : ['Solteiro'],
     escolaridade:     escolaridade.length > 0 ? escolaridade : ['medio','superior'],
     religiao:         religiao.length     > 0 ? religiao     : ['Católica','Evangélica','Espírita','Matriz Africana','Sem Religião'],
@@ -162,8 +168,21 @@ function atualizarLabelsSliders() {
   const idMinEl = document.getElementById('idade-min');
   const idMaxEl = document.getElementById('idade-max');
   const rangeEl = document.getElementById('idade-range-text');
+  
   if (rangeEl && idMinEl && idMaxEl) {
-    rangeEl.textContent = `${idMinEl.value} e ${idMaxEl.value} anos`;
+    rangeEl.textContent = `Entre ${idMinEl.value} e ${idMaxEl.value} anos`;
+    
+    // Atualiza a trilha do slider duplo
+    const minVal = parseInt(idMinEl.value);
+    const maxVal = parseInt(idMaxEl.value);
+    const minP = ((minVal - 18) / (80 - 18)) * 100;
+    const maxP = ((maxVal - 18) / (80 - 18)) * 100;
+    
+    const track = document.getElementById('idade-track');
+    if (track) {
+      track.style.left = minP + '%';
+      track.style.width = (maxP - minP) + '%';
+    }
   }
 }
 
@@ -187,19 +206,24 @@ function renderizarResultado(resultado, filtros, animado = false) {
       <strong class="text-white">${estadoNome}</strong> atendem a todos os seus critérios.`;
   }
 
-  // ── Big number ─────────────────────────────────────────────────
+  // ── Big number & Absolute Match ────────────────────────────────
   const bigEl = document.getElementById('big-percentage');
+  const absEl = document.getElementById('absolute-match');
+  const formatAbs = (val) => `≈ ${Math.round(val).toLocaleString('pt-BR')} pessoas`;
+
   if (bigEl) {
     if (animado) {
       const valorAnterior = ultimoResultado ? ultimoResultado.probabilidade * 100 : 0;
       animarContagem(valorAnterior, pct, 1400, (v) => {
         bigEl.textContent = formatPct(v / 100);
+        if (absEl) absEl.textContent = formatAbs((v / 100) * resultado.popBaseTotal);
       });
     } else {
       bigEl.classList.remove('pop');
       void bigEl.offsetWidth; // reflow
       bigEl.classList.add('pop');
       bigEl.textContent = formatPct(probabilidade);
+      if (absEl) absEl.textContent = formatAbs(resultado.popAbsoluta);
     }
   }
 
@@ -213,6 +237,8 @@ function renderizarResultado(resultado, filtros, animado = false) {
 
   // ── Breakdown por fator ────────────────────────────────────────
   const bdMap = {
+    'bd-idade':  { label: 'Faixa Etária',  val: fatores.idade        },
+    'bd-raca':   { label: 'Raça',          val: fatores.raca         },
     'bd-civil':  { label: 'Estado Civil',  val: fatores.estadoCivil  },
     'bd-esc':    { label: 'Escolaridade',  val: fatores.escolaridade },
     'bd-rel':    { label: 'Religião',      val: fatores.religiao     },
@@ -426,7 +452,7 @@ function registrarEventos() {
   });
 
   // ── Checkboxes ────────────────────────────────────────────────
-  ['estado_civil', 'escolaridade', 'religiao'].forEach(name => {
+  ['estado_civil', 'escolaridade', 'religiao', 'raca'].forEach(name => {
     document.querySelectorAll(`input[name="${name}"]`).forEach(cb => {
       cb.addEventListener('change', calcDebounced);
     });
