@@ -209,7 +209,17 @@ function renderizarResultado(resultado, filtros, animado = false) {
   // ── Big number & Absolute Match ────────────────────────────────
   const bigEl = document.getElementById('big-percentage');
   const absEl = document.getElementById('absolute-match');
+  const propEl = document.getElementById('proporcao-destaque');
   const formatAbs = (val) => `≈ ${Math.round(val).toLocaleString('pt-BR')} pessoas`;
+
+  // Cálculo da proporção: 1 em cada X [homens/mulheres] em [local]
+  // Denominador = popBaseTotal, que já é a pop. do gênero no estado selecionado
+  const proporcao = probabilidade > 0 && resultado.popBaseTotal > 0
+    ? Math.round(resultado.popBaseTotal / resultado.popAbsoluta)
+    : 0;
+  const textoProporcao = proporcao > 0
+    ? `Isso significa 1 em cada ${proporcao.toLocaleString('pt-BR')} ${generoLabel} em ${estadoNome}`
+    : 'Praticamente ninguém atende a isso';
 
   if (bigEl) {
     if (animado) {
@@ -226,6 +236,9 @@ function renderizarResultado(resultado, filtros, animado = false) {
       if (absEl) absEl.textContent = formatAbs(resultado.popAbsoluta);
     }
   }
+
+  // Atualiza proporção (sempre, fora do count-up)
+  if (propEl) propEl.textContent = textoProporcao;
 
   // ── Progress bar ───────────────────────────────────────────────
   const progressEl = document.getElementById('progress-fill');
