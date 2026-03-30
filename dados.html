@@ -31,7 +31,7 @@
       text-decoration: none;
       transition: color 0.18s;
     }
-    .breadcrumb a:hover { color: var(--gold-base); }
+    .breadcrumb a:hover { color: var(--color-accent); }
     .breadcrumb-sep { opacity: 0.4; }
 
     /* Page header */
@@ -130,7 +130,8 @@
       transition: border-color 0.2s;
     }
     .source-card:hover {
-      border-color: rgba(201, 169, 110, 0.3);
+      border-color: var(--color-accent);
+      opacity: 0.9;
     }
     .source-card-header {
       display: flex;
@@ -309,7 +310,7 @@
       cursor: pointer;
     }
     .download-link:hover {
-      color: #ffffff;
+      color: var(--color-accent);
       opacity: 1;
     }
     .dl-icon {
@@ -361,9 +362,9 @@
         background 0.18s var(--ease-smooth);
     }
     .raw-dl-btn:hover {
-      border-color: rgba(201, 169, 110, 0.35);
+      border-color: var(--color-accent);
       color: var(--text-primary);
-      background: rgba(201, 169, 110, 0.05);
+      background: var(--color-accent-glow);
     }
     .raw-dl-btn .rdl-icon {
       font-size: 1.1rem;

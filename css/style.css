@@ -47,6 +47,10 @@
   /* Transições */
   --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
   --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* ── Cor de destaque centralizada (altere aqui para trocar o tema) ── */
+  --color-accent:      var(--gold-base);
+  --color-accent-glow: var(--gold-glow);
 }
 
 /* ── Reset ────────────────────────────────────────────────────────────── */
