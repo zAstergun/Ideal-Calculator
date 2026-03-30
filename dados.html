@@ -1,0 +1,713 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Auditoria de Dados · Calculadora de Raridade</title>
+  <meta name="description" content="Transparência total sobre os microdados do IBGE utilizados na Calculadora de Raridade de Parceiros. Consulte fontes, metodologia e limitações." />
+  <link rel="stylesheet" href="./css/style.css" />
+  <style>
+    /* ── Estilos exclusivos de dados.html ─────────────────────────── */
+    .audit-wrapper {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 48px 20px 80px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Breadcrumb */
+    .breadcrumb {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.72rem;
+      color: var(--text-muted);
+      letter-spacing: 0.04em;
+      margin-bottom: 40px;
+    }
+    .breadcrumb a {
+      color: var(--text-muted);
+      text-decoration: none;
+      transition: color 0.18s;
+    }
+    .breadcrumb a:hover { color: var(--gold-base); }
+    .breadcrumb-sep { opacity: 0.4; }
+
+    /* Page header */
+    .audit-header {
+      margin-bottom: 48px;
+    }
+    .audit-supertitle {
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--gold-base);
+      margin-bottom: 14px;
+      opacity: 0.9;
+    }
+    .audit-title {
+      font-family: var(--font-serif);
+      font-size: clamp(1.8rem, 5vw, 2.8rem);
+      font-weight: 700;
+      color: var(--text-primary);
+      letter-spacing: -0.02em;
+      line-height: 1.2;
+      margin-bottom: 14px;
+    }
+    .audit-desc {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.75;
+      max-width: 640px;
+    }
+
+    /* Status badge row */
+    .status-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin: 28px 0 44px;
+    }
+    .status-chip {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      padding: 5px 12px;
+      border: 1px solid var(--border-default);
+      border-radius: 9999px;
+      font-size: 0.68rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+    .status-chip .dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--gold-base);
+      animation: subtlePulse 2.5s ease-in-out infinite;
+    }
+
+    /* Section heading */
+    .section-rule {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+    .section-rule h2 {
+      font-family: var(--font-serif);
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: var(--text-primary);
+      white-space: nowrap;
+    }
+    .section-rule::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--border-subtle);
+    }
+
+    /* Data source card */
+    .source-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 14px;
+      margin-bottom: 44px;
+    }
+    @media (min-width: 600px) {
+      .source-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    .source-card {
+      background: rgba(17, 10, 31, 0.6);
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-md);
+      padding: 18px 20px;
+      transition: border-color 0.2s;
+    }
+    .source-card:hover {
+      border-color: rgba(201, 169, 110, 0.3);
+    }
+    .source-card-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 10px;
+    }
+    .source-icon {
+      font-size: 1.3rem;
+      flex-shrink: 0;
+      margin-top: 1px;
+    }
+    .source-name {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 2px;
+    }
+    .source-file {
+      font-size: 0.68rem;
+      color: var(--gold-base);
+      font-family: 'Courier New', monospace;
+      letter-spacing: 0.03em;
+    }
+    .source-desc {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      margin-bottom: 12px;
+    }
+    .source-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+    .tag {
+      font-size: 0.62rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: 4px;
+      background: rgba(201, 169, 110, 0.08);
+      border: 1px solid rgba(201, 169, 110, 0.18);
+      color: var(--gold-base);
+    }
+    .tag.tag-neutral {
+      background: rgba(255,255,255,0.04);
+      border-color: var(--border-default);
+      color: var(--text-muted);
+    }
+
+    /* Methodology block */
+    .method-block {
+      background: rgba(17, 10, 31, 0.4);
+      border: 1px solid var(--border-subtle);
+      border-left: 3px solid var(--gold-base);
+      border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+      padding: 16px 20px;
+      margin-bottom: 12px;
+    }
+    .method-title {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 6px;
+    }
+    .method-text {
+      font-size: 0.78rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+    .method-text code {
+      font-family: 'Courier New', monospace;
+      background: rgba(201, 169, 110, 0.1);
+      color: var(--gold-base);
+      padding: 1px 5px;
+      border-radius: 3px;
+      font-size: 0.75rem;
+    }
+
+    /* Limitation list */
+    .limitation-list {
+      list-style: none;
+      margin-bottom: 44px;
+    }
+    .limitation-list li {
+      display: flex;
+      gap: 12px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      line-height: 1.65;
+      padding: 10px 0;
+      border-bottom: 1px solid var(--border-subtle);
+    }
+    .limitation-list li:last-child { border-bottom: none; }
+    .limitation-list li::before {
+      content: '—';
+      color: var(--gold-base);
+      flex-shrink: 0;
+      font-weight: 700;
+    }
+
+    /* External link table */
+    .links-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.78rem;
+      margin-bottom: 44px;
+    }
+    .links-table th {
+      text-align: left;
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border-default);
+    }
+    .links-table td {
+      padding: 12px 12px;
+      vertical-align: top;
+      border-bottom: 1px solid var(--border-subtle);
+      color: var(--text-muted);
+      line-height: 1.55;
+    }
+    .links-table tr:last-child td { border-bottom: none; }
+    .links-table a {
+      color: var(--gold-base);
+      text-decoration: none;
+      font-weight: 500;
+    }
+    .links-table a:hover { text-decoration: underline; }
+    .links-table td:first-child {
+      font-weight: 600;
+      color: var(--text-primary);
+      white-space: nowrap;
+    }
+
+    /* Back button */
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 20px;
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-sm);
+      font-size: 0.78rem;
+      font-weight: 600;
+      color: var(--text-muted);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+      background: transparent;
+      transition: border-color 0.18s, color 0.18s, background 0.18s;
+    }
+    .back-btn:hover {
+      border-color: var(--gold-base);
+      color: var(--text-primary);
+      background: rgba(201, 169, 110, 0.06);
+    }
+    .back-btn svg {
+      width: 15px;
+      height: 15px;
+      flex-shrink: 0;
+    }
+
+    /* Download link (JSON nos cards) */
+    .download-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      text-decoration: none;
+      color: var(--gold-base);
+      transition: color 0.18s, opacity 0.18s;
+      cursor: pointer;
+    }
+    .download-link:hover {
+      color: #ffffff;
+      opacity: 1;
+    }
+    .dl-icon {
+      display: inline-block;
+      font-style: normal;
+      font-size: 0.75rem;
+      opacity: 0.7;
+      transition: transform 0.18s, opacity 0.18s;
+    }
+    .download-link:hover .dl-icon {
+      transform: translateY(2px);
+      opacity: 1;
+    }
+
+    /* Raw download grid (Seção 05) */
+    .raw-dl-intro {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 20px;
+      max-width: 640px;
+    }
+    .raw-dl-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 44px;
+    }
+    @media (min-width: 600px) {
+      .raw-dl-grid { grid-template-columns: 1fr 1fr 1fr; }
+    }
+    .raw-dl-btn {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 14px;
+      border: 1px solid var(--border-default);
+      border-radius: var(--radius-sm);
+      background: rgba(17, 10, 31, 0.4);
+      text-decoration: none;
+      color: var(--text-muted);
+      font-size: 0.73rem;
+      font-weight: 500;
+      letter-spacing: 0.02em;
+      line-height: 1.4;
+      transition:
+        border-color 0.18s var(--ease-smooth),
+        color 0.18s var(--ease-smooth),
+        background 0.18s var(--ease-smooth);
+    }
+    .raw-dl-btn:hover {
+      border-color: rgba(201, 169, 110, 0.35);
+      color: var(--text-primary);
+      background: rgba(201, 169, 110, 0.05);
+    }
+    .raw-dl-btn .rdl-icon {
+      font-size: 1.1rem;
+      flex-shrink: 0;
+      filter: grayscale(0.3);
+    }
+    .raw-dl-btn .rdl-info {
+      display: flex;
+      flex-direction: column;
+    }
+    .raw-dl-btn .rdl-name {
+      font-weight: 600;
+      color: inherit;
+    }
+    .raw-dl-btn .rdl-meta {
+      font-size: 0.62rem;
+      color: var(--text-muted);
+      margin-top: 1px;
+      letter-spacing: 0.04em;
+    }
+    .raw-dl-notice {
+      font-size: 0.7rem;
+      color: var(--text-muted);
+      opacity: 0.6;
+      margin-top: -32px;
+      margin-bottom: 44px;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- ═══ PÁGINA DE AUDITORIA DE DADOS ════════════════════════════════ -->
+  <div class="audit-wrapper">
+
+    <!-- Breadcrumb -->
+    <nav class="breadcrumb" aria-label="Navegação">
+      <a href="index.html">Calculadora</a>
+      <span class="breadcrumb-sep">›</span>
+      <span>Auditoria de Dados</span>
+    </nav>
+
+    <!-- Header da página -->
+    <header class="audit-header">
+      <p class="audit-supertitle">Transparência · IBGE · PNAD / Censo 2023</p>
+      <h1 class="audit-title">De onde vêm os<br />números desta calculadora?</h1>
+      <p class="audit-desc">
+        Cada percentual exibido é derivado de microdados públicos do IBGE.
+        Esta página documenta as fontes, a metodologia de cálculo e as limitações estatísticas
+        para que qualquer pessoa possa auditar ou reproduzir os resultados.
+      </p>
+
+      <!-- Status chips -->
+      <div class="status-row">
+        <span class="status-chip"><span class="dot"></span>Dados Públicos</span>
+        <span class="status-chip">Censo Demográfico 2022</span>
+        <span class="status-chip">PNAD Contínua 2023</span>
+        <span class="status-chip">POF 2017–2018</span>
+      </div>
+    </header>
+
+    <!-- ── 1. Fontes de Dados ──────────────────────────────────────── -->
+    <div class="section-rule"><h2>01 · Fontes de Dados</h2></div>
+
+    <div class="source-grid">
+
+      <div class="source-card">
+        <div class="source-card-header">
+          <span class="source-icon">👥</span>
+          <div>
+            <p class="source-name">População por Estado e Gênero</p>
+            <a href="data/estado_civil.json" download class="source-file download-link">estado_civil.json <span class="dl-icon">↓</span></a>
+          </div>
+        </div>
+        <p class="source-desc">
+          Totais populacionais por UF, gênero e faixa etária, derivados do Censo Demográfico 2022.
+          Usado como base (denominador) de todos os cálculos de probabilidade.
+        </p>
+        <div class="source-tags">
+          <span class="tag">Censo 2022</span>
+          <span class="tag neutral">27 UFs + Brasil</span>
+        </div>
+      </div>
+
+      <div class="source-card">
+        <div class="source-card-header">
+          <span class="source-icon">💰</span>
+          <div>
+            <p class="source-name">Distribuição de Renda</p>
+            <a href="data/renda.json" download class="source-file download-link">renda.json <span class="dl-icon">↓</span></a>
+          </div>
+        </div>
+        <p class="source-desc">
+          Percentis de renda domiciliar per capita (P5 a P99) por região e estado.
+          Fonte: PNAD Contínua 2023. Usado para estimar a fração da população acima de uma renda mínima.
+        </p>
+        <div class="source-tags">
+          <span class="tag">PNAD 2023</span>
+          <span class="tag neutral">P5–P99</span>
+          <span class="tag neutral">Interpolação linear</span>
+        </div>
+      </div>
+
+      <div class="source-card">
+        <div class="source-card-header">
+          <span class="source-icon">📏</span>
+          <div>
+            <p class="source-name">Mediana de Altura</p>
+            <a href="data/altura.json" download class="source-file download-link">altura.json <span class="dl-icon">↓</span></a>
+          </div>
+        </div>
+        <p class="source-desc">
+          Mediana de altura por estado, gênero e faixa etária.
+          Fonte: POF 2017–2018 (IBGE). Usado para calcular a fração estimada acima de uma altura mínima,
+          assumindo distribuição normal com desvio padrão de 7cm.
+        </p>
+        <div class="source-tags">
+          <span class="tag">POF 2017–2018</span>
+          <span class="tag neutral">Distribuição normal</span>
+          <span class="tag neutral">σ ≈ 7cm</span>
+        </div>
+      </div>
+
+      <div class="source-card">
+        <div class="source-card-header">
+          <span class="source-icon">🎓</span>
+          <div>
+            <p class="source-name">Escolaridade</p>
+            <a href="data/escolaridade.json" download class="source-file download-link">escolaridade.json <span class="dl-icon">↓</span></a>
+          </div>
+        </div>
+        <p class="source-desc">
+          Proporção da população com cada nível de instrução (Fundamental, Médio, Superior),
+          por UF, gênero e faixa etária. Fonte: Censo 2022.
+        </p>
+        <div class="source-tags">
+          <span class="tag">Censo 2022</span>
+          <span class="tag neutral">3 níveis</span>
+        </div>
+      </div>
+
+      <div class="source-card">
+        <div class="source-card-header">
+          <span class="source-icon">🙏</span>
+          <div>
+            <p class="source-name">Religião</p>
+            <a href="data/religiao.json" download class="source-file download-link">religiao.json <span class="dl-icon">↓</span></a>
+          </div>
+        </div>
+        <p class="source-desc">
+          Proporção de religiosos por categoria (Católica, Evangélica, Espírita, Matriz Africana, Sem Religião),
+          por estado e gênero. Fonte: Censo 2022.
+        </p>
+        <div class="source-tags">
+          <span class="tag">Censo 2022</span>
+          <span class="tag neutral">5 categorias</span>
+        </div>
+      </div>
+
+      <div class="source-card">
+        <div class="source-card-header">
+          <span class="source-icon">⚖️</span>
+          <div>
+            <p class="source-name">Taxa de Obesidade</p>
+            <a href="data/obesidade.json" download class="source-file download-link">obesidade.json <span class="dl-icon">↓</span></a>
+          </div>
+        </div>
+        <p class="source-desc">
+          Proporção de obesos (IMC ≥ 30) por estado e faixa etária, gênero.
+          Fonte: PNAD Contínua 2023 (módulo de saúde). Aplicado como fator opcional de desconto.
+        </p>
+        <div class="source-tags">
+          <span class="tag">PNAD 2023</span>
+          <span class="tag neutral">IMC ≥ 30</span>
+          <span class="tag neutral">Fator opcional</span>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ── 2. Metodologia de Cálculo ──────────────────────────────── -->
+    <div class="section-rule"><h2>02 · Metodologia</h2></div>
+    <div style="margin-bottom: 44px;">
+
+      <div class="method-block">
+        <p class="method-title">Modelo de Probabilidade Conjunta (Independência)</p>
+        <p class="method-text">
+          O sistema assume independência condicional entre os filtros. A probabilidade final é o produto dos fatores individuais:
+          <code>P = P(gênero) × P(idade) × P(renda) × P(altura) × P(estado_civil) × P(escolaridade) × P(religião) × P(raça)</code>.
+          Esta é uma simplificação: na prática, existem correlações entre variáveis como renda e escolaridade.
+        </p>
+      </div>
+
+      <div class="method-block">
+        <p class="method-title">Renda — Interpolação linear entre percentis</p>
+        <p class="method-text">
+          Para calcular a fração da população com renda acima de um valor X, o sistema busca os dois percentis
+          mais próximos no <code>renda.json</code> e realiza interpolação linear.
+          Exemplo: se P60 = R$2.461 e P70 = R$2.987, uma renda de R$2.700 está aproximadamente no P65 → fração = 35%.
+        </p>
+      </div>
+
+      <div class="method-block">
+        <p class="method-title">Altura — Distribuição Normal Aproximada</p>
+        <p class="method-text">
+          A partir da mediana de altura por estado/gênero/faixa do <code>altura.json</code>,
+          o sistema assume distribuição normal com desvio padrão de <code>σ = 7cm</code> (estimativa conservadora baseada na POF).
+          A fração acima de uma altura mínima H é calculada via função de distribuição acumulada normal: <code>1 - Φ((H - mediana) / σ)</code>.
+        </p>
+      </div>
+
+      <div class="method-block">
+        <p class="method-title">Escopo Geográfico — UF vs. Região vs. Brasil</p>
+        <p class="method-text">
+          Quando o usuário seleciona um estado específico (ex: SP), os dados de renda, altura, escolaridade e religião
+          são buscados naquele estado. Quando seleciona uma região (ex: Sudeste), os dados são ponderados pela população de cada UF.
+          A seleção "Todo o Brasil" usa os dados nacionais agregados.
+        </p>
+      </div>
+
+    </div>
+
+    <!-- ── 3. Limitações ─────────────────────────────────────────── -->
+    <div class="section-rule"><h2>03 · Limitações e Ressalvas</h2></div>
+    <ul class="limitation-list">
+      <li>Os filtros são tratados como independentes. Na realidade, renda e escolaridade são fortemente correlacionados, o que pode superestimar a raridade em filtros combinados.</li>
+      <li>Os dados de Renda são per capita domiciliar, não renda individual. Pessoas em domicílios de alta renda podem ter renda pessoal menor.</li>
+      <li>A altura segue uma distribuição normal apenas aproximada. Para alturas extremas (abaixo de 1,55m ou acima de 1,90m), o erro pode ser maior.</li>
+      <li>Dados de Religião, Raça e Estado Civil referem-se à autodeclaração no Censo 2022. Podem diferir de declarações em contextos de relacionamento.</li>
+      <li>A taxa de obesidade da PNAD 2023 é baseada em peso e altura autodeclarados, com tendência a subestimação.</li>
+      <li>Esta ferramenta é para fins de reflexão e entretenimento. Não deve ser usada para discriminar pessoas ou tomar decisões reais de relacionamento.</li>
+    </ul>
+
+    <!-- ── 4. Links Externos ──────────────────────────────────────── -->
+    <div class="section-rule"><h2>04 · Fontes Primárias</h2></div>
+    <table class="links-table">
+      <thead>
+        <tr>
+          <th>Fonte</th>
+          <th>Descrição</th>
+          <th>Link Oficial</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Censo 2022</td>
+          <td>Resultados do Censo Demográfico 2022 — Tabelas de população, raça, religião, estado civil e escolaridade</td>
+          <td><a href="https://censo2022.ibge.gov.br/resultados.html" target="_blank" rel="noopener">censo2022.ibge.gov.br</a></td>
+        </tr>
+        <tr>
+          <td>PNAD 2023</td>
+          <td>Pesquisa Nacional por Amostra de Domicílios Contínua — Renda e saúde</td>
+          <td><a href="https://www.ibge.gov.br/estatisticas/sociais/trabalho/17270-pnad-continua.html" target="_blank" rel="noopener">ibge.gov.br/pnad</a></td>
+        </tr>
+        <tr>
+          <td>POF 2017–2018</td>
+          <td>Pesquisa de Orçamentos Familiares — Medidas antropométricas (altura e peso)</td>
+          <td><a href="https://www.ibge.gov.br/estatisticas/sociais/saude/24786-pesquisa-de-orcamentos-familiares-2.html" target="_blank" rel="noopener">ibge.gov.br/pof</a></td>
+        </tr>
+        <tr>
+          <td>SIDRA IBGE</td>
+          <td>Sistema IBGE de Recuperação Automática — consulta de tabelas específicas</td>
+          <td><a href="https://sidra.ibge.gov.br" target="_blank" rel="noopener">sidra.ibge.gov.br</a></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- ── 5. Downloads Brutos ────────────────────────────────────── -->
+    <div class="section-rule"><h2>05 · Tabelas Brutas Originais</h2></div>
+    <p class="raw-dl-intro">
+      Planilhas brutas raspadas diretamente das ferramentas do IBGE (SIDRA e microdados), disponibilizadas
+      para auditoria independente. Os arquivos JSON da Seção 01 foram derivados destas tabelas
+      por meio de scripts de processamento.
+    </p>
+
+    <div class="raw-dl-grid">
+      <a href="downloads/tabela2657.csv" download class="raw-dl-btn">
+        <span class="rdl-icon">📊</span>
+        <span class="rdl-info">
+          <span class="rdl-name">Tabela IBGE 2657</span>
+          <span class="rdl-meta">Altura por UF &amp; Gênero · POF</span>
+        </span>
+      </a>
+      <a href="downloads/tabela10061.csv" download class="raw-dl-btn">
+        <span class="rdl-icon">🎓</span>
+        <span class="rdl-info">
+          <span class="rdl-name">Tabela IBGE 10061</span>
+          <span class="rdl-meta">Escolaridade &amp; Instrução · Censo 2022</span>
+        </span>
+      </a>
+      <a href="downloads/tabela9606.csv" download class="raw-dl-btn">
+        <span class="rdl-icon">👥</span>
+        <span class="rdl-info">
+          <span class="rdl-name">Tabela IBGE 9606</span>
+          <span class="rdl-meta">População por Cor/Raça · Censo 2022</span>
+        </span>
+      </a>
+      <a href="downloads/tabela9531.csv" download class="raw-dl-btn">
+        <span class="rdl-icon">💍</span>
+        <span class="rdl-info">
+          <span class="rdl-name">Tabela IBGE 9531</span>
+          <span class="rdl-meta">Estado Civil por UF · Censo 2022</span>
+        </span>
+      </a>
+      <a href="downloads/tabela10070.csv" download class="raw-dl-btn">
+        <span class="rdl-icon">🙏</span>
+        <span class="rdl-info">
+          <span class="rdl-name">Tabela IBGE 10070</span>
+          <span class="rdl-meta">Religião por UF · Censo 2022</span>
+        </span>
+      </a>
+      <a href="downloads/microdados_pnad_renda.csv" download class="raw-dl-btn">
+        <span class="rdl-icon">💰</span>
+        <span class="rdl-info">
+          <span class="rdl-name">Microdados PNAD</span>
+          <span class="rdl-meta">Renda per capita · PNAD 2023</span>
+        </span>
+      </a>
+      <a href="downloads/tabela_obesidade_pof.csv" download class="raw-dl-btn">
+        <span class="rdl-icon">⚖️</span>
+        <span class="rdl-info">
+          <span class="rdl-name">Tabela Obesidade POF</span>
+          <span class="rdl-meta">IMC por UF &amp; Faixa Etária · PNAD S</span>
+        </span>
+      </a>
+    </div>
+    <p class="raw-dl-notice">⚠ Os arquivos de download brutos são disponibilizados como referência de auditoria. Podem precisar de pré-processamento para uso direto.</p>
+
+    <!-- Botão de voltar + crédito -->
+    <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px; margin-top: 8px;">
+      <a href="index.html" class="back-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.8" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M10.5 19.5L3 12m0 0l7.5-7.5M3 12h18" />
+        </svg>
+        Voltar à Calculadora
+      </a>
+      <a href="https://github.com/zAstergun" class="footer-credit" target="_blank" rel="noopener" style="font-size:0.72rem;">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" width="14" height="14" aria-hidden="true"><path d="M12 2C6.477 2 2 6.484 2 12.021c0 4.428 2.865 8.185 6.839 9.504.5.092.682-.217.682-.482 0-.237-.009-.868-.014-1.703-2.782.605-3.369-1.342-3.369-1.342-.454-1.154-1.11-1.462-1.11-1.462-.908-.62.069-.608.069-.608 1.004.07 1.532 1.032 1.532 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0 1 12 6.844a9.59 9.59 0 0 1 2.504.337c1.909-1.296 2.747-1.026 2.747-1.026.546 1.378.202 2.397.1 2.65.64.7 1.028 1.595 1.028 2.688 0 3.848-2.338 4.695-4.566 4.944.359.309.678.919.678 1.852 0 1.336-.012 2.415-.012 2.742 0 .267.18.578.688.48C19.138 20.2 22 16.447 22 12.021 22 6.484 17.523 2 12 2z"/></svg>
+        Desenvolvido por Aster
+      </a>
+    </div>
+
+  </div><!-- /audit-wrapper -->
+
+</body>
+</html>

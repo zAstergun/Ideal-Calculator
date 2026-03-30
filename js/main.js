@@ -199,8 +199,13 @@ function atualizarFillSlider(slider) {
   const max = parseFloat(slider.max);
   const val = parseFloat(slider.value);
   const pct = ((val - min) / (max - min)) * 100;
+
+  // Cores do tema Gold — iguais à barra de Faixa Etária
+  const fillColor  = '#c9a96e'; // --gold-base
+  const emptyColor = '#1a1a2e'; // --bg-elevated
+
   slider.style.background =
-    `linear-gradient(to right, #c9a96e 0%, #c9a96e ${pct}%, #1a1a2e ${pct}%, #1a1a2e 100%)`;
+    `linear-gradient(to right, ${fillColor} 0%, ${fillColor} ${pct}%, ${emptyColor} ${pct}%, ${emptyColor} 100%)`;
 }
 
 /** Atualiza os displays de label dos sliders em tempo real */
