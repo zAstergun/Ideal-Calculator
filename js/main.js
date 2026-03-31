@@ -402,41 +402,110 @@ function habilitarFormulario() {
   // Apenas finaliza interface de carregamento, menu já liberado via CSS
 }
 
-// ══════════════════════════════════════════════════════════════════
-//  COMPARTILHAMENTO
-// ══════════════════════════════════════════════════════════════════
+/**
+ * Preenche o template invisível (#share-template) com os dados atuais do filtro e resultado.
+ */
+function prepararCardFantasma(filtros, resultado) {
+  const container = document.getElementById('share-template');
+  if (!container) return;
 
-function compartilhar() {
-  if (!ultimoResultado) return;
+  const bigPct = container.querySelector('#share-big-pct');
+  const proportion = container.querySelector('#share-proportion');
+  const filtersText = container.querySelector('#share-filters');
 
-  const filtros = lerFiltros();
-  const pctStr  = formatPct(ultimoResultado.probabilidade);
-  const genLabel = filtros.genero === 'Masculino' ? 'homens' : 'mulheres';
-  const text = `😱 Meu choque de realidade: apenas ${pctStr} dos ${genLabel} em ${ultimoResultado.estadoNome} atendem a todos os meus critérios!\n\nCalcule o seu: ${window.location.href}`;
+  // 1. Probabilidade Grande
+  if (bigPct) bigPct.textContent = formatPct(resultado.probabilidade);
 
-  const shareBtn = document.getElementById('share-btn');
+  // 2. Proporção (1 em cada X)
+  if (proportion) {
+    const totalPositivo = Math.round(resultado.populacaoEstado * resultado.probabilidade);
+    const ratio = totalPositivo > 0 ? Math.round(resultado.populacaoEstado / totalPositivo) : '—';
+    proportion.textContent = `1 em cada ${ratio.toLocaleString('pt-BR')} pessoas`;
+  }
 
-  if (navigator.share) {
-    navigator.share({ title: 'Calculadora de Choque de Realidade', text })
-      .catch(() => copiarParaClipboard(text, shareBtn));
-  } else {
-    copiarParaClipboard(text, shareBtn);
+  // 3. Resumo dos Filtros
+  if (filtersText) {
+    const partes = [];
+    partes.push(filtros.genero === 'Masculino' ? 'Homens' : 'Mulheres');
+    partes.push(`${filtros.idadeMin} a ${filtros.idadeMax} anos`);
+
+    if (resultado.estadoNome && resultado.estadoNome !== 'Todo o Brasil') {
+      partes.push(resultado.estadoNome);
+    }
+
+    if (filtros.alturaMin > 150) {
+      partes.push(`Altura > ${formatAltura(filtros.alturaMin)}`);
+    }
+
+    if (filtros.rendaMin > 0) {
+      partes.push(`Renda > ${formatRendaShort(filtros.rendaMin)}`);
+    }
+
+    filtersText.textContent = partes.join('  ·  ');
   }
 }
 
-function copiarParaClipboard(texto, btn) {
-  navigator.clipboard.writeText(texto).then(() => {
-    if (!btn) return;
-    const original = btn.innerHTML;
-    btn.innerHTML = '✅ Copiado para a área de transferência!';
-    btn.style.background = 'linear-gradient(135deg,#00ff87,#00c26e)';
-    btn.style.color = '#000';
-    setTimeout(() => {
-      btn.innerHTML = original;
-      btn.style.background = '';
-      btn.style.color = '';
-    }, 2800);
-  }).catch(() => alert('Não foi possível copiar. Selecione o resultado e copie manualmente.'));
+/**
+ * Gera uma imagem do #share-template (off-screen) e compartilha/baixa.
+ */
+async function compartilhar() {
+  if (!ultimoResultado) return;
+
+  const btn = document.getElementById('share-btn');
+  const ghost = document.getElementById('share-template');
+  if (!btn || !ghost) return;
+
+  const originalText = btn.innerHTML;
+
+  try {
+    btn.innerHTML = '✨ Gerando imagem...';
+    btn.style.opacity = '0.7';
+    btn.style.pointerEvents = 'none';
+
+    // 1. Preparar dados no fantasma
+    prepararCardFantasma(lerFiltros(), ultimoResultado);
+
+    // 2. Tornar visível APENAS para o html2canvas (opacidade 1 mas z-index ainda negativo)
+    ghost.style.opacity = '1';
+
+    // 3. Capturar (scale 1 pois o template já tem 1080px fixos)
+    const canvas = await html2canvas(ghost, {
+      scale: 1,
+      backgroundColor: '#0b0a0a',
+      useCORS: true,
+      logging: false,
+    });
+
+    // 4. Esconder novamente
+    ghost.style.opacity = '0';
+
+    // 5. Processar imagem
+    const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png', 0.95));
+    const file = new File([blob], 'meu-choque-de-realidade.png', { type: 'image/png' });
+
+    // 6. Compartilhar ou Baixar
+    if (navigator.canShare && navigator.canShare({ files: [file] })) {
+      await navigator.share({
+        title: 'Meu Choque de Realidade',
+        text: `😱 Olhe meu mercado disponível baseado nos meus critérios! Calcule o seu em: ${window.location.href}`,
+        files: [file],
+      });
+    } else {
+      const link = document.createElement('a');
+      link.href = canvas.toDataURL('image/png');
+      link.download = 'meu-choque-de-realidade.png';
+      link.click();
+    }
+
+  } catch (err) {
+    console.error('[Share] Erro:', err);
+    alert('Erro ao gerar imagem para redes sociais.');
+  } finally {
+    btn.innerHTML = originalText;
+    btn.style.opacity = '';
+    btn.style.pointerEvents = '';
+    ghost.style.opacity = '0';
+  }
 }
 
 // ══════════════════════════════════════════════════════════════════

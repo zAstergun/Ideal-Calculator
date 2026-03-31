@@ -1192,3 +1192,97 @@ body::after {
 @media (min-width: 640px) {
   .page-wrapper { padding: 56px 32px 80px; }
 }
+/* ══════════════════════════════════════════════════════════════════════
+   TEMPLATE FANTASMA (CAPTURE ONLY)
+   Otimizado para Instagram Stories/Posts (1080x1080)
+   ══════════════════════════════════════════════════════════════════════ */
+#share-template {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 1080px;
+  height: 1080px;
+  z-index: -9999;
+  opacity: 0;
+  pointer-events: none;
+  background: #0b0a0a;
+  border: 15px solid #e61e2a; /* Borda impactante */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.share-content {
+  width: 100%;
+  padding: 80px;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  color: #fff;
+  font-family: 'Inter', sans-serif;
+}
+
+.share-logo {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: 52px;
+  font-weight: 900;
+  text-transform: uppercase;
+  color: #e61e2a;
+  margin-bottom: 20px;
+  letter-spacing: 2px;
+}
+
+.share-subtitle {
+  font-size: 32px;
+  font-weight: 500;
+  color: #9898a8;
+  text-transform: uppercase;
+  letter-spacing: 4px;
+}
+
+.share-body {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#share-filters {
+  font-size: 34px;
+  color: #f0ede8;
+  max-width: 800px;
+  line-height: 1.4;
+  margin-bottom: 60px;
+  font-weight: 600;
+}
+
+#share-big-pct {
+  font-size: 280px; /* Tamanho massivo */
+  font-weight: 900;
+  color: #e61e2a;
+  line-height: 0.9;
+  margin: 0;
+  text-shadow: 0 0 50px rgba(230, 30, 42, 0.4);
+}
+
+#share-proportion {
+  font-size: 48px;
+  font-weight: 700;
+  color: #f0ede8;
+  margin-top: 40px;
+}
+
+.share-footer {
+  font-size: 38px;
+  color: #9898a8;
+  border-top: 3px solid rgba(255,255,255,0.1);
+  padding-top: 60px;
+}
+
+.share-footer strong {
+  color: #e61e2a;
+}
