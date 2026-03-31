@@ -511,27 +511,27 @@
 
   <!-- JS principal (ES Module — requer servidor HTTP) -->
   <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
-  <script type="module" src="./js/main.js"></script>
 
   <!-- Template "Fantasma" para compartilhamento (1080x1920) -->
   <div id="share-template">
-    <div class="share-content">
-      <div class="share-header">
-        <h3 class="share-logo">Calculadora de Raridade de Parceiros</h3>
-        <p class="share-subtitle">Meu padrão de exigência:</p>
-      </div>
-      
-      <div class="share-body">
-        <p id="share-filters"></p>
-        <h1 id="share-big-pct">0%</h1>
-        <h2 id="share-proportion">1 em cada — pessoas</h2>
-      </div>
-
-      <div class="share-footer">
-        <p>Faça seu teste em: <strong>ideal-calculator.vercel.app</strong></p>
-      </div>
+    <div class="share-bg-glow"></div>
+    <div class="share-header">
+      <p class="share-eyebrow">Calculadora de Raridade</p>
+      <h2>A Raridade do Meu 'Tipo'</h2>
+    </div>
+    <div class="share-result-box">
+      <p class="share-result-label">O meu mercado disponível é de apenas</p>
+      <h1 id="share-big-pct">0,00%</h1>
+      <h2 id="share-proportion">1 em cada 10.000 pessoas</h2>
+    </div>
+    <div id="share-filters"></div>
+    <div class="share-footer">
+      <p>Faça o seu choque de realidade em:</p>
+      <span id="share-url">ideal-calculator.com</span>
     </div>
   </div>
+
+  <script type="module" src="./js/main.js"></script>
 
 </body>
 </html>

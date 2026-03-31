@@ -402,158 +402,83 @@ function habilitarFormulario() {
   // Apenas finaliza interface de carregamento, menu já liberado via CSS
 }
 
-/**
- * Preenche o template invisível (#share-template) com os dados atuais do filtro e resultado.
- * Agora utiliza Tags dinâmicas em vez de texto corrido.
- */
 function prepararCardFantasma(filtros, resultado) {
-  const container = document.getElementById('share-template');
-  if (!container) return;
+  const tags = [];
+  tags.push(`<span>👤</span> ${filtros.genero === 'Masculino' ? 'Homem' : 'Mulher'}`);
+  tags.push(`<span>📍</span> ${resultado.estadoNome}`);
 
-  const bigPct = container.querySelector('#share-big-pct');
-  const proportion = container.querySelector('#share-proportion');
-  const filtersContainer = container.querySelector('#share-filters');
+  if (filtros.idadeMin > 18 || filtros.idadeMax < 80) tags.push(`<span>⏳</span> ${filtros.idadeMin} a ${filtros.idadeMax} anos`);
+  if (filtros.alturaMin > 150) tags.push(`<span>📏</span> > ${formatAltura(filtros.alturaMin)}`);
+  if (filtros.rendaMin > 0) tags.push(`<span>💰</span> > ${formatRenda(filtros.rendaMin)}`);
 
-  // 1. Probabilidade Grande
-  if (bigPct) bigPct.textContent = formatPct(resultado.probabilidade);
+  if (filtros.excluirObesidade) tags.push('<span>⚖️</span> Sem Obesidade');
+  if (filtros.excluirFumantes) tags.push('<span>🚬</span> Não Fuma');
+  if (filtros.excluirAlcool) tags.push('<span>🍺</span> Não Bebe');
+  if (filtros.excluirFilhos) tags.push('<span>👶</span> Sem Filhos');
 
-  // 2. Proporção (1 em cada X)
-  if (proportion) {
-    const totalPositivo = Math.round(resultado.populacaoEstado * resultado.probabilidade);
-    const ratio = totalPositivo > 0 ? Math.round(resultado.populacaoEstado / totalPositivo) : '—';
-    proportion.textContent = `1 em cada ${ratio.toLocaleString('pt-BR')} pessoas`;
+  if (filtros.escolaridade) {
+    const esc = filtros.escolaridade === 'superior' ? 'Ensino Superior' : filtros.escolaridade === 'medio' ? 'Ensino Médio' : 'Fundamental';
+    tags.push(`<span>🎓</span> ${esc}`);
   }
 
-  // 3. Resumo dos Filtros (Tags Dinâmicas - APENAS restritivos)
-  if (filtersContainer) {
-    filtersContainer.innerHTML = ''; // Limpa tags anteriores
+  if (filtros.raca.length < 5 && filtros.raca.length > 0) tags.push(`<span>🎨</span> ${filtros.raca.length} Raça(s)`);
+  if (filtros.estadoCivil.length < 3 && filtros.estadoCivil.length > 0) tags.push(`<span>💍</span> ${filtros.estadoCivil.join(', ')}`);
+  if (filtros.religiao.length < 5 && filtros.religiao.length > 0) tags.push(`<span>🙏</span> ${filtros.religiao.length} Religião(ões)`);
+  if (filtros.signo.length < 12 && filtros.signo.length > 0) tags.push(`<span>✨</span> ${filtros.signo.length === 1 ? filtros.signo[0] : filtros.signo.length + ' Signos'}`);
 
-    const addTag = (text) => {
-      const span = document.createElement('span');
-      span.className = 'share-tag';
-      span.textContent = text;
-      filtersContainer.appendChild(span);
-    };
+  document.getElementById('share-filters').innerHTML = tags.map(t => `<div class="share-tag">${t}</div>`).join('');
+  document.getElementById('share-big-pct').textContent = formatPct(resultado.probabilidade);
 
-    // --- Filtros Ativos (Criterios do utilizador) ---
-    
-    // Gênero é fundamental
-    addTag(filtros.genero === 'Masculino' ? 'Homens' : 'Mulheres');
-
-    // Idade (Só mostra se mudou do padrão 18-80)
-    if (filtros.idadeMin > 18 || filtros.idadeMax < 80) {
-      addTag(`${filtros.idadeMin}-${filtros.idadeMax} anos`);
-    }
-
-    // Localização (Estado)
-    if (resultado.estadoNome && resultado.estadoNome !== 'Todo o Brasil') {
-      addTag(resultado.estadoNome);
-    }
-
-    // Altura (Apenas se restringiu)
-    if (filtros.alturaMin > 150) {
-      addTag(`Altura > ${formatAltura(filtros.alturaMin)}`);
-    }
-
-    // Renda (Apenas se restringiu)
-    if (filtros.rendaMin > 0) {
-      addTag(`Renda > ${formatRenda(filtros.rendaMin)}`);
-    }
-
-    // Raça
-    if (filtros.raca && filtros.raca.length > 0) {
-      const racaLabel = filtros.raca.length === 1 ? filtros.raca[0] : 'Raça Específica';
-      addTag(racaLabel);
-    }
-
-    // Escolaridade
-    if (filtros.escolaridade) {
-      addTag(filtros.escolaridade);
-    }
-
-    // Estado Civil (Filtro ativo se não forem os 3 selecionados)
-    if (filtros.estadoCivil && filtros.estadoCivil.length < 3) {
-      addTag('Estado Civil');
-    }
-
-    // Religião (Filtro ativo se não forem os 5 selecionados)
-    if (filtros.religiao && filtros.religiao.length < 5) {
-      addTag('Filtro de Religião');
-    }
-
-    // Toggles de Exclusão (Estilo Alerta/Restrição)
-    if (filtros.excluirObesidade) addTag('Sem Obesidade');
-    if (filtros.excluirFumantes)  addTag('Não Fumante');
-    if (filtros.excluirAlcool)    addTag('Abstinente');
-    if (filtros.excluirFilhos)    addTag('Sem Filhos');
-
-    // Signo
-    if (filtros.signo && filtros.signo.length > 0) {
-      addTag('Signo Específico');
-    }
-  }
+  const proporcao = resultado.probabilidade > 0 && resultado.popBaseTotal > 0 ? Math.round(resultado.popBaseTotal / resultado.popAbsoluta) : 0;
+  document.getElementById('share-proportion').textContent = proporcao > 0 ? `1 em cada ${proporcao.toLocaleString('pt-BR')}` : 'Quase impossível';
+  document.getElementById('share-url').textContent = window.location.hostname || 'ideal-calculator.com';
 }
 
-/**
- * Gera uma imagem do #share-template (off-screen) e compartilha/baixa.
- */
 async function compartilhar() {
-  if (!ultimoResultado) return;
-
+  if (!ultimoResultado || !window.html2canvas) return;
   const btn = document.getElementById('share-btn');
-  const ghost = document.getElementById('share-template');
-  if (!btn || !ghost) return;
-
-  const originalText = btn.innerHTML;
+  const txtOriginal = btn.innerHTML;
 
   try {
-    btn.innerHTML = '✨ Gerando imagem...';
+    btn.innerHTML = '📸 A gerar imagem...';
     btn.style.opacity = '0.7';
-    btn.style.pointerEvents = 'none';
 
-    // 1. Preparar dados no fantasma
     prepararCardFantasma(lerFiltros(), ultimoResultado);
 
-    // 2. Tornar visível APENAS para o html2canvas (opacidade 1 mas z-index ainda negativo)
-    ghost.style.opacity = '1';
+    const template = document.getElementById('share-template');
+    template.style.opacity = '1';
 
-    // 3. Capturar (scale 1 pois o template já tem 1080px fixos)
-    const canvas = await html2canvas(ghost, {
-      scale: 1,
-      backgroundColor: '#0b0a0a',
-      useCORS: true,
-      logging: false,
+    const canvas = await html2canvas(template, {
+      scale: 1, // Trava a escala para não estourar a memória no telemóvel
+      backgroundColor: '#050505',
+      logging: false
     });
 
-    // 4. Esconder novamente
-    ghost.style.opacity = '0';
+    template.style.opacity = '0';
 
-    // 5. Processar imagem
-    const blob = await new Promise(resolve => canvas.toBlob(resolve, 'image/png', 0.95));
-    const file = new File([blob], 'meu-choque-de-realidade.png', { type: 'image/png' });
-
-    // 6. Compartilhar ou Baixar
-    if (navigator.canShare && navigator.canShare({ files: [file] })) {
-      await navigator.share({
-        title: 'Meu Choque de Realidade',
-        text: `😱 Olhe meu mercado disponível baseado nos meus critérios! Calcule o seu em: ${window.location.href}`,
-        files: [file],
-      });
-    } else {
-      const link = document.createElement('a');
-      link.href = canvas.toDataURL('image/png');
-      link.download = 'meu-choque-de-realidade.png';
-      link.click();
-    }
-
+    canvas.toBlob(async (blob) => {
+      const file = new File([blob], 'raridade.png', { type: 'image/png' });
+      if (navigator.canShare && navigator.canShare({ files: [file] })) {
+        await navigator.share({
+          files: [file],
+          title: 'Choque de Realidade',
+          text: 'Descubra a sua raridade estatística:'
+        });
+      } else {
+        // Fallback para Download no PC
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'minha-raridade.png';
+        a.click();
+        URL.revokeObjectURL(url);
+      }
+    }, 'image/png');
   } catch (err) {
-    console.error('[Share] Erro:', err);
-    alert('Erro ao gerar imagem para redes sociais.');
+    console.error('Erro na captura:', err);
   } finally {
-    btn.innerHTML = originalText;
-    btn.style.opacity = '';
-    btn.style.pointerEvents = '';
-    ghost.style.opacity = '0';
+    btn.innerHTML = txtOriginal;
+    btn.style.opacity = '1';
   }
 }
 
