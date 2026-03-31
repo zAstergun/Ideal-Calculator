@@ -404,6 +404,7 @@ function habilitarFormulario() {
 
 /**
  * Preenche o template invisível (#share-template) com os dados atuais do filtro e resultado.
+ * Agora utiliza Tags dinâmicas em vez de texto corrido.
  */
 function prepararCardFantasma(filtros, resultado) {
   const container = document.getElementById('share-template');
@@ -411,7 +412,7 @@ function prepararCardFantasma(filtros, resultado) {
 
   const bigPct = container.querySelector('#share-big-pct');
   const proportion = container.querySelector('#share-proportion');
-  const filtersText = container.querySelector('#share-filters');
+  const filtersContainer = container.querySelector('#share-filters');
 
   // 1. Probabilidade Grande
   if (bigPct) bigPct.textContent = formatPct(resultado.probabilidade);
@@ -423,25 +424,73 @@ function prepararCardFantasma(filtros, resultado) {
     proportion.textContent = `1 em cada ${ratio.toLocaleString('pt-BR')} pessoas`;
   }
 
-  // 3. Resumo dos Filtros
-  if (filtersText) {
-    const partes = [];
-    partes.push(filtros.genero === 'Masculino' ? 'Homens' : 'Mulheres');
-    partes.push(`${filtros.idadeMin} a ${filtros.idadeMax} anos`);
+  // 3. Resumo dos Filtros (Tags Dinâmicas - APENAS restritivos)
+  if (filtersContainer) {
+    filtersContainer.innerHTML = ''; // Limpa tags anteriores
 
+    const addTag = (text) => {
+      const span = document.createElement('span');
+      span.className = 'share-tag';
+      span.textContent = text;
+      filtersContainer.appendChild(span);
+    };
+
+    // --- Filtros Ativos (Criterios do utilizador) ---
+    
+    // Gênero é fundamental
+    addTag(filtros.genero === 'Masculino' ? 'Homens' : 'Mulheres');
+
+    // Idade (Só mostra se mudou do padrão 18-80)
+    if (filtros.idadeMin > 18 || filtros.idadeMax < 80) {
+      addTag(`${filtros.idadeMin}-${filtros.idadeMax} anos`);
+    }
+
+    // Localização (Estado)
     if (resultado.estadoNome && resultado.estadoNome !== 'Todo o Brasil') {
-      partes.push(resultado.estadoNome);
+      addTag(resultado.estadoNome);
     }
 
+    // Altura (Apenas se restringiu)
     if (filtros.alturaMin > 150) {
-      partes.push(`Altura > ${formatAltura(filtros.alturaMin)}`);
+      addTag(`Altura > ${formatAltura(filtros.alturaMin)}`);
     }
 
+    // Renda (Apenas se restringiu)
     if (filtros.rendaMin > 0) {
-      partes.push(`Renda > ${formatRendaShort(filtros.rendaMin)}`);
+      addTag(`Renda > ${formatRenda(filtros.rendaMin)}`);
     }
 
-    filtersText.textContent = partes.join('  ·  ');
+    // Raça
+    if (filtros.raca && filtros.raca.length > 0) {
+      const racaLabel = filtros.raca.length === 1 ? filtros.raca[0] : 'Raça Específica';
+      addTag(racaLabel);
+    }
+
+    // Escolaridade
+    if (filtros.escolaridade) {
+      addTag(filtros.escolaridade);
+    }
+
+    // Estado Civil (Filtro ativo se não forem os 3 selecionados)
+    if (filtros.estadoCivil && filtros.estadoCivil.length < 3) {
+      addTag('Estado Civil');
+    }
+
+    // Religião (Filtro ativo se não forem os 5 selecionados)
+    if (filtros.religiao && filtros.religiao.length < 5) {
+      addTag('Filtro de Religião');
+    }
+
+    // Toggles de Exclusão (Estilo Alerta/Restrição)
+    if (filtros.excluirObesidade) addTag('Sem Obesidade');
+    if (filtros.excluirFumantes)  addTag('Não Fumante');
+    if (filtros.excluirAlcool)    addTag('Abstinente');
+    if (filtros.excluirFilhos)    addTag('Sem Filhos');
+
+    // Signo
+    if (filtros.signo && filtros.signo.length > 0) {
+      addTag('Signo Específico');
+    }
   }
 }
 
