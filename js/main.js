@@ -434,52 +434,113 @@ function prepararCardFantasma(filtros, resultado) {
   document.getElementById('share-url').textContent = window.location.hostname || 'ideal-calculator.com';
 }
 
-async function compartilhar() {
+// ══════════════════════════════════════════════════════════════════
+//  MODAL DE PARTILHA & VIRAL LOOP
+// ══════════════════════════════════════════════════════════════════
+let blobAtual = null;
+
+async function abrirModalPreview() {
   if (!ultimoResultado || !window.html2canvas) return;
   const btn = document.getElementById('share-btn');
   const txtOriginal = btn.innerHTML;
 
   try {
-    btn.innerHTML = '📸 A gerar imagem...';
+    btn.innerHTML = '📸 A processar arte...';
     btn.style.opacity = '0.7';
+    btn.style.pointerEvents = 'none';
 
     prepararCardFantasma(lerFiltros(), ultimoResultado);
 
     const template = document.getElementById('share-template');
     template.style.opacity = '1';
 
-    const canvas = await html2canvas(template, {
-      scale: 1, // Trava a escala para não estourar a memória no telemóvel
-      backgroundColor: '#050505',
-      logging: false
+    const canvas = await html2canvas(template, { 
+      scale: 1, 
+      backgroundColor: '#050505', 
+      logging: false 
     });
 
     template.style.opacity = '0';
 
-    canvas.toBlob(async (blob) => {
-      const file = new File([blob], 'raridade.png', { type: 'image/png' });
-      if (navigator.canShare && navigator.canShare({ files: [file] })) {
-        await navigator.share({
-          files: [file],
-          title: 'Choque de Realidade',
-          text: 'Descubra a sua raridade estatística:'
-        });
-      } else {
-        // Fallback para Download no PC
-        const url = URL.createObjectURL(blob);
-        const a = document.createElement('a');
-        a.href = url;
-        a.download = 'minha-raridade.png';
-        a.click();
-        URL.revokeObjectURL(url);
-      }
-    }, 'image/png');
+    blobAtual = await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
+    const imgUrl = URL.createObjectURL(blobAtual);
+
+    document.getElementById('preview-img').src = imgUrl;
+    document.getElementById('preview-modal').classList.remove('hidden');
   } catch (err) {
-    console.error('Erro na captura:', err);
+    console.error('Erro ao gerar imagem:', err);
+    alert('Erro ao gerar a imagem. Tente novamente.');
   } finally {
     btn.innerHTML = txtOriginal;
     btn.style.opacity = '1';
+    btn.style.pointerEvents = 'auto';
   }
+}
+
+function fecharModal() {
+  document.getElementById('preview-modal').classList.add('hidden');
+  setTimeout(() => {
+    const imgEl = document.getElementById('preview-img');
+    if (imgEl.src) {
+      URL.revokeObjectURL(imgEl.src);
+      imgEl.src = '';
+    }
+    blobAtual = null;
+    document.getElementById('share-status').textContent = '';
+  }, 300);
+}
+
+async function executarAcaoPartilha(acaoFn) {
+  const status = document.getElementById('share-status');
+  status.textContent = 'A processar...';
+  try {
+    await acaoFn();
+    status.textContent = '';
+  } catch (e) {
+    status.textContent = '❌ ' + (e.message || 'Erro na operação.');
+    setTimeout(() => { status.textContent = ''; }, 3000);
+  }
+}
+
+// --- Ações dos 5 Botões ---
+async function shareDownload() {
+  await executarAcaoPartilha(async () => {
+    if (!blobAtual) throw new Error("Imagem não encontrada.");
+    const url = URL.createObjectURL(blobAtual);
+    const a = document.createElement('a'); 
+    a.href = url; a.download = 'choque-de-realidade.png'; a.click();
+    URL.revokeObjectURL(url);
+  });
+}
+
+async function shareNative() {
+  await executarAcaoPartilha(async () => {
+    if (!blobAtual) throw new Error("Imagem não encontrada.");
+    const file = new File([blobAtual], 'raridade.png', { type: 'image/png' });
+    if (navigator.canShare && navigator.canShare({ files: [file] })) {
+      await navigator.share({ 
+        files: [file], 
+        title: 'Choque de Realidade', 
+        text: 'Descubra a sua raridade estatística: https://idealcalc.app' 
+      });
+    } else {
+      throw new Error('Navegador desktop não suporta envio direto. Use o Download.');
+    }
+  });
+}
+
+async function shareClipboardAndOpen(urlDestino) {
+  await executarAcaoPartilha(async () => {
+    if (!blobAtual) throw new Error("Imagem não encontrada.");
+    try {
+      const item = new ClipboardItem({ 'image/png': blobAtual });
+      await navigator.clipboard.write([item]);
+      document.getElementById('share-status').textContent = '✅ Imagem copiada! Cole no post/chat (Ctrl+V).';
+      setTimeout(() => { window.open(urlDestino, '_blank'); }, 800);
+    } catch (err) {
+      throw new Error('O navegador bloqueou a cópia automática. Use o Download.');
+    }
+  });
 }
 
 // ══════════════════════════════════════════════════════════════════
@@ -621,8 +682,18 @@ function registrarEventos() {
     executarCalculo(true); // chama com animação para feedback tátil de reset
   });
 
-  // ── Botão Compartilhar ────────────────────────────────────────
-  document.getElementById('share-btn')?.addEventListener('click', compartilhar);
+  // ── Botão Compartilhar (Abre Modal de Preview) ──────────────
+  document.getElementById('share-btn')?.addEventListener('click', abrirModalPreview);
+  document.getElementById('close-modal')?.addEventListener('click', fecharModal);
+  document.getElementById('preview-modal')?.addEventListener('click', (e) => {
+    if (e.target.id === 'preview-modal') fecharModal();
+  });
+
+  document.getElementById('btn-dl')?.addEventListener('click', shareDownload);
+  document.getElementById('btn-wa')?.addEventListener('click', shareNative);
+  document.getElementById('btn-ig')?.addEventListener('click', shareNative);
+  document.getElementById('btn-tw')?.addEventListener('click', () => shareClipboardAndOpen('https://twitter.com/compose/tweet?text=Descobri%20o%20tamanho%20da%20minha%20bolha%20no%20https://idealcalc.app%20(Cole%20a%20imagem%20aqui)'));
+  document.getElementById('btn-dc')?.addEventListener('click', () => shareClipboardAndOpen('https://discord.com/app'));
 }
 
 // ══════════════════════════════════════════════════════════════════
