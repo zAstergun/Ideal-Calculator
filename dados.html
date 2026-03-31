@@ -544,6 +544,63 @@
         </div>
       </div>
 
+      <div class="source-card">
+        <div class="source-card-header">
+          <span class="source-icon">🚬</span>
+          <div>
+            <p class="source-name">Taxa de Tabagismo</p>
+            <a href="data/fumo.json" download class="source-file download-link">fumo.json <span class="dl-icon">↓</span></a>
+          </div>
+        </div>
+        <p class="source-desc">
+          Proporção de não-fumantes por estado, gênero e faixa etária.
+          Fonte: PNS 2019 (Pesquisa Nacional de Saúde). Usado para estimar a fração que não fuma.
+        </p>
+        <div class="source-tags">
+          <span class="tag">PNS 2019</span>
+          <span class="tag neutral">4 faixas etárias</span>
+          <span class="tag neutral">Fator opcional</span>
+        </div>
+      </div>
+
+      <div class="source-card">
+        <div class="source-card-header">
+          <span class="source-icon">🍺</span>
+          <div>
+            <p class="source-name">Consumo de Álcool</p>
+            <a href="data/alcool.json" download class="source-file download-link">alcool.json <span class="dl-icon">↓</span></a>
+          </div>
+        </div>
+        <p class="source-desc">
+          Proporção de não-bebedores por estado, gênero e faixa etária.
+          Fonte: PNS 2019. Usado para estimar a fração que não consome álcool regularmente.
+        </p>
+        <div class="source-tags">
+          <span class="tag">PNS 2019</span>
+          <span class="tag neutral">4 faixas etárias</span>
+          <span class="tag neutral">Fator opcional</span>
+        </div>
+      </div>
+
+      <div class="source-card">
+        <div class="source-card-header">
+          <span class="source-icon">👶</span>
+          <div>
+            <p class="source-name">Taxa de Fecundidade</p>
+            <a href="data/filhos.json" download class="source-file download-link">filhos.json <span class="dl-icon">↓</span></a>
+          </div>
+        </div>
+        <p class="source-desc">
+          Proporção de pessoas sem filhos por estado, gênero e faixa etária.
+          Fonte: Censo 2022. Calculado subtraindo mães/pais da população total, com ajuste demográfico para homens.
+        </p>
+        <div class="source-tags">
+          <span class="tag">Censo 2022</span>
+          <span class="tag neutral">4 faixas etárias</span>
+          <span class="tag neutral">Ajuste demográfico</span>
+        </div>
+      </div>
+
     </div>
 
     <!-- ── 2. Metodologia de Cálculo ──────────────────────────────── -->
@@ -578,6 +635,16 @@
       </div>
 
       <div class="method-block">
+        <p class="method-title">Comportamento e Família — Cruzamento PNS 2019 e Censo</p>
+        <p class="method-text">
+          Os filtros de tabagismo e consumo de álcool usam dados da PNS 2019 cruzados proporcionalmente por idade e gênero.
+          A taxa de "Sem Filhos" foi extraída do Censo 2022 subtraindo o total de mães da população feminina total da idade,
+          com um modificador demográfico aplicado ao mercado masculino (homens tendem a registrar paternidade mais tarde).
+          Estrutura: <code>dados[estado][genero]["18 a 24 anos"]</code> retorna a proporção de "sobrevivência" ao filtro.
+        </p>
+      </div>
+
+      <div class="method-block">
         <p class="method-title">Escopo Geográfico — UF vs. Região vs. Brasil</p>
         <p class="method-text">
           Quando o usuário seleciona um estado específico (ex: SP), os dados de renda, altura, escolaridade e religião
@@ -596,6 +663,9 @@
       <li>A altura segue uma distribuição normal apenas aproximada. Para alturas extremas (abaixo de 1,55m ou acima de 1,90m), o erro pode ser maior.</li>
       <li>Dados de Religião, Raça e Estado Civil referem-se à autodeclaração no Censo 2022. Podem diferir de declarações em contextos de relacionamento.</li>
       <li>A taxa de obesidade da PNAD 2023 é baseada em peso e altura autodeclarados, com tendência a subestimação.</li>
+      <li>Os dados de tabagismo e consumo de álcool (PNS 2019) são autodeclarados e podem subestimar o consumo real.</li>
+      <li>A taxa de "Sem Filhos" é calculada demograficamente e pode não refletir filhos não registrados ou adotivos.</li>
+      <li>Homens tendem a registrar paternidade mais tarde que mulheres registram maternidade, criando um viés demográfico nas estatísticas de filhos.</li>
       <li>Esta ferramenta é para fins de reflexão e entretenimento. Não deve ser usada para discriminar pessoas ou tomar decisões reais de relacionamento.</li>
     </ul>
 
@@ -624,6 +694,11 @@
           <td>POF 2017–2018</td>
           <td>Pesquisa de Orçamentos Familiares — Medidas antropométricas (altura e peso)</td>
           <td><a href="https://www.ibge.gov.br/estatisticas/sociais/saude/24786-pesquisa-de-orcamentos-familiares-2.html" target="_blank" rel="noopener">ibge.gov.br/pof</a></td>
+        </tr>
+        <tr>
+          <td>PNS 2019</td>
+          <td>Pesquisa Nacional de Saúde — Tabagismo, consumo de álcool e outros indicadores de saúde</td>
+          <td><a href="https://www.ibge.gov.br/estatisticas/sociais/saude/9160-pesquisa-nacional-de-saude.html" target="_blank" rel="noopener">ibge.gov.br/pns</a></td>
         </tr>
         <tr>
           <td>SIDRA IBGE</td>
@@ -689,6 +764,48 @@
         <span class="rdl-info">
           <span class="rdl-name">Tabela Obesidade POF</span>
           <span class="rdl-meta">IMC por UF &amp; Faixa Etária · PNAD S</span>
+        </span>
+      </a>
+      <a href="downloads/tabela4173.csv" download class="raw-dl-btn">
+        <span class="rdl-icon">🚬</span>
+        <span class="rdl-info">
+          <span class="rdl-name">Tabela IBGE 4173</span>
+          <span class="rdl-meta">Tabagismo Masculino · PNS 2019</span>
+        </span>
+      </a>
+      <a href="downloads/tabela4179.csv" download class="raw-dl-btn">
+        <span class="rdl-icon">🚬</span>
+        <span class="rdl-info">
+          <span class="rdl-name">Tabela IBGE 4179</span>
+          <span class="rdl-meta">Tabagismo Feminino · PNS 2019</span>
+        </span>
+      </a>
+      <a href="downloads/tabela4400.csv" download class="raw-dl-btn">
+        <span class="rdl-icon">🍺</span>
+        <span class="rdl-info">
+          <span class="rdl-name">Tabela IBGE 4400</span>
+          <span class="rdl-meta">Consumo Álcool Masculino · PNS 2019</span>
+        </span>
+      </a>
+      <a href="downloads/tabela4401.csv" download class="raw-dl-btn">
+        <span class="rdl-icon">🍺</span>
+        <span class="rdl-info">
+          <span class="rdl-name">Tabela IBGE 4401</span>
+          <span class="rdl-meta">Consumo Álcool Feminino · PNS 2019</span>
+        </span>
+      </a>
+      <a href="downloads/tabela96.1.csv" download class="raw-dl-btn">
+        <span class="rdl-icon">👶</span>
+        <span class="rdl-info">
+          <span class="rdl-name">Tabela IBGE 96 (Parte 1)</span>
+          <span class="rdl-meta">Fecundidade Feminina · Censo 2022</span>
+        </span>
+      </a>
+      <a href="downloads/tabela96.3.csv" download class="raw-dl-btn">
+        <span class="rdl-icon">👶</span>
+        <span class="rdl-info">
+          <span class="rdl-name">Tabela IBGE 96 (Parte 3)</span>
+          <span class="rdl-meta">Fecundidade Masculina · Censo 2022</span>
         </span>
       </a>
     </div>

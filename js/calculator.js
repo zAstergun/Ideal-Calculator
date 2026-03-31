@@ -212,6 +212,7 @@ function faixasNoIntervalo(tabela, idMin, idMax) {
     .map(f => ({
       key: f.key,
       peso: Math.min(f.max, idMax) - Math.max(f.min, idMin) + 1,
+      span: f.max - f.min + 1,
     }));
 }
 
@@ -290,15 +291,15 @@ function calcularFiltroEstadoCivil(db, estado, genero, idMin, idMax, statuses) {
   let numSelecionado = 0;
   let pesoTotal = 0;
 
-  for (const { key, peso } of faixas) {
+  for (const { key, peso, span } of faixas) {
     const faixa = base[key];
     if (!faixa) continue;
 
     const totalFaixa = Object.values(faixa).reduce((s, v) => s + v, 0);
     const selecionadoFaixa = statuses.reduce((s, st) => s + (faixa[st] ?? 0), 0);
 
-    numTotal       += totalFaixa     * peso;
-    numSelecionado += selecionadoFaixa * peso;
+    numTotal       += (totalFaixa       / span) * peso;
+    numSelecionado += (selecionadoFaixa / span) * peso;
     pesoTotal      += peso;
   }
 
@@ -360,7 +361,7 @@ function calcularFiltroEscolaridade(db, estado, genero, idMin, idMax, nivel, rac
   let numTotal = 0;
   let numSelecionado = 0;
 
-  for (const { key, peso } of faixas) {
+  for (const { key, peso, span } of faixas) {
     for (const raca of racas) {
       const faixa = safeGet(base, raca, key);
       if (!faixa) continue;
@@ -368,8 +369,8 @@ function calcularFiltroEscolaridade(db, estado, genero, idMin, idMax, nivel, rac
       const totalCelula       = TODAS_CHAVES.reduce((s, ch) => s + (faixa[ch] ?? 0), 0);
       const selecionadoCelula = chavesNumerador.reduce((s, ch) => s + (faixa[ch] ?? 0), 0);
 
-      numTotal       += totalCelula       * peso;
-      numSelecionado += selecionadoCelula * peso;
+      numTotal       += (totalCelula       / span) * peso;
+      numSelecionado += (selecionadoCelula / span) * peso;
     }
   }
 
@@ -412,14 +413,14 @@ function calcularFiltroRaca(db, estado, genero, idMin, idMax, racasSel) {
   let totalGeral = 0;
   let totalSelecionado = 0;
 
-  for (const { key, peso } of faixas) {
+  for (const { key, peso, span } of faixas) {
     for (const raca of TODAS_RACAS) {
       const faixa = safeGet(base, raca, key);
       if (!faixa) continue;
       const popFaixa = Object.values(faixa).reduce((s, v) => s + v, 0);
-      totalGeral += popFaixa * peso;
+      totalGeral += (popFaixa / span) * peso;
       if (racasSel.includes(raca)) {
-        totalSelecionado += popFaixa * peso;
+        totalSelecionado += (popFaixa / span) * peso;
       }
     }
   }
@@ -544,6 +545,27 @@ function calcularFiltroRenda(db, estado, rendaMin) {
  * Mapeamento de faixa etária do usuário para as faixas do obesidade.json (Por_Idade).
  * "18 a 24 anos" | "25 a 39 anos" | "40 a 59 anos" | "60 anos ou mais"
  */
+
+/** Faixas comportamentais (fumo, álcool, filhos) */
+const FAIXAS_COMPORTAMENTAIS = [
+  { key: '18 a 24 anos',    min: 18, max: 24  },
+  { key: '25 a 39 anos',    min: 25, max: 39  },
+  { key: '40 a 59 anos',    min: 40, max: 59  },
+  { key: '60 anos ou mais', min: 60, max: 120 },
+];
+
+/**
+ * Mapeia uma idade específica para a faixa comportamental correspondente.
+ * @param {number} idade
+ * @returns {string} ex: "18 a 24 anos"
+ */
+function mapearFaixaComportamental(idade) {
+  for (const f of FAIXAS_COMPORTAMENTAIS) {
+    if (idade >= f.min && idade <= f.max) return f.key;
+  }
+  return '60 anos ou mais'; // fallback
+}
+
 function getTaxaObesidade(db, estado, genero, idMin, idMax) {
   const porEstado = safeGet(db, 'obesidade', 'Por_Estado', estado, genero);
   const porIdade  = safeGet(db, 'obesidade', 'Por_Idade');
@@ -600,7 +622,7 @@ function calcularFiltroObesidade(db, estado, genero, idMin, idMax, excluir) {
  */
 function getMedianaAltura(db, estado, genero, idMin, idMax) {
   const base = safeGet(db, 'altura', estado, genero);
-  if (!base) return genero === 'Masculino' ? 171 : 159; // fallback nacional
+  if (!base) return genero === 'Masculino' ? 173 : 160; // fallback nacional
 
   const faixas = faixasNoIntervalo(FAIXAS_ALT, idMin, idMax);
   let soma = 0;
@@ -613,7 +635,7 @@ function getMedianaAltura(db, estado, genero, idMin, idMax) {
     pesoTotal += peso;
   }
 
-  return pesoTotal > 0 ? soma / pesoTotal : (genero === 'Masculino' ? 171 : 159);
+  return pesoTotal > 0 ? soma / pesoTotal : (genero === 'Masculino' ? 173 : 160);
 }
 
 /**
@@ -638,6 +660,82 @@ function calcularFiltroAltura(db, estado, genero, idMin, idMax, alturaRequerida)
 }
 
 // ══════════════════════════════════════════════════════════════════
+//  FILTROS COMPORTAMENTAIS E FAMILIARES (FUMO, ÁLCOOL, FILHOS)
+// ══════════════════════════════════════════════════════════════════
+
+/**
+ * Calcula P(não fuma) se o filtro estiver ativado.
+ * Estrutura do JSON: dados[estado][genero]["18 a 24 anos"] = 0.85 (85% não fumam)
+ * @param {Object}  db
+ * @param {string}  estado
+ * @param {string}  genero
+ * @param {number}  idade     idade específica (para buscar a faixa)
+ * @param {boolean} excluir   true = "quero apenas não-fumantes"
+ * @returns {number} proporção em [0,1]
+ */
+function calcularFiltroFumo(db, estado, genero, idade, excluir) {
+  if (!excluir) return 1;
+  
+  const faixa = mapearFaixaComportamental(idade);
+  const taxa = safeGet(db, 'fumo', estado, genero, faixa);
+  
+  if (taxa == null) {
+    console.warn(`[calculator] fumo: dados não encontrados para ${estado}/${genero}/${faixa}`);
+    return 1;
+  }
+  
+  return clamp(taxa);
+}
+
+/**
+ * Calcula P(não bebe) se o filtro estiver ativado.
+ * Estrutura do JSON: dados[estado][genero]["18 a 24 anos"] = 0.70 (70% não bebem)
+ * @param {Object}  db
+ * @param {string}  estado
+ * @param {string}  genero
+ * @param {number}  idade     idade específica (para buscar a faixa)
+ * @param {boolean} excluir   true = "quero apenas não-bebedores"
+ * @returns {number} proporção em [0,1]
+ */
+function calcularFiltroAlcool(db, estado, genero, idade, excluir) {
+  if (!excluir) return 1;
+  
+  const faixa = mapearFaixaComportamental(idade);
+  const taxa = safeGet(db, 'alcool', estado, genero, faixa);
+  
+  if (taxa == null) {
+    console.warn(`[calculator] alcool: dados não encontrados para ${estado}/${genero}/${faixa}`);
+    return 1;
+  }
+  
+  return clamp(taxa);
+}
+
+/**
+ * Calcula P(não tem filhos) se o filtro estiver ativado.
+ * Estrutura do JSON: dados[estado][genero]["18 a 24 anos"] = 0.85 (85% não têm filhos)
+ * @param {Object}  db
+ * @param {string}  estado
+ * @param {string}  genero
+ * @param {number}  idade     idade específica (para buscar a faixa)
+ * @param {boolean} excluir   true = "quero apenas sem filhos"
+ * @returns {number} proporção em [0,1]
+ */
+function calcularFiltroFilhos(db, estado, genero, idade, excluir) {
+  if (!excluir) return 1;
+  
+  const faixa = mapearFaixaComportamental(idade);
+  const taxa = safeGet(db, 'filhos', estado, genero, faixa);
+  
+  if (taxa == null) {
+    console.warn(`[calculator] filhos: dados não encontrados para ${estado}/${genero}/${faixa}`);
+    return 1;
+  }
+  
+  return clamp(taxa);
+}
+
+// ══════════════════════════════════════════════════════════════════
 //  FUNÇÃO PRINCIPAL: calcularRaridade
 // ══════════════════════════════════════════════════════════════════
 
@@ -656,6 +754,9 @@ function calcularFiltroAltura(db, estado, genero, idMin, idMax, alturaRequerida)
  *     escolaridade:     string[]  ex: ["medio","superior"]
  *     religiao:         string[]  ex: ["Católica","Evangélica"]
  *     excluirObesidade: boolean
+ *     excluirFumantes:  boolean
+ *     excluirAlcool:    boolean
+ *     excluirFilhos:    boolean
  *   }
  *
  * @param {Object} db - Banco de dados retornado por dataService.loadAllData()
@@ -669,6 +770,9 @@ function calcularFiltroAltura(db, estado, genero, idMin, idMax, alturaRequerida)
  *     renda:         number,
  *     obesidade:     number,
  *     altura:        number,
+ *     fumo:          number,
+ *     alcool:        number,
+ *     filhos:        number,
  *   },
  *   estadoNome:      string,
  *   medianaAltura:   number,   // cm — para exibição no breakdown
@@ -687,6 +791,9 @@ function calcularRaridadeEstado(filtros, db) {
     escolaridade,
     religiao,
     excluirObesidade,
+    excluirFumantes  = false,
+    excluirAlcool    = false,
+    excluirFilhos    = false,
   } = filtros;
 
   const estadoNome = UF_TO_NOME[estadoUF] ?? estadoUF;
@@ -713,8 +820,13 @@ function calcularRaridadeEstado(filtros, db) {
     const pRen = calcularFiltroRenda(db, estadoNome, rendaMin); // Renda independe de age no json
     const pO = calcularFiltroObesidade(db, estadoNome, genero, age, age, excluirObesidade);
     const pA = calcularFiltroAltura(db, estadoNome, genero, age, age, alturaMin);
+    
+    // Novos filtros comportamentais e familiares
+    const pFumo   = calcularFiltroFumo(db, estadoNome, genero, age, excluirFumantes);
+    const pAlcool = calcularFiltroAlcool(db, estadoNome, genero, age, excluirAlcool);
+    const pFilhos = calcularFiltroFilhos(db, estadoNome, genero, age, excluirFilhos);
 
-    const matchAno = popAno * pR * pC * pE * pRel * pRen * pO * pA;
+    const matchAno = popAno * pR * pC * pE * pRel * pRen * pO * pA * pFumo * pAlcool * pFilhos;
     popMatchAbsoluta += matchAno;
   }
 
@@ -731,6 +843,27 @@ function calcularRaridadeEstado(filtros, db) {
   const pRenMedia = calcularFiltroRenda(db, estadoNome, rendaMin);
   const pObsMedia = calcularFiltroObesidade(db, estadoNome, genero, idadeMin, idadeMax, excluirObesidade);
   const pAltMedia = calcularFiltroAltura(db, estadoNome, genero, idadeMin, idadeMax, alturaMin);
+  
+  // Calcula médias dos novos filtros comportamentais (média ponderada por faixa)
+  let pFumoMedia = 1, pAlcoolMedia = 1, pFilhosMedia = 1;
+  if (excluirFumantes || excluirAlcool || excluirFilhos) {
+    let somaFumo = 0, somaAlcool = 0, somaFilhos = 0, pesoTotal = 0;
+    for (let age = idadeMin; age <= idadeMax; age++) {
+      const popInfo = calcularFiltroIdade(db, estadoNome, genero, age, age);
+      const peso = popInfo.popSelecionada;
+      if (peso > 0) {
+        somaFumo   += calcularFiltroFumo(db, estadoNome, genero, age, excluirFumantes) * peso;
+        somaAlcool += calcularFiltroAlcool(db, estadoNome, genero, age, excluirAlcool) * peso;
+        somaFilhos += calcularFiltroFilhos(db, estadoNome, genero, age, excluirFilhos) * peso;
+        pesoTotal  += peso;
+      }
+    }
+    if (pesoTotal > 0) {
+      pFumoMedia   = somaFumo / pesoTotal;
+      pAlcoolMedia = somaAlcool / pesoTotal;
+      pFilhosMedia = somaFilhos / pesoTotal;
+    }
+  }
 
   // ── Resultado final ──────────────────────────────────────────────
   const medianaAltura = getMedianaAltura(db, estadoNome, genero, idadeMin, idadeMax);
@@ -748,6 +881,9 @@ function calcularRaridadeEstado(filtros, db) {
       renda:        pRenMedia,
       obesidade:    pObsMedia,
       altura:       pAltMedia,
+      fumo:         pFumoMedia,
+      alcool:       pAlcoolMedia,
+      filhos:       pFilhosMedia,
     },
     estadoNome,
     medianaAltura,
@@ -794,6 +930,7 @@ export function calcularRaridade(filtros, db) {
   const aggFatores = {
     idade: 0, raca: 0, estadoCivil: 0, escolaridade: 0,
     religiao: 0, renda: 0, obesidade: 0, altura: 0,
+    fumo: 0, alcool: 0, filhos: 0,
   };
   let aggMedianaAltura = 0;
 
@@ -814,6 +951,9 @@ export function calcularRaridade(filtros, db) {
       aggFatores.renda        += res.fatores.renda * base;
       aggFatores.obesidade    += res.fatores.obesidade * base;
       aggFatores.altura       += res.fatores.altura * base;
+      aggFatores.fumo         += res.fatores.fumo * base;
+      aggFatores.alcool       += res.fatores.alcool * base;
+      aggFatores.filhos       += res.fatores.filhos * base;
       aggMedianaAltura += res.medianaAltura * base;
     }
   }
@@ -844,6 +984,9 @@ export function calcularRaridade(filtros, db) {
       renda:        aggFatores.renda,
       obesidade:    aggFatores.obesidade,
       altura:       aggFatores.altura,
+      fumo:         aggFatores.fumo,
+      alcool:       aggFatores.alcool,
+      filhos:       aggFatores.filhos,
     },
     estadoNome: nomeRegiao,   // 'Todo o Brasil' | 'Região Sudeste' etc.
     medianaAltura: aggMedianaAltura,

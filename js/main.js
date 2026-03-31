@@ -96,6 +96,9 @@ function lerFiltros() {
   ).map(cb => cb.value);
 
   const excluirObesidade = document.getElementById('excluir-obesidade')?.checked ?? false;
+  const excluirFumantes  = document.getElementById('excluir-fumantes')?.checked  ?? false;
+  const excluirAlcool    = document.getElementById('excluir-alcool')?.checked    ?? false;
+  const excluirFilhos    = document.getElementById('excluir-filhos')?.checked    ?? false;
 
   const raca = Array.from(
     document.querySelectorAll('input[name="raca"]:checked')
@@ -110,10 +113,13 @@ function lerFiltros() {
     rendaMin,
     // raca vazio = todas as raças
     raca,
-    estadoCivil:      estadoCivil.length  > 0 ? estadoCivil  : ['Solteiro'],
+    estadoCivil:      estadoCivil.length  > 0 ? estadoCivil  : ['Solteiro', 'Casado', 'Divorciado'],
     escolaridade,
     religiao:         religiao.length     > 0 ? religiao     : ['Católica','Evangélica','Espírita','Matriz Africana','Sem Religião'],
     excluirObesidade,
+    excluirFumantes,
+    excluirAlcool,
+    excluirFilhos,
   };
 }
 
@@ -308,6 +314,9 @@ function renderizarResultado(resultado, filtros, animado = false) {
     'bd-renda':  { label: 'Renda',         val: fatores.renda        },
     'bd-obesity':{ label: 'Peso',          val: fatores.obesidade    },
     'bd-altura': { label: 'Altura',        val: fatores.altura       },
+    'bd-fumo':   { label: 'Tabagismo',     val: fatores.fumo         },
+    'bd-alcool': { label: 'Álcool',        val: fatores.alcool       },
+    'bd-filhos': { label: 'Filhos',        val: fatores.filhos       },
   };
 
   for (const [id, { val }] of Object.entries(bdMap)) {
@@ -541,6 +550,11 @@ function registrarEventos() {
 
   // ── Toggle obesidade ──────────────────────────────────────────
   document.getElementById('excluir-obesidade')?.addEventListener('change', calcDebounced);
+
+  // ── Toggles comportamentais e familiares ──────────────────────
+  document.getElementById('excluir-fumantes')?.addEventListener('change', calcDebounced);
+  document.getElementById('excluir-alcool')?.addEventListener('change', calcDebounced);
+  document.getElementById('excluir-filhos')?.addEventListener('change', calcDebounced);
 
   // ── Botão Restaurar Padrões ───────────────────────────────────
   document.getElementById('btn-reset')?.addEventListener('click', () => {

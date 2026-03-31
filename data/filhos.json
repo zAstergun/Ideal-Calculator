@@ -1,0 +1,380 @@
+{
+  "Acre": {
+    "Masculino": {
+      "18 a 24 anos": 0.8522,
+      "25 a 39 anos": 0.4618,
+      "40 a 59 anos": 0.219,
+      "60 anos ou mais": 0.1282
+    },
+    "Feminino": {
+      "18 a 24 anos": 0.6306,
+      "25 a 39 anos": 0.1721,
+      "40 a 59 anos": 0.0811,
+      "60 anos ou mais": 0.0823
+    }
+  },
+  "Alagoas": {
+    "Masculino": {
+      "18 a 24 anos": 0.8751,
+      "25 a 39 anos": 0.497,
+      "40 a 59 anos": 0.2402,
+      "60 anos ou mais": 0.1574
+    },
+    "Feminino": {
+      "18 a 24 anos": 0.6876,
+      "25 a 39 anos": 0.2261,
+      "40 a 59 anos": 0.1062,
+      "60 anos ou mais": 0.113
+    }
+  },
+  "Amapá": {
+    "Masculino": {
+      "18 a 24 anos": 0.8606,
+      "25 a 39 anos": 0.4708,
+      "40 a 59 anos": 0.2167,
+      "60 anos ou mais": 0.1123
+    },
+    "Feminino": {
+      "18 a 24 anos": 0.6515,
+      "25 a 39 anos": 0.1858,
+      "40 a 59 anos": 0.0785,
+      "60 anos ou mais": 0.0656
+    }
+  },
+  "Amazonas": {
+    "Masculino": {
+      "18 a 24 anos": 0.8599,
+      "25 a 39 anos": 0.4912,
+      "40 a 59 anos": 0.2401,
+      "60 anos ou mais": 0.1512
+    },
+    "Feminino": {
+      "18 a 24 anos": 0.6496,
+      "25 a 39 anos": 0.2172,
+      "40 a 59 anos": 0.106,
+      "60 anos ou mais": 0.1065
+    }
+  },
+  "Bahia": {
+    "Masculino": {
+      "18 a 24 anos": 0.8859,
+      "25 a 39 anos": 0.5183,
+      "40 a 59 anos": 0.2489,
+      "60 anos ou mais": 0.1664
+    },
+    "Feminino": {
+      "18 a 24 anos": 0.7147,
+      "25 a 39 anos": 0.2589,
+      "40 a 59 anos": 0.1163,
+      "60 anos ou mais": 0.1226
+    }
+  },
+  "Ceará": {
+    "Masculino": {
+      "18 a 24 anos": 0.8946,
+      "25 a 39 anos": 0.518,
+      "40 a 59 anos": 0.26,
+      "60 anos ou mais": 0.1838
+    },
+    "Feminino": {
+      "18 a 24 anos": 0.7366,
+      "25 a 39 anos": 0.2584,
+      "40 a 59 anos": 0.1294,
+      "60 anos ou mais": 0.1409
+    }
+  },
+  "Distrito Federal": {
+    "Masculino": {
+      "18 a 24 anos": 0.9186,
+      "25 a 39 anos": 0.569,
+      "40 a 59 anos": 0.2653,
+      "60 anos ou mais": 0.1576
+    },
+    "Feminino": {
+      "18 a 24 anos": 0.7965,
+      "25 a 39 anos": 0.337,
+      "40 a 59 anos": 0.1357,
+      "60 anos ou mais": 0.1133
+    }
+  },
+  "Espírito Santo": {
+    "Masculino": {
+      "18 a 24 anos": 0.9002,
+      "25 a 39 anos": 0.522,
+      "40 a 59 anos": 0.2395,
+      "60 anos ou mais": 0.1364
+    },
+    "Feminino": {
+      "18 a 24 anos": 0.7505,
+      "25 a 39 anos": 0.2646,
+      "40 a 59 anos": 0.1053,
+      "60 anos ou mais": 0.0909
+    }
+  },
+  "Goiás": {
+    "Masculino": {
+      "18 a 24 anos": 0.8892,
+      "25 a 39 anos": 0.4955,
+      "40 a 59 anos": 0.2319,
+      "60 anos ou mais": 0.1422
+    },
+    "Feminino": {
+      "18 a 24 anos": 0.723,
+      "25 a 39 anos": 0.2239,
+      "40 a 59 anos": 0.0964,
+      "60 anos ou mais": 0.0971
+    }
+  },
+  "Maranhão": {
+    "Masculino": {
+      "18 a 24 anos": 0.8632,
+      "25 a 39 anos": 0.4813,
+      "40 a 59 anos": 0.2302,
+      "60 anos ou mais": 0.1393
+    },
+    "Feminino": {
+      "18 a 24 anos": 0.6581,
+      "25 a 39 anos": 0.202,
+      "40 a 59 anos": 0.0944,
+      "60 anos ou mais": 0.094
+    }
+  },
+  "Mato Grosso": {
+    "Masculino": {
+      "18 a 24 anos": 0.8761,
+      "25 a 39 anos": 0.4783,
+      "40 a 59 anos": 0.2204,
+      "60 anos ou mais": 0.1212
+    },
+    "Feminino": {
+      "18 a 24 anos": 0.6904,
+      "25 a 39 anos": 0.1973,
+      "40 a 59 anos": 0.0828,
+      "60 anos ou mais": 0.075
+    }
+  },
+  "Mato Grosso do Sul": {
+    "Masculino": {
+      "18 a 24 anos": 0.8783,
+      "25 a 39 anos": 0.4857,
+      "40 a 59 anos": 0.2193,
+      "60 anos ou mais": 0.1195
+    },
+    "Feminino": {
+      "18 a 24 anos": 0.6958,
+      "25 a 39 anos": 0.2088,
+      "40 a 59 anos": 0.0816,
+      "60 anos ou mais": 0.0732
+    }
+  },
+  "Minas Gerais": {
+    "Masculino": {
+      "18 a 24 anos": 0.9113,
+      "25 a 39 anos": 0.5373,
+      "40 a 59 anos": 0.2598,
+      "60 anos ou mais": 0.1801
+    },
+    "Feminino": {
+      "18 a 24 anos": 0.7782,
+      "25 a 39 anos": 0.2882,
+      "40 a 59 anos": 0.1292,
+      "60 anos ou mais": 0.1369
+    }
+  },
+  "Paraná": {
+    "Masculino": {
+      "18 a 24 anos": 0.8989,
+      "25 a 39 anos": 0.5071,
+      "40 a 59 anos": 0.2344,
+      "60 anos ou mais": 0.1301
+    },
+    "Feminino": {
+      "18 a 24 anos": 0.7473,
+      "25 a 39 anos": 0.2418,
+      "40 a 59 anos": 0.0993,
+      "60 anos ou mais": 0.0843
+    }
+  },
+  "Paraíba": {
+    "Masculino": {
+      "18 a 24 anos": 0.8881,
+      "25 a 39 anos": 0.5092,
+      "40 a 59 anos": 0.2548,
+      "60 anos ou mais": 0.1738
+    },
+    "Feminino": {
+      "18 a 24 anos": 0.7203,
+      "25 a 39 anos": 0.2449,
+      "40 a 59 anos": 0.1233,
+      "60 anos ou mais": 0.1303
+    }
+  },
+  "Pará": {
+    "Masculino": {
+      "18 a 24 anos": 0.8584,
+      "25 a 39 anos": 0.4778,
+      "40 a 59 anos": 0.2276,
+      "60 anos ou mais": 0.1352
+    },
+    "Feminino": {
+      "18 a 24 anos": 0.646,
+      "25 a 39 anos": 0.1966,
+      "40 a 59 anos": 0.0913,
+      "60 anos ou mais": 0.0897
+    }
+  },
+  "Pernambuco": {
+    "Masculino": {
+      "18 a 24 anos": 0.8883,
+      "25 a 39 anos": 0.5183,
+      "40 a 59 anos": 0.2621,
+      "60 anos ou mais": 0.1747
+    },
+    "Feminino": {
+      "18 a 24 anos": 0.7207,
+      "25 a 39 anos": 0.2589,
+      "40 a 59 anos": 0.1319,
+      "60 anos ou mais": 0.1312
+    }
+  },
+  "Piauí": {
+    "Masculino": {
+      "18 a 24 anos": 0.8831,
+      "25 a 39 anos": 0.5011,
+      "40 a 59 anos": 0.2472,
+      "60 anos ou mais": 0.1541
+    },
+    "Feminino": {
+      "18 a 24 anos": 0.7077,
+      "25 a 39 anos": 0.2325,
+      "40 a 59 anos": 0.1143,
+      "60 anos ou mais": 0.1096
+    }
+  },
+  "Rio Grande do Norte": {
+    "Masculino": {
+      "18 a 24 anos": 0.8878,
+      "25 a 39 anos": 0.51,
+      "40 a 59 anos": 0.2481,
+      "60 anos ou mais": 0.1573
+    },
+    "Feminino": {
+      "18 a 24 anos": 0.7195,
+      "25 a 39 anos": 0.2461,
+      "40 a 59 anos": 0.1154,
+      "60 anos ou mais": 0.1129
+    }
+  },
+  "Rio Grande do Sul": {
+    "Masculino": {
+      "18 a 24 anos": 0.9139,
+      "25 a 39 anos": 0.5419,
+      "40 a 59 anos": 0.2449,
+      "60 anos ou mais": 0.1593
+    },
+    "Feminino": {
+      "18 a 24 anos": 0.7847,
+      "25 a 39 anos": 0.2953,
+      "40 a 59 anos": 0.1116,
+      "60 anos ou mais": 0.1151
+    }
+  },
+  "Rio de Janeiro": {
+    "Masculino": {
+      "18 a 24 anos": 0.9091,
+      "25 a 39 anos": 0.5557,
+      "40 a 59 anos": 0.2797,
+      "60 anos ou mais": 0.1838
+    },
+    "Feminino": {
+      "18 a 24 anos": 0.7729,
+      "25 a 39 anos": 0.3165,
+      "40 a 59 anos": 0.1526,
+      "60 anos ou mais": 0.1408
+    }
+  },
+  "Rondônia": {
+    "Masculino": {
+      "18 a 24 anos": 0.874,
+      "25 a 39 anos": 0.4606,
+      "40 a 59 anos": 0.2106,
+      "60 anos ou mais": 0.0994
+    },
+    "Feminino": {
+      "18 a 24 anos": 0.685,
+      "25 a 39 anos": 0.1702,
+      "40 a 59 anos": 0.0713,
+      "60 anos ou mais": 0.052
+    }
+  },
+  "Roraima": {
+    "Masculino": {
+      "18 a 24 anos": 0.8586,
+      "25 a 39 anos": 0.4786,
+      "40 a 59 anos": 0.2262,
+      "60 anos ou mais": 0.1555
+    },
+    "Feminino": {
+      "18 a 24 anos": 0.6466,
+      "25 a 39 anos": 0.1979,
+      "40 a 59 anos": 0.0896,
+      "60 anos ou mais": 0.1111
+    }
+  },
+  "Santa Catarina": {
+    "Masculino": {
+      "18 a 24 anos": 0.9103,
+      "25 a 39 anos": 0.5192,
+      "40 a 59 anos": 0.2226,
+      "60 anos ou mais": 0.1209
+    },
+    "Feminino": {
+      "18 a 24 anos": 0.7757,
+      "25 a 39 anos": 0.2604,
+      "40 a 59 anos": 0.0854,
+      "60 anos ou mais": 0.0746
+    }
+  },
+  "Sergipe": {
+    "Masculino": {
+      "18 a 24 anos": 0.8918,
+      "25 a 39 anos": 0.5157,
+      "40 a 59 anos": 0.2382,
+      "60 anos ou mais": 0.1584
+    },
+    "Feminino": {
+      "18 a 24 anos": 0.7294,
+      "25 a 39 anos": 0.255,
+      "40 a 59 anos": 0.1038,
+      "60 anos ou mais": 0.1141
+    }
+  },
+  "São Paulo": {
+    "Masculino": {
+      "18 a 24 anos": 0.9131,
+      "25 a 39 anos": 0.5588,
+      "40 a 59 anos": 0.2697,
+      "60 anos ou mais": 0.1696
+    },
+    "Feminino": {
+      "18 a 24 anos": 0.7827,
+      "25 a 39 anos": 0.3212,
+      "40 a 59 anos": 0.1409,
+      "60 anos ou mais": 0.1259
+    }
+  },
+  "Tocantins": {
+    "Masculino": {
+      "18 a 24 anos": 0.8657,
+      "25 a 39 anos": 0.4668,
+      "40 a 59 anos": 0.2174,
+      "60 anos ou mais": 0.1188
+    },
+    "Feminino": {
+      "18 a 24 anos": 0.6642,
+      "25 a 39 anos": 0.1797,
+      "40 a 59 anos": 0.0793,
+      "60 anos ou mais": 0.0724
+    }
+  }
+}

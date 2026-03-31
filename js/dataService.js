@@ -14,6 +14,9 @@ const DATA_PATHS = {
   obesidade:   './data/obesidade.json',
   religiao:    './data/religiao.json',
   renda:       './data/renda.json',
+  fumo:        './data/fumo.json',
+  alcool:      './data/alcool.json',
+  filhos:      './data/filhos.json',
 };
 
 // Banco em memória — preenchido após loadAllData()

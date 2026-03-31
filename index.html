@@ -239,7 +239,7 @@
             </div>
           </div>
 
-          <!-- 10 · Filtro físico -->
+          <!-- 10 · Filtros Opcionais -->
           <div class="filter-group no-border">
             <div class="toggle-row">
               <div class="toggle-info">
@@ -252,6 +252,50 @@
               </div>
             </div>
           </div>
+
+          <!-- 11 · Filtros Comportamentais e Familiares -->
+          <div class="filter-group no-border">
+            <div class="toggle-row">
+              <div class="toggle-info">
+                <h3 class="toggle-title">Não fuma</h3>
+                <p class="toggle-desc">Exclui fumantes com base na PNS 2019.</p>
+              </div>
+              <div class="toggle-wrap">
+                <input type="checkbox" id="excluir-fumantes" />
+                <label class="toggle-track" for="excluir-fumantes"></label>
+              </div>
+            </div>
+          </div>
+
+          <div class="filter-group no-border">
+            <div class="toggle-row">
+              <div class="toggle-info">
+                <h3 class="toggle-title">Não bebe</h3>
+                <p class="toggle-desc">Exclui consumidores de álcool com base na PNS 2019.</p>
+              </div>
+              <div class="toggle-wrap">
+                <input type="checkbox" id="excluir-alcool" />
+                <label class="toggle-track" for="excluir-alcool"></label>
+              </div>
+            </div>
+          </div>
+
+          <div class="filter-group no-border">
+            <div class="toggle-row">
+              <div class="toggle-info">
+                <h3 class="toggle-title">Não tem filhos</h3>
+                <p class="toggle-desc">Exclui pessoas com filhos com base no Censo.</p>
+              </div>
+              <div class="toggle-wrap">
+                <input type="checkbox" id="excluir-filhos" />
+                <label class="toggle-track" for="excluir-filhos"></label>
+              </div>
+            </div>
+          </div>
+
+          <p class="filter-info" style="font-size: 0.78rem; color: var(--text-muted); line-height: 1.6; margin-top: 12px; opacity: 0.85;">
+            Baseado em cruzamentos da PNS 2019 e Censo. Homens tendem a registrar a paternidade demograficamente mais tarde que mulheres, as estatísticas refletem esse desvio.
+          </p>
         </div>
 
       </form><!-- /form-col -->
@@ -340,6 +384,21 @@
               <span class="bc-name">Altura</span>
               <span class="bc-value" id="bd-altura">—</span>
               <span class="bc-extra" id="bd-altura-media"></span>
+            </div>
+            <div class="breakdown-cell">
+              <span class="bc-icon">🚬</span>
+              <span class="bc-name">Tabagismo</span>
+              <span class="bc-value" id="bd-fumo">Não filtrado</span>
+            </div>
+            <div class="breakdown-cell">
+              <span class="bc-icon">🍺</span>
+              <span class="bc-name">Álcool</span>
+              <span class="bc-value" id="bd-alcool">Não filtrado</span>
+            </div>
+            <div class="breakdown-cell">
+              <span class="bc-icon">👶</span>
+              <span class="bc-name">Filhos</span>
+              <span class="bc-value" id="bd-filhos">Não filtrado</span>
             </div>
           </div>
 
