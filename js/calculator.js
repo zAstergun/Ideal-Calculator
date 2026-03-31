@@ -736,6 +736,29 @@ function calcularFiltroFilhos(db, estado, genero, idade, excluir) {
 }
 
 // ══════════════════════════════════════════════════════════════════
+//  FILTRO 7 — SIGNOS (Baseado na frequência de nascimentos)
+// ══════════════════════════════════════════════════════════════════
+
+/**
+ * Calcula a proporção da população que possui os signos selecionados.
+ * Fonte: signos.json (pre-calculado a partir da Tabela 2612 - IBGE)
+ * @param {Object}   db
+ * @param {string[]} signosSel  ex: ["Peixes", "Áries"]
+ * @returns {number} proporção em [0,1]
+ */
+function calcularFiltroSigno(db, signosSel) {
+  if (!signosSel || signosSel.length === 0) return 1;
+  const base = safeGet(db, 'signos');
+  if (!base) return 1;
+  
+  let totalProb = 0;
+  for (const signo of signosSel) {
+    totalProb += (base[signo] ?? 0);
+  }
+  return clamp(totalProb);
+}
+
+// ══════════════════════════════════════════════════════════════════
 //  FUNÇÃO PRINCIPAL: calcularRaridade
 // ══════════════════════════════════════════════════════════════════
 
@@ -794,6 +817,7 @@ function calcularRaridadeEstado(filtros, db) {
     excluirFumantes  = false,
     excluirAlcool    = false,
     excluirFilhos    = false,
+    signo            = [],
   } = filtros;
 
   const estadoNome = UF_TO_NOME[estadoUF] ?? estadoUF;
@@ -826,7 +850,9 @@ function calcularRaridadeEstado(filtros, db) {
     const pAlcool = calcularFiltroAlcool(db, estadoNome, genero, age, excluirAlcool);
     const pFilhos = calcularFiltroFilhos(db, estadoNome, genero, age, excluirFilhos);
 
-    const matchAno = popAno * pR * pC * pE * pRel * pRen * pO * pA * pFumo * pAlcool * pFilhos;
+    const pSigno = calcularFiltroSigno(db, signo);
+
+    const matchAno = popAno * pR * pC * pE * pRel * pRen * pO * pA * pFumo * pAlcool * pFilhos * pSigno;
     popMatchAbsoluta += matchAno;
   }
 
@@ -884,6 +910,7 @@ function calcularRaridadeEstado(filtros, db) {
       fumo:         pFumoMedia,
       alcool:       pAlcoolMedia,
       filhos:       pFilhosMedia,
+      signo:        calcularFiltroSigno(db, signo),
     },
     estadoNome,
     medianaAltura,
@@ -930,7 +957,7 @@ export function calcularRaridade(filtros, db) {
   const aggFatores = {
     idade: 0, raca: 0, estadoCivil: 0, escolaridade: 0,
     religiao: 0, renda: 0, obesidade: 0, altura: 0,
-    fumo: 0, alcool: 0, filhos: 0,
+    fumo: 0, alcool: 0, filhos: 0, signo: 0,
   };
   let aggMedianaAltura = 0;
 
@@ -954,6 +981,7 @@ export function calcularRaridade(filtros, db) {
       aggFatores.fumo         += res.fatores.fumo * base;
       aggFatores.alcool       += res.fatores.alcool * base;
       aggFatores.filhos       += res.fatores.filhos * base;
+      aggFatores.signo        += res.fatores.signo * base;
       aggMedianaAltura += res.medianaAltura * base;
     }
   }
@@ -987,6 +1015,7 @@ export function calcularRaridade(filtros, db) {
       fumo:         aggFatores.fumo,
       alcool:       aggFatores.alcool,
       filhos:       aggFatores.filhos,
+      signo:        aggFatores.signo,
     },
     estadoNome: nomeRegiao,   // 'Todo o Brasil' | 'Região Sudeste' etc.
     medianaAltura: aggMedianaAltura,

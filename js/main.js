@@ -79,9 +79,9 @@ function lerFiltros() {
   const estadoUF  = estadoVal === 'ALL' ? regiaoVal : estadoVal;
 
   const idadeMin = Math.max(18, Math.min(79, parseInt(document.getElementById('idade-min')?.value) || 18));
-  const idadeMax = Math.max(idadeMin + 1, Math.min(80, parseInt(document.getElementById('idade-max')?.value) || 35));
+  const idadeMax = Math.max(idadeMin + 1, Math.min(80, parseInt(document.getElementById('idade-max')?.value) || 80));
 
-  const alturaMin = parseInt(document.getElementById('altura-slider')?.value) || 170;
+  const alturaMin = parseInt(document.getElementById('altura-slider')?.value) || 150;
   const rendaMin  = parseInt(document.getElementById('renda-slider')?.value)  || 0;
 
   const estadoCivil = Array.from(
@@ -104,6 +104,10 @@ function lerFiltros() {
     document.querySelectorAll('input[name="raca"]:checked')
   ).map(cb => cb.value);
 
+  const signo = Array.from(
+    document.querySelectorAll('input[name="signo"]:checked')
+  ).map(cb => cb.value);
+
   return {
     genero,
     estadoUF,
@@ -113,6 +117,8 @@ function lerFiltros() {
     rendaMin,
     // raca vazio = todas as raças
     raca,
+    // signo vazio = todos os signos
+    signo,
     estadoCivil:      estadoCivil.length  > 0 ? estadoCivil  : ['Solteiro', 'Casado', 'Divorciado'],
     escolaridade,
     religiao:         religiao.length     > 0 ? religiao     : ['Católica','Evangélica','Espírita','Matriz Africana','Sem Religião'],
@@ -317,6 +323,7 @@ function renderizarResultado(resultado, filtros, animado = false) {
     'bd-fumo':   { label: 'Tabagismo',     val: fatores.fumo         },
     'bd-alcool': { label: 'Álcool',        val: fatores.alcool       },
     'bd-filhos': { label: 'Filhos',        val: fatores.filhos       },
+    'bd-signo':  { label: 'Signo',         val: fatores.signo        },
   };
 
   for (const [id, { val }] of Object.entries(bdMap)) {
@@ -491,14 +498,14 @@ function registrarEventos() {
 
   idMin?.addEventListener('input', () => {
     let v = parseInt(idMin.value) || 18;
-    const maxV = parseInt(idMax.value) || 35;
+    const maxV = parseInt(idMax.value) || 80;
     if (v >= maxV) idMin.value = Math.max(18, maxV - 1);
     atualizarLabelsSliders();
     calcDebounced();
   });
 
   idMax?.addEventListener('input', () => {
-    let v = parseInt(idMax.value) || 35;
+    let v = parseInt(idMax.value) || 80;
     const minV = parseInt(idMin.value) || 18;
     if (v <= minV) idMax.value = Math.min(80, minV + 1);
     atualizarLabelsSliders();
@@ -541,8 +548,8 @@ function registrarEventos() {
     });
   });
 
-  // ── Checkboxes (estado_civil, religião, raça) ──────────────────
-  ['estado_civil', 'religiao', 'raca'].forEach(name => {
+  // ── Checkboxes (estado_civil, religião, raça, signo) ─────────
+  ['estado_civil', 'religiao', 'raca', 'signo'].forEach(name => {
     document.querySelectorAll(`input[name="${name}"]`).forEach(cb => {
       cb.addEventListener('change', calcDebounced);
     });

@@ -17,6 +17,7 @@ const DATA_PATHS = {
   fumo:        './data/fumo.json',
   alcool:      './data/alcool.json',
   filhos:      './data/filhos.json',
+  signos:      './data/signos.json',
 };
 
 // Banco em memória — preenchido após loadAllData()

@@ -101,14 +101,14 @@
           <div class="filter-group">
             <div class="slider-header" style="margin-bottom: 2px;">
               <p class="card-label" style="margin-bottom:0">Faixa etária</p>
-              <span class="slider-value" id="idade-range-text" style="font-size: 1.15rem;">Entre 25 e 35 anos</span>
+              <span class="slider-value" id="idade-range-text" style="font-size: 1.15rem;">Entre 18 e 80 anos</span>
             </div>
             
             <div class="dual-slider-container">
               <div class="dual-slider-track"></div>
               <div class="dual-slider-fill" id="idade-fill"></div>
-              <input type="range" id="idade-min" class="dual-range" min="18" max="80" value="25" step="1" />
-              <input type="range" id="idade-max" class="dual-range" min="18" max="80" value="35" step="1" />
+              <input type="range" id="idade-min" class="dual-range" min="18" max="80" value="18" step="1" />
+              <input type="range" id="idade-max" class="dual-range" min="18" max="80" value="80" step="1" />
             </div>
             
             <div class="slider-labels" style="margin-top: 10px;">
@@ -121,9 +121,9 @@
           <div class="filter-group">
             <div class="slider-header">
               <p class="card-label" style="margin-bottom:0">Altura mínima</p>
-              <span class="slider-value" id="altura-display">1,75m</span>
+              <span class="slider-value" id="altura-display">1,50m</span>
             </div>
-            <input type="range" id="altura-slider" class="styled-range" min="150" max="210" value="175" step="1" />
+            <input type="range" id="altura-slider" class="styled-range" min="150" max="210" value="150" step="1" />
             <div class="slider-labels">
               <span>1,50m</span>
               <span>1,80m</span>
@@ -135,9 +135,9 @@
           <div class="filter-group">
             <div class="slider-header">
               <p class="card-label" style="margin-bottom:0">Renda mensal mínima</p>
-              <span class="slider-value" id="renda-display">R$&nbsp;5.000</span>
+              <span class="slider-value" id="renda-display">R$ 0</span>
             </div>
-            <input type="range" id="renda-slider" class="styled-range" min="0" max="50000" value="5000" step="500" />
+            <input type="range" id="renda-slider" class="styled-range" min="0" max="50000" value="0" step="500" />
             <div class="slider-labels">
               <span>R$ 0</span>
               <span>R$ 25k</span>
@@ -239,6 +239,62 @@
               </label>
             </div>
             <p class="card-hint">Nenhuma selecionada = considera todos os grupos religiosos.</p>
+          </div>
+
+          <!-- 10 · Signo -->
+          <div class="filter-group">
+            <p class="card-label">Signo do parceiro</p>
+            <div class="pills-group">
+              <label class="pill-option">
+                <input type="checkbox" name="signo" value="Áries" />
+                <span class="pill-chip"><span class="pill-check"></span>Áries</span>
+              </label>
+              <label class="pill-option">
+                <input type="checkbox" name="signo" value="Touro" />
+                <span class="pill-chip"><span class="pill-check"></span>Touro</span>
+              </label>
+              <label class="pill-option">
+                <input type="checkbox" name="signo" value="Gêmeos" />
+                <span class="pill-chip"><span class="pill-check"></span>Gêmeos</span>
+              </label>
+              <label class="pill-option">
+                <input type="checkbox" name="signo" value="Câncer" />
+                <span class="pill-chip"><span class="pill-check"></span>Câncer</span>
+              </label>
+              <label class="pill-option">
+                <input type="checkbox" name="signo" value="Leão" />
+                <span class="pill-chip"><span class="pill-check"></span>Leão</span>
+              </label>
+              <label class="pill-option">
+                <input type="checkbox" name="signo" value="Virgem" />
+                <span class="pill-chip"><span class="pill-check"></span>Virgem</span>
+              </label>
+              <label class="pill-option">
+                <input type="checkbox" name="signo" value="Libra" />
+                <span class="pill-chip"><span class="pill-check"></span>Libra</span>
+              </label>
+              <label class="pill-option">
+                <input type="checkbox" name="signo" value="Escorpião" />
+                <span class="pill-chip"><span class="pill-check"></span>Escorpião</span>
+              </label>
+              <label class="pill-option">
+                <input type="checkbox" name="signo" value="Sagitário" />
+                <span class="pill-chip"><span class="pill-check"></span>Sagitário</span>
+              </label>
+              <label class="pill-option">
+                <input type="checkbox" name="signo" value="Capricórnio" />
+                <span class="pill-chip"><span class="pill-check"></span>Capricórnio</span>
+              </label>
+              <label class="pill-option">
+                <input type="checkbox" name="signo" value="Aquário" />
+                <span class="pill-chip"><span class="pill-check"></span>Aquário</span>
+              </label>
+              <label class="pill-option">
+                <input type="checkbox" name="signo" value="Peixes" />
+                <span class="pill-chip"><span class="pill-check"></span>Peixes</span>
+              </label>
+            </div>
+            <p class="card-hint">Nenhuma selecionada = considera todos os signos.</p>
           </div>
 
           <!-- 10 · Filtros Opcionais -->
@@ -401,6 +457,11 @@
               <span class="bc-icon">👶</span>
               <span class="bc-name">Filhos</span>
               <span class="bc-value" id="bd-filhos">Não filtrado</span>
+            </div>
+            <div class="breakdown-cell">
+              <span class="bc-icon">✨</span>
+              <span class="bc-name">Signo</span>
+              <span class="bc-value" id="bd-signo">Não filtrado</span>
             </div>
           </div>
 

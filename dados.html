@@ -601,6 +601,25 @@
         </div>
       </div>
 
+      <div class="source-card">
+        <div class="source-card-header">
+          <span class="source-icon">✨</span>
+          <div>
+            <p class="source-name">Distribuição por Signo</p>
+            <a href="data/signos.json" download class="source-file download-link">signos.json <span class="dl-icon">↓</span></a>
+          </div>
+        </div>
+        <p class="source-desc">
+          Frequência estatística de cada signo na população brasileira, calculada a partir do mês de nascimento.
+          Fonte: Tabela 2612 (Estatísticas do Registro Civil - IBGE).
+        </p>
+        <div class="source-tags">
+          <span class="tag">IBGE 2023</span>
+          <span class="tag neutral">12 Signos</span>
+          <span class="tag neutral">Nascimentos p/ mês</span>
+        </div>
+      </div>
+
     </div>
 
     <!-- ── 2. Metodologia de Cálculo ──────────────────────────────── -->
@@ -650,6 +669,18 @@
           Quando o usuário seleciona um estado específico (ex: SP), os dados de renda, altura, escolaridade e religião
           são buscados naquele estado. Quando seleciona uma região (ex: Sudeste), os dados são ponderados pela população de cada UF.
           A seleção "Todo o Brasil" usa os dados nacionais agregados.
+        </p>
+      </div>
+
+      <div class="method-block">
+        <p class="method-title">Zodíaco — Sincronia de Nascimentos (IBGE)</p>
+        <p class="method-text">
+          A probabilidade por signo é baseada na <code>Tabela 2612</code> do IBGE. Como signos não alinham perfeitamente com meses, as porcentagens foram calculadas ponderando os dias de cada signo em relação ao total de nascidos nos meses correspondentes.
+          <br><br>
+          <b>Distribuição Utilizada:</b><br>
+          ♑ Cap: 8,11% · ♒ Aqu: 8,29% · ♓ Pei: 8,84% · ♈ Ári: 8,76%<br>
+          ♉ Tou: 9,06% · ♊ Gêm: 8,96% · ♋ Cân: 8,77% · ♌ Leã: 8,28%<br>
+          ♍ Vir: 8,29% · ♎ Lib: 7,74% · ♏ Esc: 7,51% · ♐ Sag: 7,38%
         </p>
       </div>
 
@@ -717,95 +748,102 @@
     </p>
 
     <div class="raw-dl-grid">
-      <a href="downloads/tabela2657.csv" download class="raw-dl-btn">
+      <a href="download/tabela2657.csv" download class="raw-dl-btn">
         <span class="rdl-icon">📊</span>
         <span class="rdl-info">
           <span class="rdl-name">Tabela IBGE 2657</span>
           <span class="rdl-meta">Altura por UF &amp; Gênero · POF</span>
         </span>
       </a>
-      <a href="downloads/tabela10061.csv" download class="raw-dl-btn">
+      <a href="download/tabela10061.csv" download class="raw-dl-btn">
         <span class="rdl-icon">🎓</span>
         <span class="rdl-info">
           <span class="rdl-name">Tabela IBGE 10061</span>
           <span class="rdl-meta">Escolaridade &amp; Instrução · Censo 2022</span>
         </span>
       </a>
-      <a href="downloads/tabela9606.csv" download class="raw-dl-btn">
+      <a href="download/tabela9606.csv" download class="raw-dl-btn">
         <span class="rdl-icon">👥</span>
         <span class="rdl-info">
           <span class="rdl-name">Tabela IBGE 9606</span>
           <span class="rdl-meta">População por Cor/Raça · Censo 2022</span>
         </span>
       </a>
-      <a href="downloads/tabela9531.csv" download class="raw-dl-btn">
+      <a href="download/tabela9531.csv" download class="raw-dl-btn">
         <span class="rdl-icon">💍</span>
         <span class="rdl-info">
           <span class="rdl-name">Tabela IBGE 9531</span>
           <span class="rdl-meta">Estado Civil por UF · Censo 2022</span>
         </span>
       </a>
-      <a href="downloads/tabela10070.csv" download class="raw-dl-btn">
+      <a href="download/tabela10070.csv" download class="raw-dl-btn">
         <span class="rdl-icon">🙏</span>
         <span class="rdl-info">
           <span class="rdl-name">Tabela IBGE 10070</span>
           <span class="rdl-meta">Religião por UF · Censo 2022</span>
         </span>
       </a>
-      <a href="downloads/microdados_pnad_renda.csv" download class="raw-dl-btn">
+      <a href="download/microdados_pnad_renda.csv" download class="raw-dl-btn">
         <span class="rdl-icon">💰</span>
         <span class="rdl-info">
           <span class="rdl-name">Microdados PNAD</span>
           <span class="rdl-meta">Renda per capita · PNAD 2023</span>
         </span>
       </a>
-      <a href="downloads/tabela_obesidade_pof.csv" download class="raw-dl-btn">
+      <a href="download/tabela_obesidade_pof.csv" download class="raw-dl-btn">
         <span class="rdl-icon">⚖️</span>
         <span class="rdl-info">
           <span class="rdl-name">Tabela Obesidade POF</span>
           <span class="rdl-meta">IMC por UF &amp; Faixa Etária · PNAD S</span>
         </span>
       </a>
-      <a href="downloads/tabela4173.csv" download class="raw-dl-btn">
+      <a href="download/tabela4173.csv" download class="raw-dl-btn">
         <span class="rdl-icon">🚬</span>
         <span class="rdl-info">
           <span class="rdl-name">Tabela IBGE 4173</span>
           <span class="rdl-meta">Tabagismo Masculino · PNS 2019</span>
         </span>
       </a>
-      <a href="downloads/tabela4179.csv" download class="raw-dl-btn">
+      <a href="download/tabela4179.csv" download class="raw-dl-btn">
         <span class="rdl-icon">🚬</span>
         <span class="rdl-info">
           <span class="rdl-name">Tabela IBGE 4179</span>
           <span class="rdl-meta">Tabagismo Feminino · PNS 2019</span>
         </span>
       </a>
-      <a href="downloads/tabela4400.csv" download class="raw-dl-btn">
+      <a href="download/tabela4400.csv" download class="raw-dl-btn">
         <span class="rdl-icon">🍺</span>
         <span class="rdl-info">
           <span class="rdl-name">Tabela IBGE 4400</span>
           <span class="rdl-meta">Consumo Álcool Masculino · PNS 2019</span>
         </span>
       </a>
-      <a href="downloads/tabela4401.csv" download class="raw-dl-btn">
+      <a href="download/tabela4401.csv" download class="raw-dl-btn">
         <span class="rdl-icon">🍺</span>
         <span class="rdl-info">
           <span class="rdl-name">Tabela IBGE 4401</span>
           <span class="rdl-meta">Consumo Álcool Feminino · PNS 2019</span>
         </span>
       </a>
-      <a href="downloads/tabela96.1.csv" download class="raw-dl-btn">
+      <a href="download/tabela96.1.csv" download class="raw-dl-btn">
         <span class="rdl-icon">👶</span>
         <span class="rdl-info">
           <span class="rdl-name">Tabela IBGE 96 (Parte 1)</span>
           <span class="rdl-meta">Fecundidade Feminina · Censo 2022</span>
         </span>
       </a>
-      <a href="downloads/tabela96.3.csv" download class="raw-dl-btn">
+      <a href="download/tabela96.3.csv" download class="raw-dl-btn">
         <span class="rdl-icon">👶</span>
         <span class="rdl-info">
           <span class="rdl-name">Tabela IBGE 96 (Parte 3)</span>
           <span class="rdl-meta">Fecundidade Masculina · Censo 2022</span>
+        </span>
+      </a>
+      <a href="download/tabela2612.csv" download class="raw-dl-btn">
+        <span class="rdl-icon">✨</span>
+        <span class="rdl-info">
+          <span class="rdl-name">Tabela IBGE 2612</span>
+          <span class="rdl-meta">Nascidos por mês · Registro Civil</span>
         </span>
       </a>
     </div>
