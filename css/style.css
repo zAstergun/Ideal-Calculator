@@ -1575,3 +1575,30 @@ body::after {
     height: 48px;
   }
 }
+
+/* ═ OTIMIZAÇÃO MOBILE DO MODAL DE PARTILHA ═ */
+.btn-mobile-share {
+  display: none; /* Escondido no Desktop por padrão */
+  width: 100%;
+  background: var(--acc-base);
+  color: #fff;
+  border: none;
+  padding: 18px;
+  border-radius: 12px;
+  font-size: 20px;
+  font-weight: 800;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  transition: background 0.2s, transform 0.2s;
+  box-shadow: 0 8px 25px rgba(230, 30, 42, 0.4);
+}
+.btn-mobile-share svg { width: 28px; height: 28px; }
+.btn-mobile-share:active { transform: scale(0.97); }
+
+@media (max-width: 768px) {
+  /* No Mobile: esconde a grid de botões e mostra o botão gigante nativo */
+  .share-actions-grid { display: none !important; }
+  .btn-mobile-share { display: flex; }
+}

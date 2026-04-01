@@ -590,6 +590,23 @@ async function copyImageOnly() {
   });
 }
 
+async function shareNative() {
+  if (!blobAtual || !navigator.share) return;
+  const file = new File([blobAtual], 'meu-resultado.png', { type: 'image/png' });
+  try {
+    await navigator.share({
+      files: [file],
+      title: 'Ideal Calculator',
+      text: 'Olha só o meu resultado na Calculadora de Raridade! 😱',
+      url: window.location.href
+    });
+  } catch (err) {
+    if (err.name !== 'AbortError') {
+      console.warn('[main] Native share falhou:', err);
+    }
+  }
+}
+
 async function shareClipboardAndOpen(urlDestino) {
   // Mantido para compatibilidade se necessário, mas shareSmart é agora o padrão
   return shareSmart(urlDestino);
@@ -748,6 +765,9 @@ function registrarEventos() {
   document.getElementById('btn-fb')?.addEventListener('click', () => shareSmart('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), 'facebook'));
   document.getElementById('btn-tw')?.addEventListener('click', () => shareSmart('https://twitter.com/compose/tweet'));
   document.getElementById('btn-dc')?.addEventListener('click', () => shareSmart('https://discord.com/app'));
+
+  // ── Botão Mobile Share (Gaveta Nativa) ───────────────────────
+  document.getElementById('btn-mobile-share')?.addEventListener('click', shareNative);
 
   // ── Botão Copiar Link ──────────────────────────────────────────
   document.getElementById('btn-copy-link')?.addEventListener('click', async () => {
