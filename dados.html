@@ -6,6 +6,7 @@
   <title>Auditoria de Dados · Calculadora de Raridade</title>
   <meta name="description" content="Transparência total sobre os microdados do IBGE utilizados na Calculadora de Raridade de Parceiros. Consulte fontes, metodologia e limitações." />
   <link rel="stylesheet" href="./css/style.css" />
+  <link rel="icon" type="image/svg+xml" href="./assets/idealCalc_logo.svg" />
   <style>
     /* ── Estilos exclusivos de dados.html ─────────────────────────── */
     .audit-wrapper {
@@ -410,6 +411,7 @@
 
     <!-- Header da página -->
     <header class="audit-header">
+      <a href="index.html" class="site-logo" aria-label="Início"></a>
       <p class="audit-supertitle">Transparência · IBGE · PNAD / Censo 2023</p>
       <h1 class="audit-title">De onde vêm os<br />números desta calculadora?</h1>
       <p class="audit-desc">
@@ -864,6 +866,36 @@
     </div>
 
   </div><!-- /audit-wrapper -->
+  <!-- Botão Flutuante e Modal de Doação -->
+  <button id="floating-donate-btn" class="floating-donate-btn" title="Pagar um café para o desenvolvedor">
+    <span class="donate-icon">🐈‍⬛</span>
+    <span class="donate-text">Apoiar Projeto</span>
+  </button>
 
+  <div id="donate-modal" class="modal-overlay hidden">
+    <div class="modal-content donate-content">
+      <button id="close-donate-modal" class="modal-close">&times;</button>
+      <h3 class="modal-title">Gostou da Calculadora de Ideal?</h3>
+      <p class="modal-subtitle">Este projeto é mantido por uma única pessoa. Se a ferramenta o ajudou ou divertiu, considere me ajudar a pagar a ração do meu gato para que ele continue me inspirando!🐈‍⬛</p>
+
+      <div class="video-container">
+        <video id="cat-video" src="./assets/gato.mp4" class="donate-video" autoplay loop muted playsinline aria-label="Vídeo do meu gato"></video>
+        <button id="unmute-video-btn" class="unmute-overlay-btn" title="Ativar Som">🔇</button>
+      </div>
+      
+      <div class="pix-container">
+        <img src="./assets/qrcode.png" alt="QR Code Pix" class="pix-qr" id="pix-qr-image" />
+        
+        <p class="pix-instruction">Ou use o Pix Copia e Cola:</p>
+        <div class="pix-copy-box">
+          <input type="text" id="pix-key-input" class="pix-input" value="00020126820014br.gov.bcb.pix01365fc1f0ab-1a78-4133-bb5c-dce818a91ddf0220Calculadora de Ideal5204000053039865802BR5901N6001C62070503***63041200" readonly />
+          <button id="copy-pix-btn" class="btn-copy-pix">Copiar</button>
+        </div>
+        <p id="pix-feedback" class="pix-feedback-text"></p>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="./js/main.js"></script>
 </body>
 </html>

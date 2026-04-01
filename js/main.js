@@ -758,3 +758,69 @@ if (document.readyState === 'loading') {
 } else {
   init();
 }
+
+// ═ LÓGICA DO MODAL DE DOAÇÃO ═
+document.addEventListener('DOMContentLoaded', () => {
+  const btnOpen = document.getElementById('floating-donate-btn');
+  const btnClose = document.getElementById('close-donate-modal');
+  const modal = document.getElementById('donate-modal');
+  const btnCopy = document.getElementById('copy-pix-btn');
+  const inputPix = document.getElementById('pix-key-input');
+  const feedback = document.getElementById('pix-feedback');
+
+  // Lógica de Mute/Unmute do Vídeo do Gato
+  const catVideo = document.getElementById('cat-video');
+  const btnUnmute = document.getElementById('unmute-video-btn');
+
+  function resetVideoMute() {
+    if (catVideo) catVideo.muted = true;
+    if (btnUnmute) {
+      btnUnmute.textContent = '🔇';
+      btnUnmute.setAttribute('title', 'Ativar Som');
+    }
+  }
+
+  if (catVideo && btnUnmute) {
+    btnUnmute.addEventListener('click', () => {
+      catVideo.muted = !catVideo.muted;
+      btnUnmute.textContent = catVideo.muted ? '🔇' : '🔊';
+      btnUnmute.setAttribute('title', catVideo.muted ? 'Ativar Som' : 'Desativar Som');
+    });
+  }
+
+  if (btnOpen && modal) {
+    btnOpen.addEventListener('click', () => modal.classList.remove('hidden'));
+    btnClose.addEventListener('click', () => {
+      modal.classList.add('hidden');
+      resetVideoMute();
+    });
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        modal.classList.add('hidden');
+        resetVideoMute();
+      }
+    });
+  }
+
+  if (btnCopy && inputPix) {
+    btnCopy.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(inputPix.value);
+        btnCopy.textContent = 'Copiado!';
+        btnCopy.style.background = '#25D366'; // Verde WhatsApp
+        feedback.textContent = 'Código Pix copiado com sucesso! Cole no aplicativo do seu banco.';
+        
+        setTimeout(() => {
+          btnCopy.textContent = 'Copiar';
+          btnCopy.style.background = '';
+          feedback.textContent = '';
+        }, 3000);
+      } catch (err) {
+        // Fallback para navegadores antigos
+        inputPix.select();
+        document.execCommand('copy');
+        btnCopy.textContent = 'Copiado!';
+      }
+    });
+  }
+});
