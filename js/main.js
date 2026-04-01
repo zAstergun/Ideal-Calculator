@@ -520,7 +520,8 @@ async function executarAcaoPartilha(acaoFn) {
 
 // --- Ações dos 5 Botões ---
 function isMobile() {
-  return /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+  const ua = navigator.userAgent || navigator.vendor || window.opera;
+  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(ua) || (window.innerWidth <= 1024);
 }
 
 async function shareDownload() {
@@ -570,6 +571,19 @@ async function shareSmart(urlDestino, plataforma) {
       setTimeout(() => { 
         if (urlDestino) window.open(urlDestino, '_blank'); 
       }, 1200);
+    } catch (err) {
+      throw new Error('O navegador bloqueou a cópia. Use o botão de Download.');
+    }
+  });
+}
+
+async function copyImageOnly() {
+  await executarAcaoPartilha(async () => {
+    if (!blobAtual) throw new Error("Imagem não encontrada.");
+    try {
+      const item = new ClipboardItem({ 'image/png': blobAtual });
+      await navigator.clipboard.write([item]);
+      document.getElementById('share-status').textContent = '✅ Imagem copiada! Pode colar (Ctrl+V) no chat.';
     } catch (err) {
       throw new Error('O navegador bloqueou a cópia. Use o botão de Download.');
     }
@@ -728,8 +742,10 @@ function registrarEventos() {
   });
 
   document.getElementById('btn-dl')?.addEventListener('click', shareDownload);
+  document.getElementById('btn-copy-img')?.addEventListener('click', copyImageOnly);
   document.getElementById('btn-wa')?.addEventListener('click', () => shareSmart('https://web.whatsapp.com/send?text=' + encodeURIComponent('Olha só meu resultado:'), 'whatsapp'));
   document.getElementById('btn-ig')?.addEventListener('click', () => shareSmart('https://www.instagram.com/', 'instagram'));
+  document.getElementById('btn-fb')?.addEventListener('click', () => shareSmart('https://www.facebook.com/sharer/sharer.php?u=' + encodeURIComponent(window.location.href), 'facebook'));
   document.getElementById('btn-tw')?.addEventListener('click', () => shareSmart('https://twitter.com/compose/tweet'));
   document.getElementById('btn-dc')?.addEventListener('click', () => shareSmart('https://discord.com/app'));
 

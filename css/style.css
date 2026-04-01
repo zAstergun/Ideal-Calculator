@@ -1408,8 +1408,34 @@ body::after {
 .btn-dl { background: var(--bg-elevated); border: 2px solid var(--border-mid); color: var(--text-primary); }
 .btn-wa { background: #25D366; }
 .btn-ig { background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fdf497 5%, #fd5949 45%, #d6249f 60%, #285AEB 90%); }
+.btn-fb { background: #1877F2; }
 .btn-tw { background: #000; border: 1px solid #333; }
 .btn-dc { background: #5865F2; }
+.btn-copy-img { background: var(--bg-elevated); border: 2px solid var(--border-mid); color: var(--text-primary); }
+
+.share-tip-text {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-top: 18px;
+  background: rgba(255,255,255,0.03);
+  padding: 10px 14px;
+  border-radius: 10px;
+  border-left: 3px solid var(--acc-dim);
+}
+
+/* Ocultar botões específicos no Desktop se marcados como mobile-only */
+@media (min-width: 1024px) {
+  .mobile-only {
+    display: none !important;
+  }
+}
+
+/* Ocultar elementos específicos no Mobile se marcados como desktop-only */
+@media (max-width: 1023px) {
+  .desktop-only {
+    display: none !important;
+  }
+}
 
 /* ═ BOTÃO FLUTUANTE & MODAL DOAÇÃO ═ */
 .floating-donate-btn {
