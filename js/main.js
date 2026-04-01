@@ -403,35 +403,40 @@ function habilitarFormulario() {
 }
 
 function prepararCardFantasma(filtros, resultado) {
-  const tags = [];
-  tags.push(`<span>👤</span> ${filtros.genero === 'Masculino' ? 'Homem' : 'Mulher'}`);
-  tags.push(`<span>📍</span> ${resultado.estadoNome}`);
+  const prob = resultado.probabilidade;
+  
+  // 1. Diagnóstico de Nível
+  let diagText = "";
+  if (prob < 0.001) {
+    diagText = "🤯 NÍVEL: DELIRANTE";
+  } else if (prob < 0.01) {
+    diagText = "🧐 NÍVEL: EXTREMAMENTE EXIGENTE";
+  } else if (prob < 0.05) {
+    diagText = "🍷 NÍVEL: ALTO PADRÃO";
+  } else if (prob < 0.20) {
+    diagText = "👍 NÍVEL: PÉ NO CHÃO";
+  } else {
+    diagText = "🕊️ NÍVEL: CORAÇÃO DE MÃE";
+  }
+  document.getElementById('share-diagnosis').textContent = diagText;
 
-  if (filtros.idadeMin > 18 || filtros.idadeMax < 80) tags.push(`<span>⏳</span> ${filtros.idadeMin} a ${filtros.idadeMax} anos`);
-  if (filtros.alturaMin > 150) tags.push(`<span>📏</span> > ${formatAltura(filtros.alturaMin)}`);
-  if (filtros.rendaMin > 0) tags.push(`<span>💰</span> > ${formatRenda(filtros.rendaMin)}`);
+  // 2. Porcentagem Monstruosa
+  document.getElementById('share-big-pct').textContent = formatPct(prob);
 
-  if (filtros.excluirObesidade) tags.push('<span>⚖️</span> Sem Obesidade');
-  if (filtros.excluirFumantes) tags.push('<span>🚬</span> Não Fuma');
-  if (filtros.excluirAlcool) tags.push('<span>🍺</span> Não Bebe');
-  if (filtros.excluirFilhos) tags.push('<span>👶</span> Sem Filhos');
-
-  if (filtros.escolaridade) {
-    const esc = filtros.escolaridade === 'superior' ? 'Ensino Superior' : filtros.escolaridade === 'medio' ? 'Ensino Médio' : 'Fundamental';
-    tags.push(`<span>🎓</span> ${esc}`);
+  // 3. Proporção com Copy Longa
+  const proporcao = prob > 0 && resultado.popBaseTotal > 0 ? Math.round(resultado.popBaseTotal / resultado.popAbsoluta) : 0;
+  if (proporcao > 0) {
+    document.getElementById('share-proportion').textContent = `1 em cada ${proporcao.toLocaleString('pt-BR')} pessoas se encaixa no que eu estou buscando`;
+  } else {
+    document.getElementById('share-proportion').textContent = 'Quase impossível encontrar alguém com esse perfil';
   }
 
-  if (filtros.raca.length < 5 && filtros.raca.length > 0) tags.push(`<span>🎨</span> ${filtros.raca.length} Raça(s)`);
-  if (filtros.estadoCivil.length < 3 && filtros.estadoCivil.length > 0) tags.push(`<span>💍</span> ${filtros.estadoCivil.join(', ')}`);
-  if (filtros.religiao.length < 5 && filtros.religiao.length > 0) tags.push(`<span>🙏</span> ${filtros.religiao.length} Religião(ões)`);
-  if (filtros.signo.length < 12 && filtros.signo.length > 0) tags.push(`<span>✨</span> ${filtros.signo.length === 1 ? filtros.signo[0] : filtros.signo.length + ' Signos'}`);
+  // 4. Quantidade Absoluta Tangível
+  const generoTexto = filtros.genero === 'Feminino' ? 'mulheres' : 'homens';
+  document.getElementById('share-absolute-number').textContent = `Exatamente ${Math.round(resultado.popAbsoluta).toLocaleString('pt-BR')} ${generoTexto} em ${resultado.estadoNome}`;
 
-  document.getElementById('share-filters').innerHTML = tags.map(t => `<div class="share-tag">${t}</div>`).join('');
-  document.getElementById('share-big-pct').textContent = formatPct(resultado.probabilidade);
-
-  const proporcao = resultado.probabilidade > 0 && resultado.popBaseTotal > 0 ? Math.round(resultado.popBaseTotal / resultado.popAbsoluta) : 0;
-  document.getElementById('share-proportion').textContent = proporcao > 0 ? `1 em cada ${proporcao.toLocaleString('pt-BR')}` : 'Quase impossível';
-  document.getElementById('share-url').textContent = window.location.hostname || 'ideal-calculator.com';
+  // 5. Link (dinâmico para o domínio)
+  document.getElementById('share-url').textContent = window.location.hostname || 'idealcalc.app';
 }
 
 // ══════════════════════════════════════════════════════════════════
@@ -522,8 +527,7 @@ async function shareNative() {
     if (navigator.canShare && navigator.canShare({ files: [file] })) {
       await navigator.share({ 
         files: [file], 
-        title: 'Choque de Realidade', 
-        text: 'Descubra a sua raridade estatística: https://idealcalc.app' 
+        title: 'Choque de Realidade'
       });
     } else {
       throw new Error('Navegador desktop não suporta envio direto. Use o Download.');
@@ -694,8 +698,28 @@ function registrarEventos() {
   document.getElementById('btn-dl')?.addEventListener('click', shareDownload);
   document.getElementById('btn-wa')?.addEventListener('click', shareNative);
   document.getElementById('btn-ig')?.addEventListener('click', shareNative);
-  document.getElementById('btn-tw')?.addEventListener('click', () => shareClipboardAndOpen('https://twitter.com/compose/tweet?text=Descobri%20o%20tamanho%20da%20minha%20bolha%20no%20https://idealcalc.app%20(Cole%20a%20imagem%20aqui)'));
+  document.getElementById('btn-tw')?.addEventListener('click', () => shareClipboardAndOpen('https://twitter.com/compose/tweet'));
   document.getElementById('btn-dc')?.addEventListener('click', () => shareClipboardAndOpen('https://discord.com/app'));
+
+  // ── Botão Copiar Link ──────────────────────────────────────────
+  document.getElementById('btn-copy-link')?.addEventListener('click', async () => {
+    const input = document.getElementById('copy-link-input');
+    const btn = document.getElementById('btn-copy-link');
+    if (!input || !btn) return;
+
+    try {
+      await navigator.clipboard.writeText(input.value);
+      const originalText = btn.textContent;
+      btn.textContent = 'Copiado! ✅';
+      btn.style.background = '#28a745'; 
+      setTimeout(() => {
+        btn.textContent = originalText;
+        btn.style.background = '';
+      }, 2000);
+    } catch (err) {
+      console.error('Erro ao copiar link:', err);
+    }
+  });
 }
 
 // ══════════════════════════════════════════════════════════════════
