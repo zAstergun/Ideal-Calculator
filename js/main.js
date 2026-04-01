@@ -519,43 +519,66 @@ async function executarAcaoPartilha(acaoFn) {
 }
 
 // --- Ações dos 5 Botões ---
+function isMobile() {
+  return /Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+}
+
 async function shareDownload() {
   await executarAcaoPartilha(async () => {
     if (!blobAtual) throw new Error("Imagem não encontrada.");
     const url = URL.createObjectURL(blobAtual);
     const a = document.createElement('a'); 
-    a.href = url; a.download = 'choque-de-realidade.png'; a.click();
+    a.href = url; a.download = 'meu-choque-de-realidade.png'; a.click();
     URL.revokeObjectURL(url);
   });
 }
 
-async function shareNative() {
+/**
+ * Tenta compartilhar nativamente (Mobile). 
+ * Se falhar ou não suportado (Desktop), copia para o clipboard e abre a URL.
+ */
+async function shareSmart(urlDestino, plataforma) {
   await executarAcaoPartilha(async () => {
     if (!blobAtual) throw new Error("Imagem não encontrada.");
-    const file = new File([blobAtual], 'raridade.png', { type: 'image/png' });
-    if (navigator.canShare && navigator.canShare({ files: [file] })) {
-      await navigator.share({ 
-        files: [file], 
-        title: 'Choque de Realidade'
-      });
-    } else {
-      throw new Error('Navegador desktop não suporta envio direto. Use o Download.');
+    const status = document.getElementById('share-status');
+    const file = new File([blobAtual], 'meu-choque-de-realidade.png', { type: 'image/png' });
+    const shareData = {
+      files: [file],
+      title: 'Choque de Realidade',
+      text: 'Olha só o meu resultado na Calculadora de Raridade! 😱',
+      url: window.location.href
+    };
+
+    // 1. Tentar Share Nativo (Apenas se for Mobile e suportar arquivos)
+    if (isMobile() && navigator.canShare && navigator.canShare({ files: [file] })) {
+      try {
+        await navigator.share(shareData);
+        return; // Sucesso
+      } catch (err) {
+        if (err.name === 'AbortError') return; // Usuário cancelou
+        console.warn('Share nativo falhou, tentando clipboard...', err);
+      }
+    }
+
+    // 2. Fallback: Clipboard + Abrir App (Ideal para Desktop e Mobile sem suporte a share de arquivo)
+    try {
+      const item = new ClipboardItem({ 'image/png': blobAtual });
+      await navigator.clipboard.write([item]);
+      status.textContent = '✅ Imagem copiada! Cole (Ctrl+V) na conversa.';
+      
+      // Delay pequeno para o usuário ler antes de abrir a aba
+      setTimeout(() => { 
+        if (urlDestino) window.open(urlDestino, '_blank'); 
+      }, 1200);
+    } catch (err) {
+      throw new Error('O navegador bloqueou a cópia. Use o botão de Download.');
     }
   });
 }
 
 async function shareClipboardAndOpen(urlDestino) {
-  await executarAcaoPartilha(async () => {
-    if (!blobAtual) throw new Error("Imagem não encontrada.");
-    try {
-      const item = new ClipboardItem({ 'image/png': blobAtual });
-      await navigator.clipboard.write([item]);
-      document.getElementById('share-status').textContent = '✅ Imagem copiada! Cole no post/chat (Ctrl+V).';
-      setTimeout(() => { window.open(urlDestino, '_blank'); }, 800);
-    } catch (err) {
-      throw new Error('O navegador bloqueou a cópia automática. Use o Download.');
-    }
-  });
+  // Mantido para compatibilidade se necessário, mas shareSmart é agora o padrão
+  return shareSmart(urlDestino);
 }
 
 // ══════════════════════════════════════════════════════════════════
@@ -705,10 +728,10 @@ function registrarEventos() {
   });
 
   document.getElementById('btn-dl')?.addEventListener('click', shareDownload);
-  document.getElementById('btn-wa')?.addEventListener('click', shareNative);
-  document.getElementById('btn-ig')?.addEventListener('click', shareNative);
-  document.getElementById('btn-tw')?.addEventListener('click', () => shareClipboardAndOpen('https://twitter.com/compose/tweet'));
-  document.getElementById('btn-dc')?.addEventListener('click', () => shareClipboardAndOpen('https://discord.com/app'));
+  document.getElementById('btn-wa')?.addEventListener('click', () => shareSmart('https://web.whatsapp.com/send?text=' + encodeURIComponent('Olha só meu resultado:'), 'whatsapp'));
+  document.getElementById('btn-ig')?.addEventListener('click', () => shareSmart('https://www.instagram.com/', 'instagram'));
+  document.getElementById('btn-tw')?.addEventListener('click', () => shareSmart('https://twitter.com/compose/tweet'));
+  document.getElementById('btn-dc')?.addEventListener('click', () => shareSmart('https://discord.com/app'));
 
   // ── Botão Copiar Link ──────────────────────────────────────────
   document.getElementById('btn-copy-link')?.addEventListener('click', async () => {
