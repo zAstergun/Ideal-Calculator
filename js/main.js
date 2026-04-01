@@ -448,20 +448,22 @@ async function abrirModalPreview() {
     btn.innerHTML = '📸 A processar arte...';
     btn.style.opacity = '0.7';
     btn.style.pointerEvents = 'none';
-
+    
     prepararCardFantasma(lerFiltros(), ultimoResultado);
-
+    
     const template = document.getElementById('share-template');
-    template.style.opacity = '1';
-
+    
+    // A MÁGICA: Não alteramos mais a opacidade no DOM real.
     const canvas = await html2canvas(template, { 
       scale: 1, 
       backgroundColor: '#050505', 
-      logging: false 
+      logging: false,
+      onclone: (clonedDoc) => {
+        // Torna o card visível APENAS no clone de memória que será "fotografado"
+        clonedDoc.getElementById('share-template').style.opacity = '1';
+      }
     });
-
-    template.style.opacity = '0';
-
+    
     blobAtual = await new Promise(resolve => canvas.toBlob(resolve, 'image/png'));
     const imgUrl = URL.createObjectURL(blobAtual);
 

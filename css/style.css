@@ -155,6 +155,12 @@ body::after {
   50%       { opacity: 0.55; }
 }
 
+@keyframes pulseGlowPremium {
+  0%   { box-shadow: 0 4px 15px rgba(230, 30, 42, 0.35); transform: scale(1); }
+  50%  { box-shadow: 0 6px 30px rgba(230, 30, 42, 0.6);  transform: scale(1.02); }
+  100% { box-shadow: 0 4px 15px rgba(230, 30, 42, 0.35); transform: scale(1); }
+}
+
 /* ── Utilitários de animação ─────────────────────────────────────────── */
 .anim-fade-up {
   opacity: 0;
@@ -1007,37 +1013,97 @@ body::after {
   display: block;
 }
 
-/* Botão compartilhar */
+/* Botão compartilhar - PREMIUM REDESIGN */
+/* Botão compartilhar - PREMIUM GLASS DESIGN */
 .btn-share {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 9px;
+  gap: 12px;
   width: 100%;
-  padding: 14px 20px;
-  border-radius: var(--radius-sm);
-  border: 1px solid var(--border-default);
-  background: transparent;
-  font-family: 'Inter', sans-serif;
-  font-size: 0.78rem;
-  font-weight: 600;
-  letter-spacing: 0.05em;
-  color: var(--text-secondary);
+  padding: 18px 24px;
+  margin-top: 15px;
+  margin-bottom: 24px;
+  
+  border-radius: var(--radius-md);
+  /* Estética Glassmorphism: fundo translúcido + blur */
+  background: rgba(230, 30, 42, 0.07);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  
+  /* Bordas sutis mas nítidas */
+  border: 1.5px solid rgba(230, 30, 42, 0.4);
+  
+  color: var(--acc-light);
+  font-family: var(--font-display);
+  font-size: 1.1rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
   cursor: pointer;
-  margin-bottom: 16px;
-  transition: all 0.18s var(--ease-smooth);
+  
+  /* O destaque vem do brilho (glow) */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2), 
+              0 0 10px rgba(230, 30, 42, 0.1);
+              
+  transition: all 0.3s var(--ease-spring);
+  position: relative;
+  overflow: hidden;
+  
+  /* Pulso sutil no brilho e borda */
+  animation: pulseGlassPremium 3s infinite ease-in-out;
+}
+
+@keyframes pulseGlassPremium {
+  0%   { border-color: rgba(230, 30, 42, 0.4); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2), 0 0 10px rgba(230, 30, 42, 0.1); }
+  50%  { border-color: rgba(230, 30, 42, 0.8); box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3), 0 0 20px rgba(230, 30, 42, 0.3); }
+  100% { border-color: rgba(230, 30, 42, 0.4); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2), 0 0 10px rgba(230, 30, 42, 0.1); }
+}
+
+.btn-share::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    90deg, 
+    transparent, 
+    rgba(255, 255, 255, 0.08), 
+    transparent
+  );
+  transform: skewX(-25deg);
+}
+
+.btn-share:hover::before {
+  animation: shimmerAcc 2s infinite;
 }
 
 .btn-share:hover {
-  border-color: var(--acc-dim);
-  color: var(--acc-light);
-  background: rgba(230, 30, 42, 0.04);
+  transform: translateY(-2px);
+  background: rgba(230, 30, 42, 0.12);
+  border-color: var(--acc-light);
+  box-shadow: 0 6px 25px rgba(230, 30, 42, 0.3);
+  color: #fff;
+}
+
+.btn-share:active {
+  transform: translateY(0) scale(0.98);
+  background: rgba(230, 30, 42, 0.2);
 }
 
 .btn-share svg {
-  width: 15px;
-  height: 15px;
+  width: 20px;
+  height: 20px;
   flex-shrink: 0;
+  color: var(--acc-light);
+  transition: transform 0.3s var(--ease-spring);
+}
+
+.btn-share:hover svg {
+  transform: scale(1.1) rotate(5deg);
+  color: #fff;
 }
 
 /* Disclaimer */
@@ -1239,7 +1305,7 @@ body::after {
 .share-footer p { font-size: 32px; color: var(--text-muted); margin-bottom: 12px; }
 #share-url { font-size: 46px; font-weight: 800; color: var(--text-primary); letter-spacing: 0.05em; font-family: var(--font-display); }
 
-/* - MODAL DE PR�-VISUALIZA��O & BOT�ES DE REDE SOCIAL - */
+/* - MODAL DE PR�-VISUALIZA��O & BOT�ES DE REDE SOCIAL - */
 .modal-overlay {
   position: fixed; inset: 0; background: rgba(5, 5, 5, 0.85);
   backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
