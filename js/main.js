@@ -351,6 +351,15 @@ const FUN_FACTS = [
   '🗺️ Capitais como SP, RJ e DF concentram mais pessoas com alta renda e nível superior.',
   '🧬 A curva de Gauss mostra que maioria das pessoas está próxima da mediana de altura do estado.',
   '🧮 Com 5 filtros independentes cada um eliminando 50%, você já tem menos de 3% do mercado.',
+  '🎓 No Brasil, menos de 20% da população adulta possui ensino superior completo.',
+  '🚭 Apenas cerca de 12% da população brasileira é fumante ativa hoje em dia.',
+  '📉 Filtros comportamentais (fumo, álcool, filhos) juntos podem reduzir seu mercado em até 70%.',
+  '👰 O número de pessoas solteiras cai drasticamente após os 35 anos em quase todos os estados.',
+  '⛪ A religião "Sem Religião" é o grupo que mais cresce entre jovens em grandes centros urbanos.',
+  '✨ Como a distribuição de nascimentos é quase uniforme, filtrar por signo reduz seu mercado para ~8%.',
+  '🚶 Pessoas que não consomem álcool são estatisticamente mais comuns no público feminino.',
+  '👶 Acima dos 30 anos, mais de 60% da população brasileira já possui ao menos um filho.',
+  '🏠 Morar em estados como SP ou MG aumenta drasticamente o número absoluto devido à alta densidade populacional.',
 ];
 
 let ultimoFact = -1;
