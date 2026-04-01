@@ -1346,6 +1346,11 @@ body::after {
   border-radius: var(--radius-xl); padding: 30px; width: 100%; max-width: 420px;
   position: relative; box-shadow: 0 20px 60px rgba(0,0,0,0.7); text-align: center;
   animation: scaleIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  
+  /* Garantir que caiba em telas pequenas */
+  max-height: calc(100vh - 40px);
+  overflow-y: auto;
+  scrollbar-width: thin;
 }
 .modal-close {
   position: absolute; top: 15px; right: 15px; background: transparent; border: none;
@@ -1518,4 +1523,55 @@ body::after {
 @media (max-width: 768px) {
   .floating-donate-btn { bottom: 20px; right: 20px; padding: 10px 18px; }
   .donate-text { display: none; /* Em mobile mostra só o café para poupar espaço */ }
+}
+
+/* Otimização extrema para telas celulares < 480px (iPhone SE, etc) */
+@media (max-width: 480px) {
+  .modal-overlay {
+    padding: 12px;
+  }
+  .modal-content {
+    padding: 24px 16px 20px;
+  }
+  .modal-title {
+    font-size: 1.1rem;
+  }
+  .modal-subtitle {
+    font-size: 0.75rem;
+    margin-bottom: 16px;
+  }
+  
+  /* Compactar Doação */
+  .pix-container {
+    padding: 16px;
+  }
+  .pix-qr {
+    width: 140px;
+    height: 140px;
+    margin-bottom: 15px;
+  }
+  .video-container {
+    margin: 10px auto 20px;
+  }
+  .donate-video {
+    max-width: 160px;
+  }
+  
+  /* Compactar Compartilhamento */
+  .modal-image-wrapper {
+    max-height: 35vh;
+  }
+  #preview-img {
+    max-height: 35vh;
+  }
+  .copy-link-wrapper {
+    margin-bottom: 18px;
+  }
+  .share-actions-grid {
+    gap: 10px;
+  }
+  .brand-btn {
+    width: 48px;
+    height: 48px;
+  }
 }
