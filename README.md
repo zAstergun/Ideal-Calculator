@@ -300,4 +300,4 @@ Este projeto é mantido por uma única pessoa. Se a ferramenta te ajudou ou dive
 ## 📝 Licença
 
 Este projeto está licenciado sob a [Licença MIT](https://opensource.org/licenses/MIT).
-Veja o arquivo [LICENSE](LICENSE) para ler a licença completa (em inglês e português).
+Veja o arquivo [LICENSE](LICENSE) para ler a licença completa.
