@@ -37,27 +37,27 @@ Usando dados reais do **Censo Demográfico 2022**, **PNAD Contínua 2023**, **PO
 
 ## ✨ Funcionalidades
 
-| Funcionalidade | Descrição |
-|:---|:---|
-| 🔄 **Cálculo em Tempo Real** | Resultados atualizam instantaneamente ao ajustar qualquer filtro |
-| 👤 **Gênero** | Busca por homens ou mulheres |
-| 🗺️ **Região / Estado** | Filtragem por Região, Estado ou todo o Brasil |
-| ⏳ **Faixa Etária** | Slider duplo de 18 a 80 anos |
-| 📏 **Altura Mínima** | Distribuição Normal com mediana por estado/gênero |
-| 💰 **Renda Mensal** | Interpolação entre percentis P5–P99 |
-| 👤 **Cor / Raça** | Branca, Parda, Preta, Asiática, Indígena |
-| 💍 **Estado Civil** | Solteiro, Casado, Divorciado |
-| 🎓 **Escolaridade** | Fundamental, Médio, Superior (cascata inclusiva) |
-| 🙏 **Religião** | Católica, Evangélica, Espírita, Matriz Africana, Sem Religião |
-| ✨ **Signo** | Os 12 signos com frequência real de nascimentos (IBGE) |
-| ⚖️ **Obesidade** | Filtra por IMC ≥ 30 (toggle) |
-| 🚬 **Tabagismo** | Remove fumantes (toggle) |
-| 🍺 **Álcool** | Remove consumidores de álcool (toggle) |
-| 👶 **Filhos** | Remove pessoas com filhos (toggle) |
-| 📊 **Detalhamento** | Breakdown individual de cada filtro |
-| 🎴 **Card Compartilhável** | Gera imagem para compartilhar nas redes sociais |
-| 📱 **Web Share API** | Compartilhamento nativo em dispositivos móveis |
-| 📄 **Auditoria de Dados** | Página dedicada com link para todas as fontes oficiais + downloads dos JSONs brutos |
+| Funcionalidade               | Descrição                                                                           |
+| :--------------------------- | :---------------------------------------------------------------------------------- |
+| 🔄 **Cálculo em Tempo Real** | Resultados atualizam instantaneamente ao ajustar qualquer filtro                    |
+| 👤 **Gênero**                | Busca por homens ou mulheres                                                        |
+| 🗺️ **Região / Estado**       | Filtragem por Região, Estado ou todo o Brasil                                       |
+| ⏳ **Faixa Etária**          | Slider duplo de 18 a 80 anos                                                        |
+| 📏 **Altura Mínima**         | Distribuição Normal com mediana por estado/gênero                                   |
+| 💰 **Renda Mensal**          | Interpolação entre percentis P5–P99                                                 |
+| 👤 **Cor / Raça**            | Branca, Parda, Preta, Asiática, Indígena                                            |
+| 💍 **Estado Civil**          | Solteiro, Casado, Divorciado                                                        |
+| 🎓 **Escolaridade**          | Fundamental, Médio, Superior (cascata inclusiva)                                    |
+| 🙏 **Religião**              | Católica, Evangélica, Espírita, Matriz Africana, Sem Religião                       |
+| ✨ **Signo**                 | Os 12 signos com frequência real de nascimentos (IBGE)                              |
+| ⚖️ **Obesidade**             | Filtra por IMC ≥ 30 (toggle)                                                        |
+| 🚬 **Tabagismo**             | Remove fumantes (toggle)                                                            |
+| 🍺 **Álcool**                | Remove consumidores de álcool (toggle)                                              |
+| 👶 **Filhos**                | Remove pessoas com filhos (toggle)                                                  |
+| 📊 **Detalhamento**          | Breakdown individual de cada filtro                                                 |
+| 🎴 **Card Compartilhável**   | Gera imagem para compartilhar nas redes sociais                                     |
+| 📱 **Web Share API**         | Compartilhamento nativo em dispositivos móveis                                      |
+| 📄 **Auditoria de Dados**    | Página dedicada com link para todas as fontes oficiais + downloads dos JSONs brutos |
 
 ---
 
@@ -141,17 +141,17 @@ P_final = P(idade) × P(raça) × P(estado_civil) × P(escolaridade) × P(religi
 
 ### Metodologia por Filtro
 
-| Filtro | Método |
-|:---|:---|
-| **Altura** | Distribuição Normal `N(mediana, σ²)` com `σ = 7cm` (masc.) / `6cm` (fem.). Calcula `1 - Φ((H - μ) / σ)` |
-| **Renda** | Interpolação linear entre percentis P5–P99 do estado. Retorna `1 - CDF(rendaMin)` |
-| **Idade** | Proporção da pop. adulta (18+) dentro do intervalo selecionado, ponderada por faixa |
-| **Estado Civil** | Razão soma(status desejados) / soma(todos os status) por faixa etária |
-| **Escolaridade** | Cascata inclusiva: Superior ⊂ Médio ⊂ Fundamental. Razão numerador/denominador |
-| **Religião** | Soma das religiões selecionadas / total por faixa etária |
-| **Raça** | Proporção da pop. que pertence às raças selecionadas |
-| **Signo** | Frequência estatística de nascimentos por mês (Tabela 2612 IBGE) |
-| **Comportamentais** | Taxa de "sobrevivência" de cada filtro (PNS 2019 + Censo 2022) |
+| Filtro              | Método                                                                                                  |
+| :------------------ | :------------------------------------------------------------------------------------------------------ |
+| **Altura**          | Distribuição Normal `N(mediana, σ²)` com `σ = 7cm` (masc.) / `6cm` (fem.). Calcula `1 - Φ((H - μ) / σ)` |
+| **Renda**           | Interpolação linear entre percentis P5–P99 do estado. Retorna `1 - CDF(rendaMin)`                       |
+| **Idade**           | Proporção da pop. adulta (18+) dentro do intervalo selecionado, ponderada por faixa                     |
+| **Estado Civil**    | Razão soma(status desejados) / soma(todos os status) por faixa etária                                   |
+| **Escolaridade**    | Cascata inclusiva: Superior ⊂ Médio ⊂ Fundamental. Razão numerador/denominador                          |
+| **Religião**        | Soma das religiões selecionadas / total por faixa etária                                                |
+| **Raça**            | Proporção da pop. que pertence às raças selecionadas                                                    |
+| **Signo**           | Frequência estatística de nascimentos por mês (Tabela 2612 IBGE)                                        |
+| **Comportamentais** | Taxa de "sobrevivência" de cada filtro (PNS 2019 + Censo 2022)                                          |
 
 ### ⚠️ Limitações
 
@@ -167,18 +167,18 @@ P_final = P(idade) × P(raça) × P(estado_civil) × P(escolaridade) × P(religi
 
 Todos os dados são derivados de pesquisas públicas do IBGE:
 
-| Arquivo | Fonte | Variáveis |
-|:---|:---|:---|
-| `estado_civil.json` | Censo 2022 | População por UF, gênero, faixa etária e estado civil |
-| `escolaridade.json` | Censo 2022 | Nível de instrução por UF, gênero, raça e faixa etária |
-| `religiao.json` | Censo 2022 | Religião por UF, gênero e faixa etária (5 categorias) |
-| `renda.json` | PNAD 2023 | Percentis de renda domiciliar per capita (P5–P99) |
-| `altura.json` | POF 2017-2018 | Mediana de altura por UF, gênero e faixa etária |
-| `obesidade.json` | PNAD 2023 | Taxa de obesidade (IMC ≥ 30) por UF, gênero e faixa |
-| `fumo.json` | PNS 2019 | Taxa de não-fumantes por UF, gênero e faixa etária |
-| `alcool.json` | PNS 2019 | Taxa de não-bebedores por UF, gênero e faixa etária |
-| `filhos.json` | Censo 2022 | Taxa de sem filhos por UF, gênero e faixa etária |
-| `signos.json` | Tabela 2612 IBGE | Frequência de nascimentos por mês → distribuição por signo |
+| Arquivo             | Fonte            | Variáveis                                                  |
+| :------------------ | :--------------- | :--------------------------------------------------------- |
+| `estado_civil.json` | Censo 2022       | População por UF, gênero, faixa etária e estado civil      |
+| `escolaridade.json` | Censo 2022       | Nível de instrução por UF, gênero, raça e faixa etária     |
+| `religiao.json`     | Censo 2022       | Religião por UF, gênero e faixa etária (5 categorias)      |
+| `renda.json`        | PNAD 2023        | Percentis de renda domiciliar per capita (P5–P99)          |
+| `altura.json`       | POF 2017-2018    | Mediana de altura por UF, gênero e faixa etária            |
+| `obesidade.json`    | PNAD 2023        | Taxa de obesidade (IMC ≥ 30) por UF, gênero e faixa        |
+| `fumo.json`         | PNS 2019         | Taxa de não-fumantes por UF, gênero e faixa etária         |
+| `alcool.json`       | PNS 2019         | Taxa de não-bebedores por UF, gênero e faixa etária        |
+| `filhos.json`       | Censo 2022       | Taxa de sem filhos por UF, gênero e faixa etária           |
+| `signos.json`       | Tabela 2612 IBGE | Frequência de nascimentos por mês → distribuição por signo |
 
 > 📄 A página [`dados.html`](https://idealcalc.app/dados.html) documenta fontes, metodologia, limitações e oferece download dos JSONs brutos e das tabelas originais do IBGE.
 
@@ -265,14 +265,14 @@ python -m http.server 8080
 
 ## 🛠️ Stack Tecnológica
 
-| Tecnologia | Uso |
-|:---|:---|
-| **HTML5** | Estrutura semântica com Open Graph + Twitter Cards |
-| **CSS3** | Design system customizado, glassmorphism, animações, responsivo |
-| **JavaScript (ES Modules)** | Lógica de cálculo, DOM manipulation, Web Share API |
-| **html2canvas** | Geração de imagem compartilhável a partir do template HTML |
-| **Google Fonts** | Inter + Barlow Condensed |
-| **Zero frameworks** | Vanilla JS — sem dependência de frameworks pesados |
+| Tecnologia                  | Uso                                                             |
+| :-------------------------- | :-------------------------------------------------------------- |
+| **HTML5**                   | Estrutura semântica com Open Graph + Twitter Cards              |
+| **CSS3**                    | Design system customizado, glassmorphism, animações, responsivo |
+| **JavaScript (ES Modules)** | Lógica de cálculo, DOM manipulation, Web Share API              |
+| **html2canvas**             | Geração de imagem compartilhável a partir do template HTML      |
+| **Google Fonts**            | Inter + Barlow Condensed                                        |
+| **Zero frameworks**         | Vanilla JS — sem dependência de frameworks pesados              |
 
 ---
 
@@ -299,10 +299,5 @@ Este projeto é mantido por uma única pessoa. Se a ferramenta te ajudou ou dive
 
 ## 📝 Licença
 
-Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
-
----
-
-<p align="center">
-  Desenvolvido com ❤️ por <a href="https://github.com/zAstergun">Aster</a>
-</p>
+Este projeto está licenciado sob a [Licença MIT](https://opensource.org/licenses/MIT).
+Veja o arquivo [LICENSE](LICENSE) para ler a licença completa (em inglês e português).
